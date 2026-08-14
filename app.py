@@ -108,6 +108,9 @@ st.markdown(
         font-weight: 700;
         color: #f8fafc;
         margin-bottom: 5px;
+        white-space: nowrap;
+        overflow: hidden;
+        text-overflow: ellipsis;
     }
 
     .kpi-label {
