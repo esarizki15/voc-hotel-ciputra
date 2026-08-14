@@ -1,0 +1,300 @@
+# Aspect-Based Sentiment Analysis (ABSA) Hotel Reviews
+## Powered by Ollama Qwen3:8B
+
+Proyek ini adalah sistem **AI-driven analysis** untuk mengekstraksi aspek dan sentimen dari ulasan hotel secara otomatis menggunakan Qwen3:8B model melalui Ollama, dengan dashboard Streamlit interaktif untuk visualisasi insights.
+
+---
+
+## 📋 Daftar Isi
+- [Overview](#overview)
+- [Roadmap 2 Minggu](#roadmap-2-minggu)
+- [Struktur Proyek](#struktur-proyek)
+- [Instalasi & Setup](#instalasi--setup)
+- [Fase Pengerjaan](#fase-pengerjaan)
+- [Checkpoint Checklist](#checkpoint-checklist)
+
+---
+
+## Overview
+
+### Tujuan Proyek
+Mengembangkan pipeline end-to-end untuk:
+1. **Ekstraksi Aspek & Sentimen** dari ulasan hotel menggunakan LLM lokal (Qwen3:8B)
+2. **Analisis Prioritas Bisnis** melalui aggregasi dan normalisasi data
+3. **Evaluasi Akademis** dengan metrik Precision, Recall, dan F1-Score
+4. **Visualisasi Dashboard** interaktif untuk eksekutif dan tim manajemen
+
+### Tech Stack
+- **LLM Engine**: Ollama + Qwen3:8B
+- **Backend**: Python (Pandas, Scikit-learn)
+- **Frontend**: Streamlit
+- **Visualization**: Plotly, Streamlit Charts
+- **Dataset**: IndoNLU (terma_term-extraction-airy / hoasa_absa-airy)
+
+---
+
+## Roadmap 2 Minggu
+
+### 📍 PHASE 1: Environment & Data Pipeline
+**Durasi**: Hari 1–3  
+**Goal**: Memastikan Ollama berjalan lancar dan data ulasan siap diproses.
+
+**Checkpoint**:
+- [ ] **1.1**: Setup Environment (`pip install streamlit ollama pandas scikit-learn`) & pastikan model `qwen3:8b` aktif di Ollama (`ollama run qwen3:8b`)
+- [ ] **1.2**: Download dataset `train_preprocess.csv` dari folder `terma_term-extraction-airy` / `hoasa_absa-airy` IndoNLU
+- [ ] **1.3**: Buat script Python sederhana untuk membaca CSV dan membersihkan teks ulasan (preprocessing ringan)
+
+**Deliverable**: 
+- Environment siap, model Ollama running
+- Dataset tersedia di `/data/train_preprocess.csv`
+- Script preprocessing di `/scripts/preprocess.py`
+
+---
+
+### 📍 PHASE 2: Core AI Engine & Structured Prompting
+**Durasi**: Hari 4–6  
+**Goal**: Qwen3:8B berhasil mengekstraksi aspek + sentimen ke dalam JSON terstruktur secara stabil.
+
+**Checkpoint**:
+- [ ] **2.1**: Buat file `engine/ollama_client.py` berisi System Prompt JSON ABSA
+- [ ] **2.2**: Pengujian fungsi `extract_aspects(text)` pada 5 contoh ulasan acak (memastikan output 100% valid JSON)
+- [ ] **2.3**: Jalankan eksekusi batch processing pada 100–200 sampel data ulasan hotel dan simpan hasilnya ke `data/processed_reviews.json`
+
+**Deliverable**:
+- `engine/ollama_client.py` dengan fungsi `extract_aspects(text)` → JSON
+- `data/processed_reviews.json` berisi hasil ekstraksi 100–200 ulasan
+- Test hasil ekstraksi pada 5 sampel manual
+
+---
+
+### 📍 PHASE 3: Post-Processing & Academic Metrics
+**Durasi**: Hari 7–9  
+**Goal**: Menghitung skor prioritas bisnis dan metrik evaluasi F1-Score untuk kebutuhan akademis.
+
+**Checkpoint**:
+- [ ] **3.1**: Buat file `engine/aggregator.py` untuk normalize aspect (mengelompokkan kata ke Kategori Baku) dan menghitung Priority Improvement Score
+- [ ] **3.2**: Buat file `evaluation/evaluate_metrics.py` untuk membandingkan hasil ekstraksi AI dengan ground truth dataset dan menghitung metrik (Precision, Recall, F1-Score)
+
+**Deliverable**:
+- `engine/aggregator.py` dengan fungsi normalisasi aspek dan scoring
+- `evaluation/evaluate_metrics.py` dengan perhitungan Precision, Recall, F1-Score
+- Report evaluasi performa model
+
+---
+
+### 📍 PHASE 4: Streamlit UI Dashboard Development
+**Durasi**: Hari 10–12  
+**Goal**: Membangun antarmuka interaktif 2 modul untuk demo direksi.
+
+**Checkpoint**:
+- [ ] **4.1**: Buat halaman utama Streamlit (`app.py`) dengan layout sidebar dan 2 Tab Utama
+- [ ] **4.2** (Tab 1 - Live Demo): Form input teks ulasan tunggal + tombol "Analisis AI" yang memanggil `ollama_client.py` secara real-time
+- [ ] **4.3** (Tab 2 - Hotel Intelligence): Tampilan visualisasi grafik (Plotly/Streamlit Charts):
+  - **Top Complaints vs Strengths** (Bar Chart)
+  - **Priority Improvement Matrix** (Tabel Urutan Perbaikan)
+  - **Sentiment Breakdown per Departemen** (Pie/Bar Chart)
+
+**Deliverable**:
+- `app.py` (Streamlit dashboard)
+- Tab 1: Live analysis dengan real-time processing
+- Tab 2: Hotel Intelligence dashboard dengan visualisasi komprehensif
+- Styling & UX yang presentable untuk direksi
+
+---
+
+### 📍 PHASE 5: Presentation Deck & Final Review
+**Durasi**: Hari 13–14  
+**Goal**: Menyusun Slide PPT 10 Slide dan gladi bersih presentasi.
+
+**Checkpoint**:
+- [ ] **5.1**: Lakukan gladi bersih Live Demo di Streamlit (memastikan tidak ada error saat input teks acak)
+- [ ] **5.2**: Finalisasi Slide PPT 10 Slide berbasis struktur Executive Storytelling
+
+**Deliverable**:
+- Slide PPT 10 Slide dengan struktur: Problem → Solution → Results → Demo → Q&A
+- Live demo Streamlit tanpa error
+- Script presentasi yang matang
+
+---
+
+## Struktur Proyek
+
+```
+project-root/
+├── README.md                          # Dokumentasi proyek
+├── requirements.txt                   # Python dependencies
+├── .gitignore                         # Git ignore file
+│
+├── data/
+│   ├── train_preprocess.csv          # Dataset raw dari IndoNLU
+│   ├── processed_reviews.json        # Hasil ekstraksi batch (Phase 2)
+│   └── ground_truth.json             # Dataset untuk evaluasi (Phase 3)
+│
+├── scripts/
+│   └── preprocess.py                 # Text preprocessing & cleaning
+│
+├── engine/
+│   ├── ollama_client.py              # Ollama API client & ABSA extraction
+│   └── aggregator.py                 # Aspek normalization & scoring
+│
+├── evaluation/
+│   └── evaluate_metrics.py           # Precision, Recall, F1-Score calculation
+│
+├── app.py                             # Streamlit dashboard utama
+│
+└── presentation/
+    └── ABSA_Hotel_Analysis.pptx      # Slide presentasi 10 slide
+```
+
+---
+
+## Instalasi & Setup
+
+### Prerequisites
+- Python 3.8+
+- Ollama installed & running
+- Git
+
+### Step 1: Clone Repository
+```bash
+git clone <repository-url>
+cd absa-hotel-analysis
+```
+
+### Step 2: Setup Virtual Environment
+```bash
+python -m venv venv
+source venv/bin/activate  # On Windows: venv\Scripts\activate
+```
+
+### Step 3: Install Dependencies
+```bash
+pip install -r requirements.txt
+```
+
+### Step 4: Start Ollama & Load Model
+```bash
+# Di terminal terpisah, jalankan Ollama daemon
+ollama serve
+
+# Di terminal lain, pastikan model qwen3:8b tersedia
+ollama pull qwen3:8b
+ollama run qwen3:8b
+```
+
+### Step 5: Prepare Dataset
+Download `train_preprocess.csv` dari IndoNLU dan letakkan di folder `data/`.
+
+```bash
+mkdir -p data
+# Copy file CSV ke data/train_preprocess.csv
+```
+
+### Step 6: Run Dashboard
+```bash
+streamlit run app.py
+```
+
+Dashboard akan terbuka di `http://localhost:8501`
+
+---
+
+## Fase Pengerjaan
+
+### **Minggu 1: Foundation & Core Engine (Hari 1–7)**
+
+| Fase | Durasi | Fokus | Status |
+|------|--------|-------|--------|
+| **Phase 1** | Hari 1–3 | Environment Setup + Data Pipeline | ⏳ |
+| **Phase 2** | Hari 4–6 | AI Engine Development | ⏳ |
+| **Phase 3** | Hari 7–9 | Post-Processing & Evaluation | ⏳ |
+
+### **Minggu 2: UI & Presentation (Hari 10–14)**
+
+| Fase | Durasi | Fokus | Status |
+|------|--------|-------|--------|
+| **Phase 4** | Hari 10–12 | Dashboard Development | ⏳ |
+| **Phase 5** | Hari 13–14 | Presentation & Final Review | ⏳ |
+
+---
+
+## Checkpoint Checklist
+
+### Phase 1: Environment & Data Pipeline
+- [ ] Python environment setup dengan required packages
+- [ ] Ollama running dengan model qwen3:8b
+- [ ] Dataset downloaded dan tersimpan
+- [ ] Preprocessing script berfungsi
+
+### Phase 2: Core AI Engine
+- [ ] `ollama_client.py` dengan ABSA system prompt
+- [ ] Fungsi `extract_aspects()` berhasil output JSON valid
+- [ ] Batch processing 100–200 ulasan selesai
+- [ ] Output disimpan ke `processed_reviews.json`
+
+### Phase 3: Post-Processing & Metrics
+- [ ] `aggregator.py` dengan fungsi normalisasi & scoring
+- [ ] `evaluate_metrics.py` dengan perhitungan Precision/Recall/F1
+- [ ] Evaluation report selesai
+
+### Phase 4: Streamlit Dashboard
+- [ ] `app.py` (main dashboard) siap
+- [ ] **Tab 1 (Live Demo)**: Input form + real-time analysis berfungsi
+- [ ] **Tab 2 (Hotel Intelligence)**: Visualisasi lengkap & interaktif
+- [ ] UI polished & siap untuk presentasi
+
+### Phase 5: Presentation
+- [ ] Gladi bersih Live Demo (no errors)
+- [ ] PPT 10 Slide finalized
+- [ ] Script presentasi matang
+
+---
+
+## Dependencies
+
+Lihat `requirements.txt`:
+
+```
+streamlit==1.28.0
+ollama==0.0.11
+pandas==2.0.0
+scikit-learn==1.3.0
+numpy==1.24.0
+plotly==5.17.0
+requests==2.31.0
+```
+
+---
+
+## Penggunaan Dashboard
+
+### Tab 1: Live Demo
+1. Masukkan teks ulasan di input field
+2. Klik tombol **"Analisis AI"**
+3. Sistem akan menampilkan:
+   - Aspek yang teridentifikasi
+   - Sentimen per aspek
+   - Confidence score
+
+### Tab 2: Hotel Intelligence
+Visualisasi analytics dari dataset batch:
+- **Top Complaints & Strengths**: Identifikasi aspek paling sering dikritik/dipuji
+- **Priority Improvement Matrix**: Urutan perbaikan berdasarkan impact & frequency
+- **Sentiment Breakdown**: Distribusi sentimen per departemen/kategori
+
+---
+
+## Kontribusi & Support
+
+Untuk questions, issues, atau improvements, hubungi tim development.
+
+---
+
+## License
+
+Copyright © 2024. All rights reserved.
+
+---
+
+**Last Updated**: 2026-08-13  
+**Status**: 🟡 In Development (Phase 1)

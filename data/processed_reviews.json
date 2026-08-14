@@ -1,0 +1,1164 @@
+[
+  {
+    "review_id": 1,
+    "review_text": "kamar saya ada kendala di ac tidak berfungsi optimal . dan juga wifi koneksi kurang stabil .",
+    "aspects": [
+      {
+        "category": "AC",
+        "target": "AC kamar",
+        "opinion": "tidak berfungsi optimal",
+        "sentiment": "negatif"
+      },
+      {
+        "category": "WiFi",
+        "target": "wifi koneksi",
+        "opinion": "kurang stabil",
+        "sentiment": "negatif"
+      }
+    ],
+    "status": "success",
+    "error": null
+  },
+  {
+    "review_id": 2,
+    "review_text": "tempatnya bagus . kolam renangnya bersih .",
+    "aspects": [
+      {
+        "category": "Kolam Renang",
+        "target": "kolam renang",
+        "opinion": "bersih",
+        "sentiment": "positif"
+      },
+      {
+        "category": "Tempat",
+        "target": "tempat",
+        "opinion": "bagus",
+        "sentiment": "positif"
+      }
+    ],
+    "status": "success",
+    "error": null
+  },
+  {
+    "review_id": 3,
+    "review_text": "oke banget , tetapi ac nya tidak bisa diatur suhu nya .",
+    "aspects": [
+      {
+        "category": "AC",
+        "target": "AC",
+        "opinion": "tidak bisa diatur suhu",
+        "sentiment": "negatif"
+      }
+    ],
+    "status": "success",
+    "error": null
+  },
+  {
+    "review_id": 4,
+    "review_text": "pintu geser kurang rapat .",
+    "aspects": [
+      {
+        "category": "Fasilitas Kamar",
+        "target": "pintu geser",
+        "opinion": "kurang rapat",
+        "sentiment": "negatif"
+      }
+    ],
+    "status": "success",
+    "error": null
+  },
+  {
+    "review_id": 5,
+    "review_text": "keren . nyaman semuanya .",
+    "aspects": [
+      {
+        "category": "Lainnya",
+        "target": "fasilitas",
+        "opinion": "keren",
+        "sentiment": "positif"
+      },
+      {
+        "category": "Lainnya",
+        "target": "kemnyamanan",
+        "opinion": "nyaman",
+        "sentiment": "positif"
+      }
+    ],
+    "status": "success",
+    "error": null
+  },
+  {
+    "review_id": 6,
+    "review_text": "tidak dapat snack . setelah di keluhan , baru dikasik snacknya .",
+    "aspects": [
+      {
+        "category": "Lainnya",
+        "target": "snack",
+        "opinion": "tidak dapat",
+        "sentiment": "negatif"
+      },
+      {
+        "category": "Lainnya",
+        "target": "snack",
+        "opinion": "baru dikasik",
+        "sentiment": "negatif"
+      }
+    ],
+    "status": "success",
+    "error": null
+  },
+  {
+    "review_id": 7,
+    "review_text": "pelayanan lumayan baik .",
+    "aspects": [
+      {
+        "category": "Pelayanan Staf",
+        "target": "pelayanan",
+        "opinion": "lumayan baik",
+        "sentiment": "positif"
+      }
+    ],
+    "status": "success",
+    "error": null
+  },
+  {
+    "review_id": 8,
+    "review_text": "overall bagus . terjangkau . kapan kapam inap di airy room lagi deh .",
+    "aspects": [
+      {
+        "category": "Harga",
+        "target": "harga",
+        "opinion": "terjangkau",
+        "sentiment": "positif"
+      },
+      {
+        "category": "Lainnya",
+        "target": "kapan kapam inap di airy room lagi deh",
+        "opinion": "ingin kembali",
+        "sentiment": "positif"
+      }
+    ],
+    "status": "success",
+    "error": null
+  },
+  {
+    "review_id": 9,
+    "review_text": "pelayanan mas nya sangat baik , membantu , ramah dan komunikatif , kamar sangat bersih , kamar mandi sangat baik . cuma air panasnya tidak bisa lama .",
+    "aspects": [
+      {
+        "category": "Pelayanan Staf",
+        "target": "pelayanan mas",
+        "opinion": "sangat baik",
+        "sentiment": "positif"
+      },
+      {
+        "category": "Kebersihan Kamar",
+        "target": "kamar",
+        "opinion": "sangat bersih",
+        "sentiment": "positif"
+      },
+      {
+        "category": "Kamar Mandi",
+        "target": "kamar mandi",
+        "opinion": "sangat baik",
+        "sentiment": "positif"
+      },
+      {
+        "category": "Fasilitas Kamar",
+        "target": "air panas",
+        "opinion": "tidak bisa lama",
+        "sentiment": "negatif"
+      }
+    ],
+    "status": "success",
+    "error": null
+  },
+  {
+    "review_id": 10,
+    "review_text": "airyroom ini sangat mengecewakan dalam hal layanan dan kebersihan kamar .",
+    "aspects": [
+      {
+        "category": "Kebersihan Kamar",
+        "target": "kebersihan kamar",
+        "opinion": "mengecewakan",
+        "sentiment": "negatif"
+      }
+    ],
+    "status": "success",
+    "error": null
+  },
+  {
+    "review_id": 11,
+    "review_text": "agak perlu dibersihkan . kamar banyak semut .",
+    "aspects": [
+      {
+        "category": "Kebersihan Kamar",
+        "target": "kamar",
+        "opinion": "agak perlu dibersihkan",
+        "sentiment": "negatif"
+      },
+      {
+        "category": "Kebersihan Kamar",
+        "target": "kamar",
+        "opinion": "banyak semut",
+        "sentiment": "negatif"
+      }
+    ],
+    "status": "success",
+    "error": null
+  },
+  {
+    "review_id": 12,
+    "review_text": "pelayanan sangat buruk . mohon diperbaiki .",
+    "aspects": [
+      {
+        "category": "Lainnya",
+        "target": "pelayanan",
+        "opinion": "sangat buruk",
+        "sentiment": "negatif"
+      }
+    ],
+    "status": "success",
+    "error": null
+  },
+  {
+    "review_id": 13,
+    "review_text": "pelayanan nya sangat ramah .",
+    "aspects": [
+      {
+        "category": "Pelayanan Staf",
+        "target": "pelayanan",
+        "opinion": "sangat ramah",
+        "sentiment": "positif"
+      }
+    ],
+    "status": "success",
+    "error": null
+  },
+  {
+    "review_id": 14,
+    "review_text": "saya sampai sanur itu sekitar pukul 20.00 wita mutermuter cari hotel ini , sampai telepon ke cs pun tidak cukup membantu kami menemukan hotel ini , kami tanya orang sekitar pun tidak ada yang tahu dimana ananda beach hotel ini . alamat tidak akurat sama sekali !",
+    "aspects": [
+      {
+        "category": "Lokasi",
+        "target": "lokasi hotel",
+        "opinion": "tidak akurat",
+        "sentiment": "negatif"
+      },
+      {
+        "category": "Pelayanan Staf",
+        "target": "CS",
+        "opinion": "tidak cukup membantu",
+        "sentiment": "negatif"
+      }
+    ],
+    "status": "success",
+    "error": null
+  },
+  {
+    "review_id": 15,
+    "review_text": "recomended , hotel dengan price murah tetapi fasilitas oke punya . makanannya juga oke , pelayanan oke , bapak .",
+    "aspects": [
+      {
+        "category": "Harga",
+        "target": "harga",
+        "opinion": "murah",
+        "sentiment": "positif"
+      },
+      {
+        "category": "Fasilitas Hotel",
+        "target": "fasilitas",
+        "opinion": "oke",
+        "sentiment": "positif"
+      },
+      {
+        "category": "Makanan",
+        "target": "makanan",
+        "opinion": "oke",
+        "sentiment": "positif"
+      },
+      {
+        "category": "Pelayanan Staf",
+        "target": "pelayanan",
+        "opinion": "oke",
+        "sentiment": "positif"
+      }
+    ],
+    "status": "success",
+    "error": null
+  },
+  {
+    "review_id": 16,
+    "review_text": "sayang wifi tidak bagus harus keluar kamar .",
+    "aspects": [
+      {
+        "category": "WiFi",
+        "target": "wifi",
+        "opinion": "tidak bagus",
+        "sentiment": "negatif"
+      }
+    ],
+    "status": "success",
+    "error": null
+  },
+  {
+    "review_id": 17,
+    "review_text": "fasilitas lengkap . dapat snack juga dari airy . terimakasih airy .",
+    "aspects": [
+      {
+        "category": "Fasilitas Hotel",
+        "target": "fasilitas",
+        "opinion": "lengkap",
+        "sentiment": "positif"
+      },
+      {
+        "category": "Sarapan",
+        "target": "snack",
+        "opinion": "dapat",
+        "sentiment": "positif"
+      }
+    ],
+    "status": "success",
+    "error": null
+  },
+  {
+    "review_id": 18,
+    "review_text": "fasilitas parkiran agar disediakan .",
+    "aspects": [
+      {
+        "category": "Parkir",
+        "target": "fasilitas parkiran",
+        "opinion": "harus disediakan",
+        "sentiment": "negatif"
+      }
+    ],
+    "status": "success",
+    "error": null
+  },
+  {
+    "review_id": 19,
+    "review_text": "pelayanan nya sangat bagus . kamar nya juga oke .",
+    "aspects": [
+      {
+        "category": "Fasilitas Kamar",
+        "target": "kamar",
+        "opinion": "oke",
+        "sentiment": "positif"
+      },
+      {
+        "category": "Pelayanan Staf",
+        "target": "pelayanan",
+        "opinion": "sangat bagus",
+        "sentiment": "positif"
+      }
+    ],
+    "status": "success",
+    "error": null
+  },
+  {
+    "review_id": 20,
+    "review_text": "kamar cukup luas , interior menarik dan unik sekali , penempatan furniture tepat , suka banget dengan kamar mandinya , walpaper kamar beragam , pencahayaan dibuat dramatis , tidak terlalu terang tetapi baguss . hanya saja tidak tersedia sarapan , naik ke lantai 1 dengan tangga , lift tidak berfungsi .",
+    "aspects": [
+      {
+        "category": "Fasilitas Kamar",
+        "target": "kamar",
+        "opinion": "cukup luas",
+        "sentiment": "positif"
+      },
+      {
+        "category": "Fasilitas Kamar",
+        "target": "interior",
+        "opinion": "menarik dan unik sekali",
+        "sentiment": "positif"
+      },
+      {
+        "category": "Fasilitas Kamar",
+        "target": "penempatan furniture",
+        "opinion": "tepat",
+        "sentiment": "positif"
+      },
+      {
+        "category": "Kamar Mandi",
+        "target": "kamar mandi",
+        "opinion": "suka banget",
+        "sentiment": "positif"
+      },
+      {
+        "category": "Fasilitas Kamar",
+        "target": "walpaper kamar",
+        "opinion": "beragam",
+        "sentiment": "positif"
+      },
+      {
+        "category": "Fasilit,as Kamar",
+        "target": "pencahayaan",
+        "opinion": "dibuat dramatis",
+        "sentiment": "positif"
+      },
+      {
+        "category": "Sarapan",
+        "target": "sarapan",
+        "opinion": "tidak tersedia",
+        "sentiment": "negatif"
+      },
+      {
+        "category": "Fasilitas Kamar",
+        "target": "lift",
+        "opinion": "tidak berfungsi",
+        "sentiment": "negatif"
+      }
+    ],
+    "status": "success",
+    "error": null
+  },
+  {
+    "review_id": 21,
+    "review_text": "lokasi strategis harga terjangkau bangunan lama memang , tetapi dengan harga yang terjangkau dan lokasi tengah kota sangat worthy dan sudah 3x ini menginap di sini wifi kencang dapat sarapan pula , menu homey tetapi tasty keamanan 24jam ramahramah overall bagus .",
+    "aspects": [
+      {
+        "category": "Lokasi",
+        "target": "lokasi",
+        "opinion": "strategis",
+        "sentiment": "positif"
+      },
+      {
+        "category": "Harga",
+        "target": "harga",
+        "opinion": "terjangkau",
+        "sentiment": "positif"
+      },
+      {
+        "category": "Keamanan",
+        "target": "keamanan 24 jam",
+        "opinion": "ramah",
+        "sentiment": "positif"
+      },
+      {
+        "category": "Sarapan",
+        "target": "sarapan",
+        "opinion": "dapat",
+        "sentiment": "positif"
+      },
+      {
+        "category": "Fasilitas Kamar",
+        "target": "bangunan lama",
+        "opinion": "memang",
+        "sentiment": "netral"
+      },
+      {
+        "category": "Fasilitas Kamar",
+        "target": "wifi kencang",
+        "opinion": "kencang",
+        "sentiment": "positif"
+      },
+      {
+        "category": "Fasilitas Kamar",
+        "target": "menu homey",
+        "opinion": "tasty",
+        "sentiment": "positif"
+      }
+    ],
+    "status": "success",
+    "error": null
+  },
+  {
+    "review_id": 22,
+    "review_text": "kebersihan selimut , sarung bantal , handuk kurang kamar kurang wangi wifi tidak bisa .",
+    "aspects": [
+      {
+        "category": "Fasilitas Kamar",
+        "target": "selimut",
+        "opinion": "kurang bersih",
+        "sentiment": "negatif"
+      },
+      {
+        "category": "Fasilitas Kamar",
+        "target": "sarung bantal",
+        "opinion": "kurang bersih",
+        "sentiment": "negatif"
+      },
+      {
+        "category": "Fasilit yang Kamar",
+        "target": "handuk",
+        "opinion": "kurang bersih",
+        "sentiment": "negatif"
+      },
+      {
+        "category": "Kamar",
+        "target": "wangi",
+        "opinion": "kurang",
+        "sentiment": "negatif"
+      },
+      {
+        "category": "WiFi",
+        "target": "koneksi WiFi",
+        "opinion": "tidak bisa",
+        "sentiment": "negatif"
+      }
+    ],
+    "status": "success",
+    "error": null
+  },
+  {
+    "review_id": 23,
+    "review_text": "nyaman banget kamarnya . bersiih . dan buat betah . next klau kesana bisa jadi rekomendasi buat tempat tinggal sementara .",
+    "aspects": [
+      {
+        "category": "Fasilitas Kamar",
+        "target": "kamar",
+        "opinion": "nyaman banget",
+        "sentiment": "positif"
+      },
+      {
+        "category": "Kebersihan Kamar",
+        "target": "kamar",
+        "opinion": "bersih",
+        "sentiment": "positif"
+      },
+      {
+        "category": "Fasilitas Kamar",
+        "target": "kamar",
+        "opinion": "buat betah",
+        "sentiment": "positif"
+      }
+    ],
+    "status": "success",
+    "error": null
+  },
+  {
+    "review_id": 24,
+    "review_text": "tempat tdr kurang bersih .",
+    "aspects": [
+      {
+        "category": "Kebersihan Kamar",
+        "target": "tempat tdr",
+        "opinion": "kurang bersih",
+        "sentiment": "negatif"
+      }
+    ],
+    "status": "success",
+    "error": null
+  },
+  {
+    "review_id": 25,
+    "review_text": "tulisannya twin bed , tetapi yang ada kamarnya beda .",
+    "aspects": [
+      {
+        "category": "Tempat Tidur",
+        "target": "twin bed",
+        "opinion": "beda",
+        "sentiment": "negatif"
+      }
+    ],
+    "status": "success",
+    "error": null
+  },
+  {
+    "review_id": 26,
+    "review_text": "tempat nya nyaman dan harga nya pun terjangkau , cocok sekali untuk liburan keluarga .",
+    "aspects": [
+      {
+        "category": "Harga",
+        "target": "harga",
+        "opinion": "terjangkau",
+        "sentiment": "positif"
+      },
+      {
+        "category": "Tempat Tidur",
+        "target": "tempat",
+        "opinion": "nyaman",
+        "sentiment": "positif"
+      }
+    ],
+    "status": "success",
+    "error": null
+  },
+  {
+    "review_id": 27,
+    "review_text": "kamar oke . ac kurang dingin . lampu kamar mandi ada yang mati .",
+    "aspects": [
+      {
+        "category": "Kamar",
+        "target": "kamar",
+        "opinion": "oke",
+        "sentiment": "positif"
+      },
+      {
+        "category": "AC",
+        "target": "AC",
+        "opinion": "kurang dingin",
+        "sentiment": "negatif"
+      },
+      {
+        "category": "Kamar Mandi",
+        "target": "lampu kamar mandi",
+        "opinion": "ada yang mati",
+        "sentiment": "negatif"
+      }
+    ],
+    "status": "success",
+    "error": null
+  },
+  {
+    "review_id": 28,
+    "review_text": "kamar luas dan kedap , bersih makanan enak . dan lokasi strategis .",
+    "aspects": [
+      {
+        "category": "Fasilitas Kamar",
+        "target": "kamar",
+        "opinion": "luas dan kedap , bersih",
+        "sentiment": "positif"
+      },
+      {
+        "category": "Lokasi",
+        "target": "lokasi",
+        "opinion": "strategis",
+        "sentiment": "positif"
+      },
+      {
+        "category": "Sarapan",
+        "target": "makanan",
+        "opinion": "enak",
+        "sentiment": "positif"
+      }
+    ],
+    "status": "success",
+    "error": null
+  },
+  {
+    "review_id": 29,
+    "review_text": "semuanya sudah baik tetapi didalam kamar tidak ada tempat untuk menggantungkan baju atau celana .",
+    "aspects": [
+      {
+        "category": "Fasilitas Kamar",
+        "target": "tempat untuk menggantungkan baju atau celana",
+        "opinion": "tidak ada",
+        "sentiment": "negatif"
+      }
+    ],
+    "status": "success",
+    "error": null
+  },
+  {
+    "review_id": 30,
+    "review_text": "hanya wifi yang kurang memuaskan , wifi tidak bisa dipakai , selebihnya tidak masalah .",
+    "aspects": [
+      {
+        "category": "WiFi",
+        "target": "wifi",
+        "opinion": "tidak bisa dipakai",
+        "sentiment": "negatif"
+      }
+    ],
+    "status": "success",
+    "error": null
+  },
+  {
+    "review_id": 31,
+    "review_text": "breakfastnya bervariasi dan sehat . thank you for servicing .",
+    "aspects": [
+      {
+        "category": "Sarapan",
+        "target": "breakfast",
+        "opinion": "bervariasi dan sehat",
+        "sentiment": "positif"
+      }
+    ],
+    "status": "success",
+    "error": null
+  },
+  {
+    "review_id": 32,
+    "review_text": "kamar bersih , kasur bersih ( aku paling cepat bereaksi kalau ada tungau walau cma sedikit ) , 24 jam petugasnya siap sedia buat bantuin . top deh !",
+    "aspects": [
+      {
+        "category": "Kebersihan Kamar",
+        "target": "kamar",
+        "opinion": "bersih",
+        "sentiment": "positif"
+      },
+      {
+        "category": "Kebersihan Kamar",
+        "target": "kasur",
+        "opinion": "bersih",
+        "sentiment": "positif"
+      },
+      {
+        "category": "Pelayanan Staf",
+        "target": "petugas",
+        "opinion": "siap sedia buat bantuin",
+        "sentiment": "positif"
+      }
+    ],
+    "status": "success",
+    "error": null
+  },
+  {
+    "review_id": 33,
+    "review_text": "bersih , rapi , tetapi properti nya kurang diperlengkapi , kurang nyaman juga karena banyak kebisingan , apalagi dari ruangan aula nya karena ada acara .",
+    "aspects": [
+      {
+        "category": "Kebersihan Hotel",
+        "target": "kebersihan",
+        "opinion": "bersih",
+        "sentiment": "positif"
+      },
+      {
+        "category": "Fasilitas Hotel",
+        "target": "properti",
+        "opinion": "kurang diperlengkapi",
+        "sentiment": "negatif"
+      },
+      {
+        "category": "Fasilitas Hotel",
+        "target": "kebisingan",
+        "opinion": "kurang nyaman",
+        "sentiment": "negatif"
+      }
+    ],
+    "status": "success",
+    "error": null
+  },
+  {
+    "review_id": 34,
+    "review_text": "terlalu sempit kamarnya , tetapi lumayanlah dengan budget yang segitu , pelayanan hotel juga lumayan bagus dan ramah , airy memang joss .",
+    "aspects": [
+      {
+        "category": "Fasilitas Kamar",
+        "target": "kamar",
+        "opinion": "terlalu sempit",
+        "sentiment": "negatif"
+      },
+      {
+        "category": "Pelayanan Staf",
+        "target": "pelayanan hotel",
+        "opinion": "lumayan bagus",
+        "sentiment": "positif"
+      },
+      {
+        "category": "Fasilitas Kamar",
+        "target": "kamar",
+        "opinion": "airy",
+        "sentiment": "positif"
+      }
+    ],
+    "status": "success",
+    "error": null
+  },
+  {
+    "review_id": 35,
+    "review_text": "tidak mengecewakan . kamarnya mungil , bersih , wangi , ac dan hot water berfungsi baik , pelayanan baik , parkir tersedia dan aman , lokasi dekat dengan banyak tempat makan dan hiburan .",
+    "aspects": [
+      {
+        "category": "Kamar",
+        "target": "kamarnya",
+        "opinion": "mungil",
+        "sentiment": "netral"
+      },
+      {
+        "category": "Kamar",
+        "target": "kamarnya",
+        "opinion": "bersih",
+        "sentiment": "positif"
+      },
+      {
+        "category": "Kamar",
+        "target": "kamarnya",
+        "opinion": "wangi",
+        "sentiment": "positif"
+      },
+      {
+        "category": "AC",
+        "target": "AC",
+        "opinion": "berfungsi baik",
+        "sentiment": "positif"
+      },
+      {
+        "category": "Pelayanan Staf",
+        "target": "pelayanan",
+        "opinion": "baik",
+        "sentiment": "positif"
+      },
+      {
+        "category": "Parkir",
+        "target": "parkir",
+        "opinion": "tersedia dan aman",
+        "sentiment": "positif"
+      },
+      {
+        "category": "Lokasi",
+        "target": "lokasi",
+        "opinion": "dekat dengan banyak tempat makan dan hiburan",
+        "sentiment": "positif"
+      }
+    ],
+    "status": "success",
+    "error": null
+  },
+  {
+    "review_id": 36,
+    "review_text": "begitu masuk pertama , kesan yang diterima adalah jorok . mohon maaf , ada kotoran ( eek ) masih melekat di bibir kloset . seperti tidak dibersihkan . kemudian semakin malam , banyak kecoak bermunculan , awalnya saya baca review dari app tetangga yang bilang banyak kecoak , saya tidak percaya . tetapi begitu mengalami sendiri , sangat horor , tidur jadi tidak nyenyak .",
+    "aspects": [
+      {
+        "category": "Kebersihan Kamar",
+        "target": "kloset",
+        "opinion": "masih melekat di bibir kloset",
+        "sentiment": "negatif"
+      },
+      {
+        "category": "Kebersihan Kamar",
+        "target": "kloset",
+        "opinion": "tidak dibersihkan",
+        "sentiment": "negatif"
+      },
+      {
+        "category": "Kebersihan Kamar",
+        "target": "kloset",
+        "opinion": "ada kotoran ( eek )",
+        "sentiment": "negatif"
+      },
+      {
+        "category": "Kebersihan Kamar",
+        "target": "kloset",
+        "opinion": "masih melekat di bibir kloset",
+        "sentiment": "negatif"
+      },
+      {
+        "category": "Kebersihan Kamar",
+        "target": "kloset",
+        "opinion": "tidak dibersihkan",
+        "sentiment": "negatif"
+      },
+      {
+        "category": "Kebersihan Kamar",
+        "target": "kloset",
+        "opinion": "ada kotoran ( eek )",
+        "sentiment": "negatif"
+      },
+      {
+        "category": "Kebersan Kamar Mandi",
+        "target": "kloset",
+        "opinion": "masih melekat di bibir kloset",
+        "sentiment": "negatif"
+      },
+      {
+        "category": "Kebersihan Kamar",
+        "target": "kloset",
+        "opinion": "tidak dibersihkan",
+        "sentiment": "negatif"
+      },
+      {
+        "category": "Kebersihan Kamar",
+        "target": "kloset",
+        "opinion": "ada kotoran ( eek )",
+        "sentiment": "negatif"
+      },
+      {
+        "category": "Kebersihan Kamar",
+        "target": "kloset",
+        "opinion": "masih melekat di bibir kloset",
+        "sentiment": "negatif"
+      },
+      {
+        "category": "Kebersihan Kamar",
+        "target": "kloset",
+        "opinion": "tidak dibersihkan",
+        "sentiment": "negatif"
+      },
+      {
+        "category": "Kebersihan Kamar",
+        "target": "kloset",
+        "opinion": "ada kotoran ( eek )",
+        "sentiment": "negatif"
+      }
+    ],
+    "status": "success",
+    "error": null
+  },
+  {
+    "review_id": 37,
+    "review_text": "saya salah dikasih kamar , tidak ada handuk , gayung , airy pack , kasur tidak pakai seprai , lemari juga kotor .",
+    "aspects": [
+      {
+        "category": "Fasilitas Kamar",
+        "target": "handuk",
+        "opinion": "tidak ada",
+        "sentiment": "negatif"
+      },
+      {
+        "category": "Fasilitas Kamar",
+        "target": "gayung",
+        "opinion": "tidak ada",
+        "sentiment": "negatif"
+      },
+      {
+        "category": "Fasilitas Kamar",
+        "target": "airy pack",
+        "opinion": "tidak ada",
+        "sentiment": "negatif"
+      },
+      {
+        "category": "Fasilit yang tidak disebutkan",
+        "target": "seprai",
+        "opinion": "tidak pakai",
+        "sentiment": "negatif"
+      },
+      {
+        "category": "Fasilitas Kamar",
+        "target": "lemari",
+        "opinion": "kotor",
+        "sentiment": "negatif"
+      }
+    ],
+    "status": "success",
+    "error": null
+  },
+  {
+    "review_id": 38,
+    "review_text": "bersih . tetapi sulit ditemukan .",
+    "aspects": [
+      {
+        "category": "Kebersihan Hotel",
+        "target": "kamar",
+        "opinion": "bersih",
+        "sentiment": "positif"
+      },
+      {
+        "category": "Lokasi",
+        "target": "hotel",
+        "opinion": "sulit ditemukan",
+        "sentiment": "negatif"
+      }
+    ],
+    "status": "success",
+    "error": null
+  },
+  {
+    "review_id": 39,
+    "review_text": "lampu kamar tidak menyala . yang lain oke laah . topp .",
+    "aspects": [
+      {
+        "category": "Fasilitas Kamar",
+        "target": "lampu kamar",
+        "opinion": "tidak menyala",
+        "sentiment": "negatif"
+      }
+    ],
+    "status": "success",
+    "error": null
+  },
+  {
+    "review_id": 40,
+    "review_text": "kesigapan pegawai dan minimalkan kebisingan baik dari pegawai atau tamu lain . biar tidak menganggu istirahat tamu lain .",
+    "aspects": [
+      {
+        "category": "Pelayanan Staf",
+        "target": "kesigapan pegawai",
+        "opinion": "minimalkan kebisingan baik dari pegawai atau tamu lain",
+        "sentiment": "positif"
+      }
+    ],
+    "status": "success",
+    "error": null
+  },
+  {
+    "review_id": 41,
+    "review_text": "bagus bersih nyaman , cuma tempat terlalu kedalam .",
+    "aspects": [
+      {
+        "category": "Kebersihan Kamar",
+        "target": "kamar",
+        "opinion": "bersih",
+        "sentiment": "positif"
+      },
+      {
+        "category": "Fasilitas Kamar",
+        "target": "kamar",
+        "opinion": "nyaman",
+        "sentiment": "positif"
+      },
+      {
+        "category": "Lainnya",
+        "target": "tempat",
+        "opinion": "terlalu kedalam",
+        "sentiment": "negatif"
+      }
+    ],
+    "status": "success",
+    "error": null
+  },
+  {
+    "review_id": 42,
+    "review_text": "mantap , lokasi strategis , ke tanah abang bisa jalan kaki . cuma karena tempat tidur diatas agak ngerih , bunyibunyi takut jatuh hai .",
+    "aspects": [
+      {
+        "category": "Lokasi",
+        "target": "lokasi strategis",
+        "opinion": "mantap",
+        "sentiment": "positif"
+      },
+      {
+        "category": "Tempat Tidur",
+        "target": "tempat tidur diatas agak ngerih",
+        "opinion": "bunyibunyi takut jatuh hai",
+        "sentiment": "negatif"
+      }
+    ],
+    "status": "success",
+    "error": null
+  },
+  {
+    "review_id": 43,
+    "review_text": "air bersih untuk mck tidak ada .",
+    "aspects": [
+      {
+        "category": "Kebersihan Kamar",
+        "target": "air bersih untuk mck",
+        "opinion": "tidak ada",
+        "sentiment": "negatif"
+      }
+    ],
+    "status": "success",
+    "error": null
+  },
+  {
+    "review_id": 44,
+    "review_text": "sarapan cuma roti bakar sama roti saja pilihannya .",
+    "aspects": [
+      {
+        "category": "Sarapan",
+        "target": "sarapan",
+        "opinion": "cuma roti bakar sama roti saja pilihannya",
+        "sentiment": "negatif"
+      }
+    ],
+    "status": "success",
+    "error": null
+  },
+  {
+    "review_id": 45,
+    "review_text": "hotelnya bagus , pelayanan oke , dekat dengan fasilitas umum . terimakasih .",
+    "aspects": [
+      {
+        "category": "Lokasi",
+        "target": "fasilitas umum",
+        "opinion": "dekat",
+        "sentiment": "positif"
+      },
+      {
+        "category": "Pelayanan Staf",
+        "target": "pelayanan",
+        "opinion": "oke",
+        "sentiment": "positif"
+      },
+      {
+        "category": "Fasilitas Hotel",
+        "target": "fasilitas umum",
+        "opinion": "dekat",
+        "sentiment": "positif"
+      }
+    ],
+    "status": "success",
+    "error": null
+  },
+  {
+    "review_id": 46,
+    "review_text": "over all enak menginap disini , lokasinya strategis jadi kalau mau berasa turis bisa jalan kaki kemana mana . dan yang lebih berasa turisnya ketika malam mau ke lagi jalan kaki dan sekeliling lagi ada proyek pembangunan begitu tertawa . oiya ac nya sempat netes juga sih tetapi tidak apaapa lah bisa diatasi .",
+    "aspects": [
+      {
+        "category": "Lokasi",
+        "target": "lokasi hotel",
+        "opinion": "strategis",
+        "sentiment": "positif"
+      },
+      {
+        "category": "AC",
+        "target": "AC",
+        "opinion": "sempat netes",
+        "sentiment": "negatif"
+      },
+      {
+        "category": "Lainnya",
+        "target": "proyek pembangunan sekeliling",
+        "opinion": "tertawa",
+        "sentiment": "positif"
+      }
+    ],
+    "status": "success",
+    "error": null
+  },
+  {
+    "review_id": 47,
+    "review_text": "lumayan bersih tetapi lantainya tidak rata karena kurang semen di bawah nya , jadi menyebabkan pecah \" .",
+    "aspects": [
+      {
+        "category": "Fasilitas Kamar",
+        "target": "lantainya",
+        "opinion": "tidak rata",
+        "sentiment": "negatif"
+      },
+      {
+        "category": "Fasilitas Kamar",
+        "target": "semen di bawahnya",
+        "opinion": "kurang",
+        "sentiment": "negatif"
+      }
+    ],
+    "status": "success",
+    "error": null
+  },
+  {
+    "review_id": 48,
+    "review_text": "bersih . ramah . strategis .",
+    "aspects": [
+      {
+        "category": "Kebersihan Hotel",
+        "target": "kamar",
+        "opinion": "bersih",
+        "sentiment": "positif"
+      },
+      {
+        "category": "Pelayanan Staf",
+        "target": "staf",
+        "opinion": "ramah",
+        "sentiment": "positif"
+      },
+      {
+        "category": "Lokasi",
+        "target": "lokasi hotel",
+        "opinion": "strategis",
+        "sentiment": "positif"
+      }
+    ],
+    "status": "success",
+    "error": null
+  },
+  {
+    "review_id": 49,
+    "review_text": "2 kali inap di situ dengan kamar yang berbeda tetapi sama saja kamar mandi tetap bau .",
+    "aspects": [
+      {
+        "category": "Kamar Mandi",
+        "target": "kamar mandi",
+        "opinion": "bau",
+        "sentiment": "negatif"
+      }
+    ],
+    "status": "success",
+    "error": null
+  },
+  {
+    "review_id": 50,
+    "review_text": "tidak sesuai dengan di foto .",
+    "aspects": [
+      {
+        "category": "Lainnya",
+        "target": "foto",
+        "opinion": "tidak sesuai",
+        "sentiment": "negatif"
+      }
+    ],
+    "status": "success",
+    "error": null
+  }
+]
