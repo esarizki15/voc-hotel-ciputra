@@ -20,11 +20,13 @@ st.set_page_config(
 
 DATA_PATH = "data/processed_reviews.json"
 
+# Jumlah aspek yang ditampilkan pada grafik utama.
+# Semua aspek tetap tersedia pada tabel.
+TOP_ASPECTS = 10
+
 
 # ============================================================
 # CUSTOM CSS
-# Gunakan CSS hanya untuk styling sederhana.
-# Komponen utama menggunakan native Streamlit.
 # ============================================================
 
 st.markdown(
@@ -172,6 +174,10 @@ with st.sidebar:
 
     st.divider()
 
+    # --------------------------------------------------------
+    # SUMBER DATA
+    # --------------------------------------------------------
+
     st.markdown("### 📂 Sumber Data")
 
     st.info(
@@ -206,6 +212,10 @@ with st.sidebar:
         )
 
     st.divider()
+
+    # --------------------------------------------------------
+    # TEKNOLOGI
+    # --------------------------------------------------------
 
     st.markdown("### 🤖 Teknologi")
 
@@ -258,9 +268,17 @@ tab_dashboard, tab_live = st.tabs(
 
 with tab_dashboard:
 
-    # --------------------------------------------------------
+    # ========================================================
+    # DATA SUMMARY
+    # ========================================================
+
+    df_summary = (
+        active_aggregator.get_aspect_summary()
+    )
+
+    # ========================================================
     # KPI
-    # --------------------------------------------------------
+    # ========================================================
 
     kpis = active_aggregator.calculate_kpis()
 
@@ -278,24 +296,28 @@ with tab_dashboard:
     col1, col2, col3, col4 = st.columns(4)
 
     with col1:
+
         st.metric(
             label="Total Ulasan",
             value=f"{kpis['total_reviews']:,}",
         )
 
     with col2:
+
         st.metric(
             label="Aspek Bersentimen Positif",
             value=f"{kpis['positive_aspect_percentage']:.1f}%",
         )
 
     with col3:
+
         st.metric(
             label="Prioritas Perbaikan #1",
             value=kpis["top_priority"],
         )
 
     with col4:
+
         st.metric(
             label="Keunggulan Utama",
             value=kpis["top_strength"],
@@ -303,9 +325,9 @@ with tab_dashboard:
 
     st.divider()
 
-    # --------------------------------------------------------
+    # ========================================================
     # PRIORITAS & STRENGTH
-    # --------------------------------------------------------
+    # ========================================================
 
     col_left, col_right = st.columns(2)
 
@@ -318,12 +340,13 @@ with tab_dashboard:
         st.subheader("🔥 Prioritas Perbaikan")
 
         st.caption(
-            "Aspek yang memiliki kombinasi volume penyebutan "
-            "dan proporsi keluhan negatif paling tinggi."
+            "Aspek dengan kombinasi volume penyebutan "
+            "dan proporsi sentimen negatif yang tinggi."
         )
 
-        priorities = active_aggregator.get_top_priorities(
-            top_n=5
+        priorities = (
+            active_aggregator
+            .get_top_priorities(top_n=5)
         )
 
         if not priorities:
@@ -367,7 +390,6 @@ with tab_dashboard:
                             f"{item['priority_score']:.1f}",
                         )
 
-
     # ========================================================
     # STRENGTH
     # ========================================================
@@ -377,12 +399,13 @@ with tab_dashboard:
         st.subheader("🟢 Keunggulan Layanan")
 
         st.caption(
-            "Aspek yang memiliki proporsi sentimen positif "
-            "tinggi dengan jumlah penyebutan yang memadai."
+            "Aspek dengan proporsi sentimen positif tinggi "
+            "dan jumlah penyebutan yang memadai."
         )
 
-        strengths = active_aggregator.get_top_strengths(
-            top_n=5
+        strengths = (
+            active_aggregator
+            .get_top_strengths(top_n=5)
         )
 
         if not strengths:
@@ -417,19 +440,16 @@ with tab_dashboard:
 
     st.divider()
 
-    # --------------------------------------------------------
+    # ========================================================
     # SENTIMENT CHART
-    # --------------------------------------------------------
+    # ========================================================
 
     st.subheader("📊 Sentimen Berdasarkan Aspek")
 
     st.caption(
-        "Distribusi sentimen positif, netral, dan negatif "
-        "berdasarkan aspek yang terdeteksi oleh AI."
-    )
-
-    df_summary = (
-        active_aggregator.get_aspect_summary()
+        f"Menampilkan {TOP_ASPECTS} aspek dengan jumlah "
+        "penyebutan tertinggi. Aspek lainnya tetap tersedia "
+        "pada tabel rekapitulasi."
     )
 
     if df_summary.empty:
@@ -440,13 +460,26 @@ with tab_dashboard:
 
     else:
 
-        chart_df = df_summary.sort_values(
-            "total_mentions",
-            ascending=True,
+        # ----------------------------------------------------
+        # Hanya TOP N aspek untuk visualisasi
+        # ----------------------------------------------------
+
+        chart_df = (
+            df_summary
+            .sort_values(
+                "total_mentions",
+                ascending=False,
+            )
+            .head(TOP_ASPECTS)
+            .sort_values(
+                "total_mentions",
+                ascending=True,
+            )
         )
 
         fig = go.Figure()
 
+        # Positif
         fig.add_trace(
             go.Bar(
                 y=chart_df["category"],
@@ -457,6 +490,7 @@ with tab_dashboard:
             )
         )
 
+        # Netral
         fig.add_trace(
             go.Bar(
                 y=chart_df["category"],
@@ -467,6 +501,7 @@ with tab_dashboard:
             )
         )
 
+        # Negatif
         fig.add_trace(
             go.Bar(
                 y=chart_df["category"],
@@ -480,8 +515,8 @@ with tab_dashboard:
         fig.update_layout(
             barmode="stack",
             height=max(
-                400,
-                len(chart_df) * 45,
+                450,
+                len(chart_df) * 55,
             ),
             margin=dict(
                 l=20,
@@ -505,16 +540,24 @@ with tab_dashboard:
             use_container_width=True,
         )
 
+        st.caption(
+            f"Total kategori/aspek yang terdeteksi: "
+            f"{len(df_summary)}. "
+            f"Grafik dibatasi ke {min(TOP_ASPECTS, len(df_summary))} "
+            "aspek teratas agar lebih mudah dibaca."
+        )
+
     st.divider()
 
-    # --------------------------------------------------------
+    # ========================================================
     # EVIDENCE
-    # --------------------------------------------------------
+    # ========================================================
 
     st.subheader("🔎 Bukti dari Ulasan Pelanggan")
 
     st.caption(
-        "Contoh ulasan yang mendukung temuan aspek."
+        "Pilih aspek untuk melihat contoh ulasan "
+        "yang mendukung temuan analisis."
     )
 
     if df_summary.empty:
@@ -526,7 +569,11 @@ with tab_dashboard:
     else:
 
         all_categories = (
-            df_summary["category"]
+            df_summary
+            .sort_values(
+                "total_mentions",
+                ascending=False,
+            )["category"]
             .tolist()
         )
 
@@ -626,11 +673,16 @@ with tab_dashboard:
 
     st.divider()
 
-    # --------------------------------------------------------
+    # ========================================================
     # TABLE
-    # --------------------------------------------------------
+    # ========================================================
 
     st.subheader("📋 Rekapitulasi Analisis Aspek")
+
+    st.caption(
+        "Seluruh aspek hasil analisis AI ditampilkan pada "
+        "tabel berikut."
+    )
 
     if df_summary.empty:
 
@@ -651,7 +703,14 @@ with tab_dashboard:
                 "negative_ratio",
                 "priority_score",
             ]
-        ].rename(
+        ].copy()
+
+        display_df = display_df.sort_values(
+            "total_mentions",
+            ascending=False,
+        )
+
+        display_df = display_df.rename(
             columns={
                 "category": "Kategori Aspek",
                 "total_mentions": "Jumlah Penyebutan",
@@ -786,21 +845,36 @@ with tab_live:
                 positive_count = sum(
                     1
                     for item in results
-                    if item.get("sentiment")
+                    if str(
+                        item.get(
+                            "sentiment",
+                            "",
+                        )
+                    ).lower().strip()
                     == "positif"
                 )
 
                 negative_count = sum(
                     1
                     for item in results
-                    if item.get("sentiment")
+                    if str(
+                        item.get(
+                            "sentiment",
+                            "",
+                        )
+                    ).lower().strip()
                     == "negatif"
                 )
 
                 neutral_count = sum(
                     1
                     for item in results
-                    if item.get("sentiment")
+                    if str(
+                        item.get(
+                            "sentiment",
+                            "",
+                        )
+                    ).lower().strip()
                     == "netral"
                 )
 
@@ -928,14 +1002,24 @@ with tab_live:
                 negative_aspects = [
                     item
                     for item in results
-                    if item.get("sentiment")
+                    if str(
+                        item.get(
+                            "sentiment",
+                            "",
+                        )
+                    ).lower().strip()
                     == "negatif"
                 ]
 
                 positive_aspects = [
                     item
                     for item in results
-                    if item.get("sentiment")
+                    if str(
+                        item.get(
+                            "sentiment",
+                            "",
+                        )
+                    ).lower().strip()
                     == "positif"
                 ]
 
@@ -975,7 +1059,10 @@ with tab_live:
                         f"**{positive_names}**."
                     )
 
-                if not negative_aspects and not positive_aspects:
+                if (
+                    not negative_aspects
+                    and not positive_aspects
+                ):
 
                     st.info(
                         "Ulasan tidak menunjukkan "
