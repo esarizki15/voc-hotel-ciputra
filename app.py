@@ -20,8 +20,8 @@ st.set_page_config(
 
 DATA_PATH = "data/processed_reviews.json"
 
-# Jumlah aspek yang ditampilkan pada grafik utama.
-# Semua aspek tetap tersedia pada tabel.
+# Grafik hanya menampilkan aspek terbanyak.
+# Seluruh aspek tetap tersedia di tabel.
 TOP_ASPECTS = 10
 
 
@@ -33,106 +33,191 @@ st.markdown(
     """
 <style>
 
-    /* Header */
-    .main-header {
+    /* ========================================================
+       HEADER
+       ======================================================== */
+
+    .header-container {
         background: linear-gradient(
             135deg,
             #1e293b 0%,
             #0f172a 100%
         );
+
         border-bottom: 2px solid #38bdf8;
+        padding: 22px 28px;
         border-radius: 12px;
-        padding: 24px 28px;
-        margin-bottom: 24px;
+        margin-bottom: 22px;
     }
 
-    .main-title {
+    .header-title {
         color: #f8fafc;
         font-size: 28px;
         font-weight: 700;
-        line-height: 1.3;
         margin: 0;
     }
 
-    .main-subtitle {
+    .header-subtitle {
         color: #94a3b8;
         font-size: 14px;
-        margin-top: 8px;
-        line-height: 1.5;
+        margin-top: 6px;
     }
 
-    /* Insight */
-    .insight-box {
-        padding: 18px 20px;
-        border-radius: 10px;
-        border-left: 5px solid #2563eb;
-        background-color: rgba(37, 99, 235, 0.08);
-        margin: 10px 0 20px 0;
+
+    /* ========================================================
+       INSIGHT
+       ======================================================== */
+
+    .insight-card {
+        background-color: #1e293b;
+        border-left: 5px solid #0ea5e9;
+        padding: 18px 22px;
+        border-radius: 8px;
+        margin-bottom: 20px;
     }
 
     .insight-title {
-        font-size: 17px;
+        color: #38bdf8;
+        font-size: 18px;
         font-weight: 700;
         margin-bottom: 8px;
     }
 
-    .insight-text {
-        font-size: 14px;
+    .insight-body {
+        color: #e2e8f0;
+        font-size: 15px;
         line-height: 1.6;
     }
 
-    /* Priority */
-    .priority-box {
-        padding: 15px;
-        border-radius: 10px;
-        border: 1px solid rgba(128, 128, 128, 0.25);
-        margin-bottom: 10px;
+
+    /* ========================================================
+       KPI
+       ======================================================== */
+
+    .kpi-card {
+        background: #1e293b;
+        border: 1px solid #334155;
+        border-radius: 12px;
+        padding: 18px;
+        text-align: center;
+        min-height: 120px;
     }
 
-    .priority-title {
-        font-size: 16px;
+    .kpi-value {
+        font-size: 30px;
         font-weight: 700;
+        color: #f8fafc;
         margin-bottom: 5px;
     }
 
-    .priority-meta {
+    .kpi-label {
         font-size: 13px;
-        opacity: 0.7;
-    }
-
-    .priority-negative {
-        font-size: 14px;
+        color: #94a3b8;
         font-weight: 600;
-        margin-top: 8px;
     }
 
-    /* Evidence */
-    .quote-box {
-        padding: 12px 16px;
-        border-left: 4px solid #ef4444;
-        background-color: rgba(239, 68, 68, 0.06);
-        border-radius: 0 8px 8px 0;
+    .kpi-sub {
+        font-size: 11px;
+        color: #64748b;
+        margin-top: 5px;
+    }
+
+
+    /* ========================================================
+       PRIORITY
+       ======================================================== */
+
+    .priority-item {
+        background-color: #1e293b;
+        border: 1px solid #334155;
+        border-radius: 10px;
+        padding: 14px 18px;
         margin-bottom: 10px;
+    }
+
+
+    /* ========================================================
+       QUOTE
+       ======================================================== */
+
+    .quote-box {
+        background-color: #0f172a;
+        border-left: 4px solid #ef4444;
+        padding: 12px 18px;
+        margin-top: 10px;
+        border-radius: 0 8px 8px 0;
         font-style: italic;
+        color: #cbd5e1;
         font-size: 14px;
     }
 
-    /* AI aspect */
-    .aspect-box {
-        padding: 16px;
+
+    /* ========================================================
+       DETAIL CARD
+       ======================================================== */
+
+    .detail-card {
+        background-color: #1e293b;
+        border: 1px solid #334155;
         border-radius: 10px;
-        border: 1px solid rgba(128, 128, 128, 0.25);
+        padding: 16px 18px;
         margin-bottom: 12px;
     }
 
-    .aspect-title {
-        font-size: 17px;
+    .detail-title {
+        font-size: 16px;
         font-weight: 700;
+        color: #f8fafc;
+        margin-bottom: 8px;
     }
 
-    .aspect-detail {
-        font-size: 13px;
-        margin-top: 5px;
+    .detail-label {
+        font-size: 12px;
+        color: #64748b;
+        font-weight: 600;
+        text-transform: uppercase;
+        margin-top: 8px;
+    }
+
+    .detail-value {
+        font-size: 14px;
+        color: #e2e8f0;
+        margin-top: 2px;
+    }
+
+
+    /* ========================================================
+       BADGE
+       ======================================================== */
+
+    .badge-positive {
+        display: inline-block;
+        background-color: rgba(34, 197, 94, 0.15);
+        color: #86efac;
+        padding: 4px 10px;
+        border-radius: 20px;
+        font-size: 12px;
+        font-weight: 600;
+    }
+
+    .badge-negative {
+        display: inline-block;
+        background-color: rgba(239, 68, 68, 0.15);
+        color: #fca5a5;
+        padding: 4px 10px;
+        border-radius: 20px;
+        font-size: 12px;
+        font-weight: 600;
+    }
+
+    .badge-neutral {
+        display: inline-block;
+        background-color: rgba(234, 179, 8, 0.15);
+        color: #fde047;
+        padding: 4px 10px;
+        border-radius: 20px;
+        font-size: 12px;
+        font-weight: 600;
     }
 
 </style>
@@ -157,6 +242,221 @@ def load_ollama_client() -> OllamaABSAClient:
 
 aggregator = load_aggregator()
 ollama_client = load_ollama_client()
+
+
+# ============================================================
+# HELPER
+# ============================================================
+
+def get_sentiment_badge(sentiment: str) -> str:
+
+    sentiment = (
+        str(sentiment or "netral")
+        .strip()
+        .lower()
+    )
+
+    if sentiment == "positif":
+        return (
+            '<span class="badge-positive">'
+            "🟢 Positif"
+            "</span>"
+        )
+
+    if sentiment == "negatif":
+        return (
+            '<span class="badge-negative">'
+            "🔴 Negatif"
+            "</span>"
+        )
+
+    return (
+        '<span class="badge-neutral">'
+        "🟡 Netral"
+        "</span>"
+    )
+
+
+def render_aspect_details(
+    active_aggregator,
+    category: str,
+    sentiment: str | None = None,
+):
+    """
+    Menampilkan detail evidence berdasarkan
+    aspek + sentiment.
+    """
+
+    details = active_aggregator.get_aspect_details(
+        category_name=category,
+        sentiment=sentiment,
+    )
+
+    if not details:
+
+        st.info(
+            "Tidak ditemukan detail review "
+            "untuk kombinasi aspek dan sentimen tersebut."
+        )
+
+        return
+
+    # --------------------------------------------------------
+    # HEADER
+    # --------------------------------------------------------
+
+    if sentiment:
+
+        sentiment_label = (
+            sentiment.capitalize()
+        )
+
+        if sentiment == "negatif":
+            icon = "🔴"
+        elif sentiment == "positif":
+            icon = "🟢"
+        else:
+            icon = "🟡"
+
+        st.subheader(
+            f"{icon} Detail {category} — "
+            f"{sentiment_label}"
+        )
+
+    else:
+
+        st.subheader(
+            f"🔎 Detail Aspek — {category}"
+        )
+
+    st.caption(
+        f"Ditemukan {len(details)} penyebutan "
+        f"yang sesuai dengan filter."
+    )
+
+    # --------------------------------------------------------
+    # SUMMARY
+    # --------------------------------------------------------
+
+    positive_count = sum(
+        1
+        for item in details
+        if item["sentiment"] == "positif"
+    )
+
+    negative_count = sum(
+        1
+        for item in details
+        if item["sentiment"] == "negatif"
+    )
+
+    neutral_count = sum(
+        1
+        for item in details
+        if item["sentiment"] == "netral"
+    )
+
+    c1, c2, c3 = st.columns(3)
+
+    with c1:
+        st.metric(
+            "🟢 Positif",
+            positive_count,
+        )
+
+    with c2:
+        st.metric(
+            "🔴 Negatif",
+            negative_count,
+        )
+
+    with c3:
+        st.metric(
+            "🟡 Netral",
+            neutral_count,
+        )
+
+    st.markdown("### 🧾 Evidence Review")
+
+    # --------------------------------------------------------
+    # REVIEW DETAILS
+    # --------------------------------------------------------
+
+    for index, item in enumerate(
+        details,
+        start=1,
+    ):
+
+        review_id = html.escape(
+            str(item.get("review_id", "-"))
+        )
+
+        review_text = html.escape(
+            str(item.get("review_text", "-"))
+        )
+
+        target = html.escape(
+            str(item.get("target", "-"))
+        )
+
+        opinion = html.escape(
+            str(item.get("opinion", "-"))
+        )
+
+        sentiment_value = (
+            str(
+                item.get(
+                    "sentiment",
+                    "netral",
+                )
+            )
+            .strip()
+            .lower()
+        )
+
+        badge = get_sentiment_badge(
+            sentiment_value
+        )
+
+        with st.expander(
+            f"Review #{review_id} · {sentiment_value.capitalize()}",
+            expanded=index == 1,
+        ):
+
+            st.markdown(
+                f"""
+<div class="detail-card">
+    <div class="detail-title">
+        📝 Review #{review_id}
+    </div>
+    <div class="detail-label">
+        Review Pelanggan
+    </div>
+    <div class="quote-box">
+        "{review_text}"
+    </div>
+    <div class="detail-label">
+        Target
+    </div>
+    <div class="detail-value">
+        {target}
+    </div>
+    <div class="detail-label">
+        Opinion
+    </div>
+    <div class="detail-value">
+        "{opinion}"
+    </div>
+    <div class="detail-label">
+        Sentiment
+    </div>
+    <div style="margin-top:5px;">
+        {badge}
+    </div>
+</div>
+""",
+                unsafe_allow_html=True,
+            )
 
 
 # ============================================================
@@ -187,24 +487,32 @@ with st.sidebar:
         "belum digunakan."
     )
 
-    available_hotels = aggregator.get_available_hotels()
+    available_hotels = (
+        aggregator.get_available_hotels()
+    )
 
     if available_hotels:
 
-        hotel_options = ["Semua Hotel"] + available_hotels
+        hotel_options = (
+            ["Semua Hotel"]
+            + available_hotels
+        )
 
         selected_hotel = st.selectbox(
             "Pilih Hotel / Sumber",
             hotel_options,
         )
 
-        active_aggregator = aggregator.filter_by_hotel(
-            selected_hotel
+        active_aggregator = (
+            aggregator.filter_by_hotel(
+                selected_hotel
+            )
         )
 
     else:
 
         selected_hotel = "Dataset TERMA"
+
         active_aggregator = aggregator
 
         st.caption(
@@ -221,7 +529,9 @@ with st.sidebar:
 
     st.write("**Model:** Qwen3:8B")
     st.write("**Inference:** Ollama Local")
-    st.write("**Metode:** Aspect-Based Sentiment Analysis")
+    st.write(
+        "**Metode:** Aspect-Based Sentiment Analysis"
+    )
     st.write("**Dataset:** IndoNLU TERMA")
 
     st.divider()
@@ -237,15 +547,16 @@ with st.sidebar:
 
 st.markdown(
     """
-    <div class="main-header">
-        <div class="main-title">
-            🏨 AI-Powered Voice of Customer Intelligence
-        </div>
-        <div class="main-subtitle">
-            Proof of Concept · Hospitality · Ciputra Group
-        </div>
+<div class="header-container">
+    <div class="header-title">
+        🏨 AI-Powered Voice of Customer Intelligence
     </div>
-    """,
+    <div class="header-subtitle">
+        Proof of Concept · Hospitality · Ciputra Group
+    </div>
+
+</div>
+""",
     unsafe_allow_html=True,
 )
 
@@ -269,58 +580,142 @@ tab_dashboard, tab_live = st.tabs(
 with tab_dashboard:
 
     # ========================================================
-    # DATA SUMMARY
+    # DATA
     # ========================================================
 
     df_summary = (
-        active_aggregator.get_aspect_summary()
+        active_aggregator
+        .get_aspect_summary()
     )
 
     # ========================================================
     # KPI
     # ========================================================
 
-    kpis = active_aggregator.calculate_kpis()
+    kpis = (
+        active_aggregator
+        .calculate_kpis()
+    )
 
-    st.subheader("📌 Ringkasan Eksekutif")
+    st.subheader(
+        "📌 Ringkasan Eksekutif"
+    )
 
     executive_summary = (
-        active_aggregator.generate_executive_summary_text()
+        active_aggregator
+        .generate_executive_summary_text()
     )
 
-    st.info(
-        f"💡 **Insight Utama**\n\n"
-        f"{executive_summary}"
+    safe_summary = html.escape(
+        executive_summary
     )
+
+    st.markdown(
+        f"""
+<div class="insight-card">
+    <div class="insight-title">
+        💡 Ringkasan Insight Eksekutif
+    </div>
+    <div class="insight-body">
+        {safe_summary}
+    </div>
+</div>
+""",
+        unsafe_allow_html=True,
+    )
+
+    # ========================================================
+    # KPI
+    # ========================================================
 
     col1, col2, col3, col4 = st.columns(4)
 
     with col1:
 
-        st.metric(
-            label="Total Ulasan",
-            value=f"{kpis['total_reviews']:,}",
+        st.markdown(
+            f"""
+<div class="kpi-card">
+    <div class="kpi-value">
+        {kpis["total_reviews"]:,}
+    </div>
+    <div class="kpi-label">
+        Total Ulasan
+    </div>
+    <div class="kpi-sub">
+        Dataset PoC
+    </div>
+</div>
+""",
+            unsafe_allow_html=True,
         )
 
     with col2:
 
-        st.metric(
-            label="Aspek Bersentimen Positif",
-            value=f"{kpis['positive_aspect_percentage']:.1f}%",
+        st.markdown(
+            f"""
+<div class="kpi-card">
+    <div class="kpi-value">
+        {kpis["positive_aspect_percentage"]:.1f}%
+    </div>
+    <div class="kpi-label">
+        Aspek Bersentimen Positif
+    </div>
+    <div class="kpi-sub">
+        Bukan persentase tamu puas
+    </div>
+</div>
+""",
+            unsafe_allow_html=True,
         )
 
     with col3:
 
-        st.metric(
-            label="Prioritas Perbaikan #1",
-            value=kpis["top_priority"],
+        top_priority = html.escape(
+            str(
+                kpis["top_priority"]
+            )
+        )
+
+        st.markdown(
+            f"""
+<div class="kpi-card">
+    <div class="kpi-value">
+        {top_priority}
+    </div>
+    <div class="kpi-label">
+        Prioritas Perbaikan #1
+    </div>
+    <div class="kpi-sub">
+        Berdasarkan skor prioritas
+    </div>
+</div>
+""",
+            unsafe_allow_html=True,
         )
 
     with col4:
 
-        st.metric(
-            label="Keunggulan Utama",
-            value=kpis["top_strength"],
+        top_strength = html.escape(
+            str(
+                kpis["top_strength"]
+            )
+        )
+
+        st.markdown(
+            f"""
+<div class="kpi-card">
+    <div class="kpi-value">
+        {top_strength}
+    </div>
+    <div class="kpi-label">
+        Keunggulan Utama
+    </div>
+    <div class="kpi-sub">
+        Sentimen positif dominan
+    </div>
+</div>
+""",
+            unsafe_allow_html=True,
         )
 
     st.divider()
@@ -337,7 +732,9 @@ with tab_dashboard:
 
     with col_left:
 
-        st.subheader("🔥 Prioritas Perbaikan")
+        st.subheader(
+            "🔥 Prioritas Perbaikan"
+        )
 
         st.caption(
             "Aspek dengan kombinasi volume penyebutan "
@@ -346,14 +743,16 @@ with tab_dashboard:
 
         priorities = (
             active_aggregator
-            .get_top_priorities(top_n=5)
+            .get_top_priorities(
+                top_n=5
+            )
         )
 
         if not priorities:
 
             st.success(
-                "Belum terdapat aspek negatif yang cukup "
-                "untuk membentuk prioritas."
+                "Belum terdapat aspek negatif "
+                "yang cukup untuk membentuk prioritas."
             )
 
         else:
@@ -363,15 +762,20 @@ with tab_dashboard:
                 start=1,
             ):
 
-                with st.container(border=True):
+                with st.container(
+                    border=True
+                ):
 
                     st.markdown(
-                        f"### #{rank} {item['category']}"
+                        f"### #{rank} "
+                        f"{item['category']}"
                     )
 
                     st.caption(
-                        f"{item['total_mentions']} penyebutan · "
-                        f"{item['negative_count']} keluhan negatif"
+                        f"{item['total_mentions']} "
+                        f"penyebutan · "
+                        f"{item['negative_count']} "
+                        f"keluhan negatif"
                     )
 
                     c1, c2 = st.columns(2)
@@ -390,29 +794,34 @@ with tab_dashboard:
                             f"{item['priority_score']:.1f}",
                         )
 
+
     # ========================================================
     # STRENGTH
     # ========================================================
 
     with col_right:
 
-        st.subheader("🟢 Keunggulan Layanan")
+        st.subheader(
+            "🟢 Keunggulan Layanan"
+        )
 
         st.caption(
-            "Aspek dengan proporsi sentimen positif tinggi "
-            "dan jumlah penyebutan yang memadai."
+            "Aspek dengan proporsi sentimen positif "
+            "tinggi dan jumlah penyebutan yang memadai."
         )
 
         strengths = (
             active_aggregator
-            .get_top_strengths(top_n=5)
+            .get_top_strengths(
+                top_n=5
+            )
         )
 
         if not strengths:
 
             st.info(
-                "Belum terdapat cukup data untuk "
-                "menentukan keunggulan layanan."
+                "Belum terdapat cukup data "
+                "untuk menentukan keunggulan layanan."
             )
 
         else:
@@ -422,15 +831,20 @@ with tab_dashboard:
                 start=1,
             ):
 
-                with st.container(border=True):
+                with st.container(
+                    border=True
+                ):
 
                     st.markdown(
-                        f"### #{rank} {item['category']}"
+                        f"### #{rank} "
+                        f"{item['category']}"
                     )
 
                     st.caption(
-                        f"{item['total_mentions']} penyebutan · "
-                        f"{item['positive_count']} sentimen positif"
+                        f"{item['total_mentions']} "
+                        f"penyebutan · "
+                        f"{item['positive_count']} "
+                        f"sentimen positif"
                     )
 
                     st.metric(
@@ -444,24 +858,28 @@ with tab_dashboard:
     # SENTIMENT CHART
     # ========================================================
 
-    st.subheader("📊 Sentimen Berdasarkan Aspek")
+    st.subheader(
+        "📊 Sentimen Berdasarkan Aspek"
+    )
 
     st.caption(
-        f"Menampilkan {TOP_ASPECTS} aspek dengan jumlah "
-        "penyebutan tertinggi. Aspek lainnya tetap tersedia "
-        "pada tabel rekapitulasi."
+        f"Menampilkan {TOP_ASPECTS} aspek dengan "
+        "jumlah penyebutan tertinggi. "
+        "Klik bagian grafik untuk melihat detail "
+        "review yang membentuk angka tersebut."
     )
 
     if df_summary.empty:
 
         st.info(
-            "Belum ada data aspek yang dapat divisualisasikan."
+            "Belum ada data aspek "
+            "untuk divisualisasikan."
         )
 
     else:
 
         # ----------------------------------------------------
-        # Hanya TOP N aspek untuk visualisasi
+        # TOP ASPECTS
         # ----------------------------------------------------
 
         chart_df = (
@@ -475,11 +893,15 @@ with tab_dashboard:
                 "total_mentions",
                 ascending=True,
             )
+            .reset_index(drop=True)
         )
 
         fig = go.Figure()
 
-        # Positif
+        # ====================================================
+        # POSITIF
+        # ====================================================
+
         fig.add_trace(
             go.Bar(
                 y=chart_df["category"],
@@ -487,10 +909,30 @@ with tab_dashboard:
                 name="Positif",
                 orientation="h",
                 marker_color="#22c55e",
+
+                # Data yang dibawa ketika bar diklik.
+                customdata=[
+                    [
+                        row["category"],
+                        "positif",
+                    ]
+                    for _, row
+                    in chart_df.iterrows()
+                ],
+
+                hovertemplate=(
+                    "<b>%{y}</b><br>"
+                    "Sentimen: Positif<br>"
+                    "Jumlah: %{x}<br>"
+                    "<extra>Klik untuk detail</extra>"
+                ),
             )
         )
 
-        # Netral
+        # ====================================================
+        # NETRAL
+        # ====================================================
+
         fig.add_trace(
             go.Bar(
                 y=chart_df["category"],
@@ -498,10 +940,29 @@ with tab_dashboard:
                 name="Netral",
                 orientation="h",
                 marker_color="#eab308",
+
+                customdata=[
+                    [
+                        row["category"],
+                        "netral",
+                    ]
+                    for _, row
+                    in chart_df.iterrows()
+                ],
+
+                hovertemplate=(
+                    "<b>%{y}</b><br>"
+                    "Sentimen: Netral<br>"
+                    "Jumlah: %{x}<br>"
+                    "<extra>Klik untuk detail</extra>"
+                ),
             )
         )
 
-        # Negatif
+        # ====================================================
+        # NEGATIF
+        # ====================================================
+
         fig.add_trace(
             go.Bar(
                 y=chart_df["category"],
@@ -509,23 +970,48 @@ with tab_dashboard:
                 name="Negatif",
                 orientation="h",
                 marker_color="#ef4444",
+
+                customdata=[
+                    [
+                        row["category"],
+                        "negatif",
+                    ]
+                    for _, row
+                    in chart_df.iterrows()
+                ],
+
+                hovertemplate=(
+                    "<b>%{y}</b><br>"
+                    "Sentimen: Negatif<br>"
+                    "Jumlah: %{x}<br>"
+                    "<extra>Klik untuk detail</extra>"
+                ),
             )
         )
 
+        # ====================================================
+        # LAYOUT
+        # ====================================================
+
         fig.update_layout(
             barmode="stack",
-            height=max(
-                450,
-                len(chart_df) * 55,
+
+            paper_bgcolor="rgba(0,0,0,0)",
+            plot_bgcolor="rgba(0,0,0,0)",
+
+            font=dict(
+                color="#f8fafc"
             ),
-            margin=dict(
-                l=20,
-                r=20,
-                t=30,
-                b=20,
+
+            xaxis=dict(
+                title="Jumlah Penyebutan",
+                gridcolor="#334155",
             ),
-            xaxis_title="Jumlah Penyebutan",
-            yaxis_title="",
+
+            yaxis=dict(
+                title="",
+            ),
+
             legend=dict(
                 orientation="h",
                 yanchor="bottom",
@@ -533,37 +1019,124 @@ with tab_dashboard:
                 xanchor="right",
                 x=1,
             ),
+
+            height=max(
+                450,
+                len(chart_df) * 55,
+            ),
+
+            margin=dict(
+                l=20,
+                r=20,
+                t=40,
+                b=20,
+            ),
         )
 
-        st.plotly_chart(
+        # ====================================================
+        # CLICKABLE CHART
+        # ====================================================
+
+        chart_event = st.plotly_chart(
             fig,
             use_container_width=True,
+            on_select="rerun",
+            key="sentiment_chart",
         )
+
+        # ====================================================
+        # HANDLE CLICK
+        # ====================================================
+
+        selected_category = None
+        selected_sentiment = None
+
+        try:
+
+            if chart_event is not None:
+
+                points = (
+                    chart_event
+                    .selection
+                    .points
+                )
+
+                if points:
+
+                    selected_point = points[0]
+
+                    customdata = (
+                        selected_point
+                        .get("customdata")
+                    )
+
+                    if (
+                        customdata
+                        and len(customdata) >= 2
+                    ):
+
+                        selected_category = (
+                            str(
+                                customdata[0]
+                            )
+                        )
+
+                        selected_sentiment = (
+                            str(
+                                customdata[1]
+                            )
+                            .strip()
+                            .lower()
+                        )
+
+        except Exception:
+            selected_category = None
+            selected_sentiment = None
+
+        # ====================================================
+        # CLICK RESULT
+        # ====================================================
+
+        if (
+            selected_category
+            and selected_sentiment
+        ):
+
+            st.divider()
+
+            render_aspect_details(
+                active_aggregator,
+                selected_category,
+                selected_sentiment,
+            )
 
         st.caption(
             f"Total kategori/aspek yang terdeteksi: "
             f"{len(df_summary)}. "
-            f"Grafik dibatasi ke {min(TOP_ASPECTS, len(df_summary))} "
-            "aspek teratas agar lebih mudah dibaca."
+            f"Grafik dibatasi ke "
+            f"{min(TOP_ASPECTS, len(df_summary))} "
+            "aspek teratas."
         )
 
     st.divider()
 
     # ========================================================
-    # EVIDENCE
+    # MANUAL EVIDENCE
     # ========================================================
 
-    st.subheader("🔎 Bukti dari Ulasan Pelanggan")
+    st.subheader(
+        "🔎 Detail Evidence Aspek"
+    )
 
     st.caption(
-        "Pilih aspek untuk melihat contoh ulasan "
-        "yang mendukung temuan analisis."
+        "Gunakan pilihan ini jika ingin melihat "
+        "seluruh sentiment pada suatu aspek."
     )
 
     if df_summary.empty:
 
         st.info(
-            "Belum ada evidence yang dapat ditampilkan."
+            "Belum ada evidence."
         )
 
     else:
@@ -579,7 +1152,9 @@ with tab_dashboard:
 
         priorities = (
             active_aggregator
-            .get_top_priorities(top_n=5)
+            .get_top_priorities(
+                top_n=5
+            )
         )
 
         priority_names = [
@@ -591,7 +1166,9 @@ with tab_dashboard:
 
         if priority_names:
 
-            first_priority = priority_names[0]
+            first_priority = (
+                priority_names[0]
+            )
 
             if first_priority in all_categories:
 
@@ -605,11 +1182,14 @@ with tab_dashboard:
             "Pilih Aspek",
             all_categories,
             index=default_index,
+            key="manual_aspect_selector",
         )
 
         evidence = (
             active_aggregator
-            .get_evidence(selected_aspect)
+            .get_evidence(
+                selected_aspect
+            )
         )
 
         if evidence:
@@ -620,14 +1200,18 @@ with tab_dashboard:
 
                 st.metric(
                     "Jumlah Penyebutan",
-                    evidence["total_mentions"],
+                    evidence[
+                        "total_mentions"
+                    ],
                 )
 
             with c2:
 
                 st.metric(
                     "Keluhan Negatif",
-                    evidence["negative_count"],
+                    evidence[
+                        "negative_count"
+                    ],
                 )
 
             with c3:
@@ -637,38 +1221,123 @@ with tab_dashboard:
                     f"{evidence['negative_ratio']:.1f}%",
                 )
 
+            # ------------------------------------------------
+            # FULL DETAIL
+            # ------------------------------------------------
+
             st.markdown(
-                "#### Contoh Ulasan"
+                "### 🧾 Detail Penyebutan"
             )
 
-            examples = (
-                evidence.get(
-                    "example_reviews",
-                    [],
+            all_details = (
+                active_aggregator
+                .get_aspect_details(
+                    selected_aspect
                 )
             )
 
-            if examples:
+            if all_details:
 
-                for review in examples:
+                for index, item in enumerate(
+                    all_details,
+                    start=1,
+                ):
 
-                    safe_review = html.escape(
-                        str(review)
+                    review_id = html.escape(
+                        str(
+                            item.get(
+                                "review_id",
+                                "-",
+                            )
+                        )
                     )
 
-                    st.markdown(
-                        f"""
-<div class="quote-box">
-    "{safe_review}"
+                    review_text = html.escape(
+                        str(
+                            item.get(
+                                "review_text",
+                                "-",
+                            )
+                        )
+                    )
+
+                    target = html.escape(
+                        str(
+                            item.get(
+                                "target",
+                                "-",
+                            )
+                        )
+                    )
+
+                    opinion = html.escape(
+                        str(
+                            item.get(
+                                "opinion",
+                                "-",
+                            )
+                        )
+                    )
+
+                    sentiment = (
+                        str(
+                            item.get(
+                                "sentiment",
+                                "netral",
+                            )
+                        )
+                        .strip()
+                        .lower()
+                    )
+
+                    badge = (
+                        get_sentiment_badge(
+                            sentiment
+                        )
+                    )
+
+                    with st.expander(
+                        f"Review #{review_id} · "
+                        f"{sentiment.capitalize()}",
+                    ):
+
+                        st.markdown(
+                            f"""
+<div class="detail-card">
+    <div class="detail-label">
+        Review Pelanggan
+    </div>
+    <div class="quote-box">
+        "{review_text}"
+    </div>
+    <div class="detail-label">
+        Target
+    </div>
+    <div class="detail-value">
+        {target}
+    </div>
+    <div class="detail-label">
+        Opinion
+    </div>
+    <div class="detail-value">
+        "{opinion}"
+    </div>
+    <div class="detail-label">
+        Sentiment
+    </div>
+    <div style="margin-top:5px;">
+        {badge}
+    </div>
 </div>
 """,
-                        unsafe_allow_html=True,
-                    )
+                            unsafe_allow_html=True,
+                        )
 
             else:
 
                 st.info(
-                    "Belum ada contoh ulasan."
+                    "Tidak ada detail penyebutan "
+                    "yang tersedia."
                 )
 
     st.divider()
@@ -677,11 +1346,13 @@ with tab_dashboard:
     # TABLE
     # ========================================================
 
-    st.subheader("📋 Rekapitulasi Analisis Aspek")
+    st.subheader(
+        "📋 Rekapitulasi Analisis Aspek"
+    )
 
     st.caption(
-        "Seluruh aspek hasil analisis AI ditampilkan pada "
-        "tabel berikut."
+        "Seluruh aspek hasil analisis AI ditampilkan "
+        "pada tabel berikut."
     )
 
     if df_summary.empty:
@@ -705,9 +1376,12 @@ with tab_dashboard:
             ]
         ].copy()
 
-        display_df = display_df.sort_values(
-            "total_mentions",
-            ascending=False,
+        display_df = (
+            display_df
+            .sort_values(
+                "total_mentions",
+                ascending=False,
+            )
         )
 
         display_df = display_df.rename(
@@ -734,18 +1408,20 @@ with tab_dashboard:
         ):
 
             st.write(
-                "Skor Prioritas merupakan skor perbandingan "
-                "relatif antar-aspek. Skor dihitung dari "
-                "jumlah penyebutan dikalikan proporsi "
-                "sentimen negatif. Semakin tinggi skor, "
-                "semakin layak aspek tersebut diprioritaskan "
+                "Skor Prioritas merupakan skor "
+                "perbandingan relatif antar-aspek. "
+                "Skor dihitung dari jumlah penyebutan "
+                "dikalikan proporsi sentimen negatif. "
+                "Semakin tinggi skor, semakin layak "
+                "aspek tersebut diprioritaskan "
                 "untuk evaluasi."
             )
 
             st.caption(
-                "Catatan: skor ini bukan ukuran kepuasan "
-                "pelanggan absolut dan tidak menunjukkan "
-                "hubungan sebab-akibat."
+                "Catatan: skor ini bukan ukuran "
+                "kepuasan pelanggan absolut dan "
+                "tidak menunjukkan hubungan "
+                "sebab-akibat."
             )
 
 
@@ -766,8 +1442,9 @@ with tab_live:
     )
 
     default_review = (
-        "Kamarnya sangat bersih dan staf resepsionis ramah, "
-        "tetapi Wi-Fi di lantai 3 sangat lambat dan AC agak berisik."
+        "Kamarnya sangat bersih dan staf resepsionis "
+        "ramah, tetapi Wi-Fi di lantai 3 sangat lambat "
+        "dan AC agak berisik."
     )
 
     user_review = st.text_area(
@@ -775,7 +1452,8 @@ with tab_live:
         value=default_review,
         height=130,
         placeholder=(
-            "Contoh: Kamarnya bersih tetapi WiFi sangat lambat."
+            "Contoh: Kamarnya bersih tetapi "
+            "WiFi sangat lambat."
         ),
     )
 
@@ -790,7 +1468,8 @@ with tab_live:
         if not user_review.strip():
 
             st.error(
-                "Silakan masukkan teks ulasan terlebih dahulu."
+                "Silakan masukkan teks ulasan "
+                "terlebih dahulu."
             )
 
         elif not ollama_client.is_available():
@@ -808,7 +1487,8 @@ with tab_live:
         else:
 
             with st.spinner(
-                "🤖 Qwen3:8B sedang menganalisis ulasan..."
+                "🤖 Qwen3:8B sedang "
+                "menganalisis ulasan..."
             ):
 
                 results = (
@@ -839,7 +1519,7 @@ with tab_live:
                 )
 
                 # --------------------------------------------
-                # Ringkasan sentiment
+                # SENTIMENT SUMMARY
                 # --------------------------------------------
 
                 positive_count = sum(
@@ -850,7 +1530,9 @@ with tab_live:
                             "sentiment",
                             "",
                         )
-                    ).lower().strip()
+                    )
+                    .lower()
+                    .strip()
                     == "positif"
                 )
 
@@ -862,7 +1544,9 @@ with tab_live:
                             "sentiment",
                             "",
                         )
-                    ).lower().strip()
+                    )
+                    .lower()
+                    .strip()
                     == "negatif"
                 )
 
@@ -874,7 +1558,9 @@ with tab_live:
                             "sentiment",
                             "",
                         )
-                    ).lower().strip()
+                    )
+                    .lower()
+                    .strip()
                     == "netral"
                 )
 
@@ -904,7 +1590,7 @@ with tab_live:
                 st.divider()
 
                 # --------------------------------------------
-                # HASIL ASPEK
+                # ASPECT RESULT
                 # --------------------------------------------
 
                 st.subheader(
@@ -955,19 +1641,15 @@ with tab_live:
                         .strip()
                     )
 
-                    if sentiment == "positif":
+                    badge = (
+                        get_sentiment_badge(
+                            sentiment
+                        )
+                    )
 
-                        badge = "🟢 Positif"
-
-                    elif sentiment == "negatif":
-
-                        badge = "🔴 Negatif"
-
-                    else:
-
-                        badge = "🟡 Netral"
-
-                    with columns[index % 2]:
+                    with columns[
+                        index % 2
+                    ]:
 
                         with st.container(
                             border=True
@@ -978,15 +1660,19 @@ with tab_live:
                             )
 
                             st.markdown(
-                                f"**Target:** {target}"
+                                f"**Target:** "
+                                f"{target}"
                             )
 
                             st.markdown(
-                                f'**Opini:** "{opinion}"'
+                                f'**Opini:** '
+                                f'"{opinion}"'
                             )
 
                             st.markdown(
-                                f"**Sentimen:** {badge}"
+                                f"**Sentimen:** "
+                                f"{badge}",
+                                unsafe_allow_html=True,
                             )
 
                 # --------------------------------------------
@@ -1007,7 +1693,9 @@ with tab_live:
                             "sentiment",
                             "",
                         )
-                    ).lower().strip()
+                    )
+                    .lower()
+                    .strip()
                     == "negatif"
                 ]
 
@@ -1019,7 +1707,9 @@ with tab_live:
                             "sentiment",
                             "",
                         )
-                    ).lower().strip()
+                    )
+                    .lower()
+                    .strip()
                     == "positif"
                 ]
 
@@ -1032,12 +1722,13 @@ with tab_live:
                                 "-",
                             )
                         )
-                        for item in negative_aspects
+                        for item
+                        in negative_aspects
                     )
 
                     st.warning(
-                        f"Ulasan mengindikasikan "
-                        f"keluhan pada aspek: "
+                        "Ulasan mengindikasikan "
+                        "keluhan pada aspek: "
                         f"**{negative_names}**."
                     )
 
@@ -1050,12 +1741,14 @@ with tab_live:
                                 "-",
                             )
                         )
-                        for item in positive_aspects
+                        for item
+                        in positive_aspects
                     )
 
                     st.success(
-                        f"Ulasan memberikan penilaian "
-                        f"positif pada aspek: "
+                        "Ulasan memberikan "
+                        "penilaian positif pada "
+                        "aspek: "
                         f"**{positive_names}**."
                     )
 
@@ -1066,8 +1759,8 @@ with tab_live:
 
                     st.info(
                         "Ulasan tidak menunjukkan "
-                        "sentimen positif maupun negatif "
-                        "yang kuat."
+                        "sentimen positif maupun "
+                        "negatif yang kuat."
                     )
 
                 # --------------------------------------------
@@ -1079,8 +1772,8 @@ with tab_live:
                 ):
 
                     st.caption(
-                        "Output terstruktur dari Qwen3:8B "
-                        "melalui Ollama."
+                        "Output terstruktur dari "
+                        "Qwen3:8B melalui Ollama."
                     )
 
                     st.json(

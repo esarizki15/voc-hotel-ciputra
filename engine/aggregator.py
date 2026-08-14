@@ -728,3 +728,97 @@ class ReviewAggregator:
         )
 
         return " ".join(parts)
+
+    def get_aspect_details(
+        self,
+        category_name: str,
+        sentiment: str | None = None,
+    ) -> List[Dict[str, Any]]:
+        """
+        Mengambil detail setiap penyebutan aspek berdasarkan
+        kategori dan optional sentiment.
+
+        Contoh hasil:
+
+        {
+            "review_id": "1",
+            "review_text": "...",
+            "category": "AC",
+            "target": "AC kamar",
+            "opinion": "tidak berfungsi optimal",
+            "sentiment": "negatif"
+        }
+        """
+
+        if self.df_aspects.empty or not category_name:
+            return []
+
+        df = self.df_aspects[
+            self.df_aspects["category"].astype(str).str.strip().str.lower()
+            == str(category_name).strip().lower()
+        ].copy()
+
+        if df.empty:
+            return []
+
+        if sentiment:
+            normalized_sentiment = (
+                str(sentiment)
+                .strip()
+                .lower()
+            )
+
+            df = df[
+                df["sentiment"].astype(str).str.strip().str.lower()
+                == normalized_sentiment
+            ]
+
+        if df.empty:
+            return []
+
+        details = []
+
+        for _, row in df.iterrows():
+
+            details.append(
+                {
+                    "review_id": str(
+                        row.get(
+                            "review_id",
+                            "-",
+                        )
+                    ),
+                    "review_text": str(
+                        row.get(
+                            "review_text",
+                            "",
+                        )
+                    ),
+                    "category": str(
+                        row.get(
+                            "category",
+                            category_name,
+                        )
+                    ),
+                    "target": str(
+                        row.get(
+                            "target",
+                            "-",
+                        )
+                    ),
+                    "opinion": str(
+                        row.get(
+                            "opinion",
+                            "-",
+                        )
+                    ),
+                    "sentiment": str(
+                        row.get(
+                            "sentiment",
+                            "netral",
+                        )
+                    ),
+                }
+            )
+
+        return details
