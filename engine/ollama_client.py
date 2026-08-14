@@ -1,285 +1,376 @@
 import json
 import re
-from typing import Any, Dict, List
+from typing import Any, Dict, List, Optional
 
 import requests
 
 
 class OllamaABSAClient:
     """
-    Client Ollama untuk analisis Aspect-Based Sentiment Analysis (ABSA)
-    pada ulasan hotel berbahasa Indonesia.
+    Client untuk melakukan Aspect-Based Sentiment Analysis
+    menggunakan Ollama + Qwen3:8B.
     """
-
-    ALLOWED_SENTIMENTS = {"positif", "negatif", "netral"}
 
     def __init__(
         self,
         base_url: str = "http://localhost:11434",
-        model_name: str = "qwen3:8b",
-        timeout: int = 120,
+        model: str = "qwen3:8b",
+        timeout: int = 300,
     ):
         self.base_url = base_url.rstrip("/")
-        self.model_name = model_name
+        self.model = model
         self.timeout = timeout
 
-    def _build_prompt(self, review_text: str) -> str:
-        return f"""
-Anda adalah AI untuk analisis Voice of Customer pada industri perhotelan.
-
-Tugas Anda adalah melakukan Aspect-Based Sentiment Analysis (ABSA)
-terhadap ulasan pelanggan hotel berbahasa Indonesia.
-
-ULASAN:
-"{review_text}"
-
-TUGAS:
-1. Identifikasi semua aspek layanan atau fasilitas yang benar-benar disebutkan.
-2. Normalisasi aspek ke kategori umum jika sesuai.
-3. Jika tidak ada kategori umum yang sesuai, buat kategori yang relevan.
-4. Jangan memaksakan kategori jika aspek tidak disebutkan.
-5. Ekstrak target spesifik yang disebut pelanggan.
-6. Ekstrak opinion berupa kata atau frasa yang menunjukkan penilaian pelanggan.
-7. Tentukan sentimen:
-   - "positif"
-   - "negatif"
-   - "netral"
-8. Jangan membuat aspek yang tidak disebutkan.
-9. Jangan membuat fakta, opini, atau pengalaman yang tidak terdapat pada ulasan.
-10. Jika satu ulasan memiliki beberapa aspek, ekstrak semuanya.
-
-KATEGORI UMUM:
-- WiFi
-- Pelayanan Staf
-- Kebersihan Kamar
-- AC
-- Sarapan
-- Fasilitas Kamar
-- Proses Check-in
-- Kolam Renang
-- Lokasi
-- Harga
-- Restoran
-- Parkir
-- Keamanan
-- Kamar
-- Kamar Mandi
-- Tempat Tidur
-- Kebersihan Hotel
-- Fasilitas Hotel
-- Lainnya
-
-OUTPUT WAJIB JSON VALID.
-
-Format:
-
-{{
-  "aspects": [
-    {{
-      "category": "WiFi",
-      "target": "koneksi WiFi di lantai 5",
-      "opinion": "sangat lambat",
-      "sentiment": "negatif"
-    }}
-  ]
-}}
-
-Jika tidak ada aspek:
-
-{{
-  "aspects": []
-}}
-
-JANGAN memberikan markdown.
-JANGAN memberikan penjelasan.
-JANGAN memberikan teks di luar JSON.
-""".strip()
-
-    def analyze_review(self, review_text: str) -> List[Dict[str, Any]]:
-        """
-        Menganalisis satu review.
-
-        Return:
-            [
-                {
-                    "category": "...",
-                    "target": "...",
-                    "opinion": "...",
-                    "sentiment": "positif|negatif|netral"
-                }
-            ]
-        """
-
-        if not review_text or not review_text.strip():
-            return []
-
-        payload = {
-            "model": self.model_name,
-            "prompt": self._build_prompt(review_text.strip()),
-            "stream": False,
-            "format": "json",
-            "options": {
-                "temperature": 0.1,
-                "top_p": 0.9,
-            },
-        }
-
-        try:
-            response = requests.post(
-                f"{self.base_url}/api/generate",
-                json=payload,
-                timeout=self.timeout,
-            )
-
-            response.raise_for_status()
-
-            result = response.json()
-            raw_response = result.get("response", "")
-
-            return self._parse_json_output(raw_response)
-
-        except requests.exceptions.RequestException as exc:
-            print(f"[Ollama] Gagal terhubung: {exc}")
-            return []
-
-        except (ValueError, TypeError) as exc:
-            print(f"[Ollama] Response tidak valid: {exc}")
-            return []
-
-        except Exception as exc:
-            print(f"[Ollama] Error tidak terduga: {exc}")
-            return []
-
-    def _parse_json_output(
-        self,
-        raw_text: str,
-    ) -> List[Dict[str, Any]]:
-        """
-        Parse output JSON dari Qwen.
-
-        Mendukung:
-        {
-            "aspects": [...]
-        }
-
-        maupun:
-        [...]
-        """
-
-        if not raw_text:
-            return []
-
-        try:
-            data = json.loads(raw_text)
-
-        except json.JSONDecodeError:
-            # Fallback jika model memberikan sedikit teks
-            # sebelum/sesudah JSON.
-            match = re.search(
-                r"\{.*\}|\[.*\]",
-                raw_text,
-                re.DOTALL,
-            )
-
-            if not match:
-                return []
-
-            try:
-                data = json.loads(match.group(0))
-            except json.JSONDecodeError:
-                return []
-
-        if isinstance(data, dict):
-            items = data.get("aspects", [])
-
-        elif isinstance(data, list):
-            items = data
-
-        else:
-            return []
-
-        if not isinstance(items, list):
-            return []
-
-        valid_items: List[Dict[str, Any]] = []
-
-        for item in items:
-            if not isinstance(item, dict):
-                continue
-
-            category = str(
-                item.get("category", "")
-            ).strip()
-
-            target = str(
-                item.get("target", "")
-            ).strip()
-
-            opinion = str(
-                item.get("opinion", "")
-            ).strip()
-
-            sentiment = str(
-                item.get("sentiment", "netral")
-            ).lower().strip()
-
-            if not category:
-                continue
-
-            if sentiment not in self.ALLOWED_SENTIMENTS:
-                sentiment = "netral"
-
-            valid_items.append(
-                {
-                    "category": category,
-                    "target": target or "-",
-                    "opinion": opinion or "-",
-                    "sentiment": sentiment,
-                }
-            )
-
-        return valid_items
+    # ========================================================
+    # OLLAMA STATUS
+    # ========================================================
 
     def is_available(self) -> bool:
-        """
-        Mengecek apakah Ollama dapat diakses.
-        """
-
         try:
             response = requests.get(
                 f"{self.base_url}/api/tags",
                 timeout=5,
             )
 
-            return response.ok
+            return response.status_code == 200
 
         except requests.RequestException:
             return False
 
-    def model_exists(self) -> bool:
-        """
-        Mengecek apakah model yang dikonfigurasi tersedia di Ollama.
-        """
+    # ========================================================
+    # MODEL CHECK
+    # ========================================================
 
+    def is_model_available(self) -> bool:
         try:
             response = requests.get(
                 f"{self.base_url}/api/tags",
                 timeout=5,
             )
 
-            response.raise_for_status()
+            if response.status_code != 200:
+                return False
 
             data = response.json()
 
             models = data.get("models", [])
 
-            for model in models:
-                name = model.get("name", "")
+            for item in models:
 
-                if name == self.model_name:
+                name = str(
+                    item.get("name", "")
+                ).strip().lower()
+
+                if name == self.model.lower():
                     return True
 
             return False
 
         except Exception:
             return False
+
+    # ========================================================
+    # PROMPT
+    # ========================================================
+
+    def _build_prompt(
+        self,
+        review: str,
+    ) -> str:
+
+        return f"""
+Anda adalah AI untuk Voice of Customer Intelligence
+pada industri perhotelan.
+
+Tugas Anda adalah melakukan Aspect-Based Sentiment Analysis
+(ABSA) terhadap ulasan pelanggan berikut.
+
+ULASAN:
+"{review}"
+
+Identifikasi semua aspek layanan atau fasilitas yang
+dibicarakan pelanggan.
+
+Untuk setiap aspek berikan:
+
+1. category
+   Kategori umum dari aspek.
+   Contoh:
+   - Kamar
+   - AC
+   - WiFi
+   - Staff
+   - Kebersihan
+   - Lokasi
+   - Makanan
+   - Fasilitas
+
+2. target
+   Objek spesifik yang dibicarakan.
+
+3. opinion
+   Kata/frasa yang menunjukkan penilaian pelanggan.
+
+4. sentiment
+   Harus salah satu:
+   - positif
+   - negatif
+   - netral
+
+ATURAN:
+
+- Jangan membuat aspek yang tidak disebutkan.
+- Jangan menambahkan informasi yang tidak ada.
+- Satu aspek dapat memiliki satu sentiment.
+- Jika satu review membahas beberapa aspek,
+  kembalikan semuanya.
+- Gunakan Bahasa Indonesia.
+- Output HARUS berupa JSON valid.
+- Jangan memberikan penjelasan tambahan.
+- Jangan menggunakan markdown code block.
+
+Format output:
+
+[
+  {{
+    "category": "AC",
+    "target": "AC kamar",
+    "opinion": "tidak dingin",
+    "sentiment": "negatif"
+  }}
+]
+
+Jika tidak ada aspek yang relevan:
+
+[]
+
+ULASAN:
+"{review}"
+"""
+
+    # ========================================================
+    # JSON EXTRACTION
+    # ========================================================
+
+    def _extract_json(
+        self,
+        text: str,
+    ) -> Optional[List[Dict[str, Any]]]:
+
+        if not text:
+            return None
+
+        text = text.strip()
+
+        # ----------------------------------------------------
+        # Direct JSON
+        # ----------------------------------------------------
+
+        try:
+
+            data = json.loads(text)
+
+            if isinstance(data, list):
+                return data
+
+            if isinstance(data, dict):
+
+                if isinstance(
+                    data.get("aspects"),
+                    list,
+                ):
+                    return data["aspects"]
+
+        except json.JSONDecodeError:
+            pass
+
+        # ----------------------------------------------------
+        # Remove markdown fences
+        # ----------------------------------------------------
+
+        cleaned = re.sub(
+            r"```(?:json)?",
+            "",
+            text,
+            flags=re.IGNORECASE,
+        )
+
+        cleaned = cleaned.replace(
+            "```",
+            "",
+        ).strip()
+
+        try:
+
+            data = json.loads(cleaned)
+
+            if isinstance(data, list):
+                return data
+
+            if isinstance(data, dict):
+
+                aspects = data.get(
+                    "aspects"
+                )
+
+                if isinstance(
+                    aspects,
+                    list,
+                ):
+                    return aspects
+
+        except json.JSONDecodeError:
+            pass
+
+        # ----------------------------------------------------
+        # Find JSON array
+        # ----------------------------------------------------
+
+        match = re.search(
+            r"\[[\s\S]*\]",
+            cleaned,
+        )
+
+        if match:
+
+            try:
+
+                data = json.loads(
+                    match.group(0)
+                )
+
+                if isinstance(
+                    data,
+                    list,
+                ):
+                    return data
+
+            except json.JSONDecodeError:
+                pass
+
+        return None
+
+    # ========================================================
+    # NORMALIZE
+    # ========================================================
+
+    def _normalize_results(
+        self,
+        results: List[Dict[str, Any]],
+    ) -> List[Dict[str, str]]:
+
+        normalized = []
+
+        for item in results:
+
+            if not isinstance(
+                item,
+                dict,
+            ):
+                continue
+
+            category = str(
+                item.get(
+                    "category",
+                    "",
+                )
+            ).strip()
+
+            target = str(
+                item.get(
+                    "target",
+                    "",
+                )
+            ).strip()
+
+            opinion = str(
+                item.get(
+                    "opinion",
+                    "",
+                )
+            ).strip()
+
+            sentiment = str(
+                item.get(
+                    "sentiment",
+                    "netral",
+                )
+            ).strip().lower()
+
+            if sentiment not in [
+                "positif",
+                "negatif",
+                "netral",
+            ]:
+                sentiment = "netral"
+
+            if not category:
+                continue
+
+            normalized.append(
+                {
+                    "category": category,
+                    "target": target,
+                    "opinion": opinion,
+                    "sentiment": sentiment,
+                }
+            )
+
+        return normalized
+
+    # ========================================================
+    # ANALYZE REVIEW
+    # ========================================================
+
+    def analyze_review(
+        self,
+        review: str,
+    ) -> List[Dict[str, str]]:
+
+        review = str(
+            review or ""
+        ).strip()
+
+        if not review:
+            return []
+
+        prompt = self._build_prompt(
+            review
+        )
+
+        payload = {
+            "model": self.model,
+            "prompt": prompt,
+            "stream": False,
+            "options": {
+                "temperature": 0,
+            },
+        }
+
+        response = requests.post(
+            f"{self.base_url}/api/generate",
+            json=payload,
+            timeout=self.timeout,
+        )
+
+        response.raise_for_status()
+
+        data = response.json()
+
+        raw_response = str(
+            data.get(
+                "response",
+                "",
+            )
+        )
+
+        results = self._extract_json(
+            raw_response
+        )
+
+        if not results:
+            return []
+
+        return self._normalize_results(
+            results
+        )
