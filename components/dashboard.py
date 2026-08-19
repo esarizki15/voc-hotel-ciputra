@@ -27,7 +27,8 @@ def render_dashboard(active_aggregator, top_aspects: int = 10):
         unsafe_allow_html=True,
     )
 
-    render_kpis(kpis)
+    # Passing active_aggregator ke render_kpis untuk fitur preview ulasan
+    render_kpis(kpis, active_aggregator)
     st.divider()
 
     # Priorities & Strengths
