@@ -273,6 +273,9 @@ class ReviewAggregator:
                 columns=[
                     "category",
                     "total_mentions",
+                    "positif_count",
+                    "negatif_count",
+                    "netral_count",
                     "positive_count",
                     "negative_count",
                     "neutral_count",
@@ -282,88 +285,46 @@ class ReviewAggregator:
                 ]
             )
 
-        df = pd.DataFrame(
-            rows
-        )
+        df = pd.DataFrame(rows)
 
         grouped = (
-            df.groupby(
-                "category"
-            )["sentiment"]
+            df.groupby("category")["sentiment"]
             .value_counts()
-            .unstack(
-                fill_value=0
-            )
+            .unstack(fill_value=0)
         )
 
-        for sentiment in [
-            "positif",
-            "negatif",
-            "netral",
-        ]:
-
+        for sentiment in ["positif", "negatif", "netral"]:
             if sentiment not in grouped.columns:
+                grouped[sentiment] = 0
 
-                grouped[
-                    sentiment
-                ] = 0
+        # Menyediakan format Bahasa Indonesia (untuk charts.py)
+        grouped["positif_count"] = grouped["positif"]
+        grouped["negatif_count"] = grouped["negatif"]
+        grouped["netral_count"] = grouped["netral"]
 
-        grouped = grouped.rename(
-            columns={
-                "positif": "positive_count",
-                "negatif": "negative_count",
-                "netral": "neutral_count",
-            }
+        # Menyediakan format Bahasa Inggris (untuk internal aggregator)
+        grouped["positive_count"] = grouped["positif"]
+        grouped["negative_count"] = grouped["negatif"]
+        grouped["neutral_count"] = grouped["netral"]
+
+        grouped["total_mentions"] = (
+            grouped["positif_count"] + grouped["negatif_count"] + grouped["netral_count"]
         )
 
-        grouped[
-            "total_mentions"
-        ] = (
-            grouped[
-                [
-                    "positive_count",
-                    "negative_count",
-                    "neutral_count",
-                ]
-            ].sum(axis=1)
-        )
-
-        grouped[
-            "positive_ratio"
-        ] = (
-            grouped["positive_count"]
-            / grouped["total_mentions"]
-            * 100
+        grouped["positive_ratio"] = (
+            grouped["positif_count"] / grouped["total_mentions"] * 100
         ).round(1)
 
-        grouped[
-            "negative_ratio"
-        ] = (
-            grouped["negative_count"]
-            / grouped["total_mentions"]
-            * 100
+        grouped["negative_ratio"] = (
+            grouped["negatif_count"] / grouped["total_mentions"] * 100
         ).round(1)
 
-        grouped[
-            "priority_score"
-        ] = (
-            grouped["total_mentions"]
-            * (
-                grouped["negative_count"]
-                / grouped["total_mentions"]
-            )
-        )
-
-        grouped[
-            "priority_score"
-        ] = grouped[
-            "priority_score"
-        ].round(1)
+        grouped["priority_score"] = (
+            grouped["total_mentions"] * (grouped["negatif_count"] / grouped["total_mentions"])
+        ).round(1)
 
         result = (
-            grouped
-            .reset_index()
-            .sort_values(
+            grouped.reset_index().sort_values(
                 "total_mentions",
                 ascending=False,
             )
