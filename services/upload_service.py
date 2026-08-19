@@ -1,165 +1,85 @@
 import pandas as pd
 import streamlit as st
 
-from config.settings import (
-    PROCESSED_DATA_PATH,
-)
-from engine.batch_processor import (
-    BatchProcessor,
-)
-from engine.ollama_client import (
-    OllamaABSAClient,
-)
+from config.settings import PROCESSED_DATA_PATH
+from engine.batch_processor import BatchProcessor
+from engine.ollama_client import OllamaABSAClient
+
+ALLOWED_REVIEW_COLUMNS = {"review", "review_text", "text", "ulasan", "content"}
 
 
-def load_uploaded_dataframe(
-    uploaded_file,
-):
-
-    filename = (
-        uploaded_file.name
-        .lower()
-    )
-
+def load_uploaded_dataframe(uploaded_file) -> pd.DataFrame:
+    filename = uploaded_file.name.lower()
     if filename.endswith(".csv"):
-
-        return pd.read_csv(
-            uploaded_file
-        )
-
-    if filename.endswith(".xlsx"):
-
-        return pd.read_excel(
-            uploaded_file
-        )
-
-    raise ValueError(
-        "Format file tidak didukung."
-    )
+        return pd.read_csv(uploaded_file)
+    if filename.endswith((".xlsx", ".xls")):
+        return pd.read_excel(uploaded_file)
+    raise ValueError("Format file tidak didukung. Gunakan CSV atau Excel.")
 
 
-def process_uploaded_file(
-    uploaded_file,
-):
-
+def process_uploaded_file(uploaded_file):
     try:
-
-        df = load_uploaded_dataframe(
-            uploaded_file
-        )
-
+        df = load_uploaded_dataframe(uploaded_file)
     except Exception as error:
-
-        st.error(
-            f"Gagal membaca file: {error}"
-        )
-
+        st.error(f"Gagal membaca file: {error}")
         return
 
-    st.write(
-        f"**Total data:** {len(df):,} review"
-    )
+    if df.empty:
+        st.warning("File yang diunggah tidak memiliki data (kosong).")
+        return
 
-    st.dataframe(
-        df.head(10),
-        use_container_width=True,
-    )
+    st.write(f"**Total data:** {len(df):,} review")
+    st.dataframe(df.head(5), use_container_width=True)
 
-    # Sesuaikan nama kolom dengan dataset
+    # Deteksi kolom review
     possible_columns = [
-        column
-        for column in df.columns
-        if str(column).lower()
-        in {
-            "review",
-            "review_text",
-            "text",
-            "ulasan",
-            "content",
-        }
+        col for col in df.columns 
+        if str(col).lower() in ALLOWED_REVIEW_COLUMNS
     ]
 
     if not possible_columns:
-
         st.error(
             "Tidak ditemukan kolom review. "
-            "Gunakan nama seperti "
-            "`review`, `review_text`, `text`, "
-            "`ulasan`, atau `content`."
+            "Gunakan nama seperti `review`, `review_text`, `text`, `ulasan`, atau `content`."
         )
-
         return
 
-    review_column = (
-        possible_columns[0]
-    )
+    review_column = possible_columns[0]
+    st.info(f"Kolom review yang terdeteksi: **{review_column}**")
 
-    st.info(
-        f"Kolom review yang digunakan: "
-        f"**{review_column}**"
-    )
+    # Bersihkan data NaN
+    df[review_column] = df[review_column].fillna("").astype(str)
 
-    if not st.button(
-        "Konfirmasi & Proses",
-        type="primary",
-        key="confirm_batch_processing",
-    ):
-        return
+    # SATU-SATUNYA TOMBOL EKSKUSI
+    if st.button("🚀 Mulai Analisis Dataset", type="primary", key="btn_start_batch_analysis"):
+        client = OllamaABSAClient()
 
-    client = OllamaABSAClient()
+        if not client.is_available():
+            st.error("❌ Ollama tidak dapat diakses. Pastikan service Ollama aktif.")
+            return
 
-    if not client.is_available():
+        processor = BatchProcessor(ollama_client=client)
+        progress_bar = st.progress(0)
+        status_text = st.empty()
 
-        st.error(
-            "Ollama tidak dapat diakses."
-        )
+        def update_progress(current: int, total: int):
+            percentage = current / total if total > 0 else 0.0
+            progress_bar.progress(percentage)
+            status_text.write(f"Memproses {current:,} / {total:,} review...")
 
-        return
+        try:
+            with st.spinner("⏳ Sedang menganalisis dataset dengan Qwen3:8B..."):
+                results = processor.process_dataframe(
+                    df=df,
+                    review_column=review_column,
+                    progress_callback=update_progress,
+                )
 
-    processor = BatchProcessor(
-        ollama_client=client
-    )
+                processor.save_results(results, PROCESSED_DATA_PATH)
 
-    progress_bar = st.progress(
-        0
-    )
+            st.success(f"🎉 Analisis selesai! {len(results):,} review berhasil diproses.")
+            st.info("💡 Dataset hasil analisis telah disimpan. Silakan buka **Dashboard** untuk melihat visualisasi.")
+            st.json(results[:3])
 
-    status_text = st.empty()
-
-    results = processor.process_dataframe(
-        df=df,
-        review_column=review_column,
-        progress_callback=lambda current, total: (
-            progress_bar.progress(
-                current / total
-            ),
-            status_text.write(
-                f"Memproses {current:,} "
-                f"/ {total:,} review..."
-            ),
-        ),
-    )
-
-    processor.save_results(
-        results,
-        PROCESSED_DATA_PATH,
-    )
-
-    st.success(
-        f"🎉 Analisis selesai. "
-        f"{len(results):,} review diproses."
-    )
-
-    st.info(
-        "Dataset hasil analisis telah disimpan "
-        "dan siap digunakan dashboard."
-    )
-
-    st.json(
-        results[:3]
-    )
-
-    st.warning(
-        "Refresh halaman/dashboard untuk "
-        "memuat dataset terbaru."
-    )
+        except Exception as err:
+            st.error(f"Terjadi kesalahan saat memproses data: {err}")

@@ -1,7 +1,7 @@
 import argparse
 import json
 from pathlib import Path
-from typing import Callable, List, Dict, Any, Optional
+from typing import Any, Callable, Dict, List, Optional
 
 import pandas as pd
 from engine.ollama_client import OllamaABSAClient
@@ -24,16 +24,27 @@ class BatchProcessor:
         results = []
         total = len(df)
 
+        # Cek apakah dataset sudah punya kolom ID bawaan
+        id_col = None
+        for col in ["review_id", "id", "ID"]:
+            if col in df.columns:
+                id_col = col
+                break
+
         for idx, row in df.reset_index(drop=True).iterrows():
             review_text = str(row[review_column]) if pd.notna(row[review_column]) else ""
 
+            # Ambil ID asli dari Excel jika ada, jika tidak gunakan nomor urut idx + 1
+            current_id = row[id_col] if id_col and pd.notna(row[id_col]) else idx + 1
+
+            # Tinjau jika teks review kosong
             if not review_text.strip():
                 results.append({
-                    "review_id": idx + 1,
+                    "review_id": current_id,
                     "review_text": "",
                     "aspects": [],
                     "status": "empty",
-                    "error": None,
+                    "error": "Teks review kosong",
                 })
                 if progress_callback:
                     progress_callback(idx + 1, total)
@@ -41,7 +52,8 @@ class BatchProcessor:
 
             try:
                 aspects = self.ollama_client.analyze_review(review_text)
-                status = "success" if aspects else "empty"
+                # Analisis berhasil (walaupun aspeknya []), status tetap "success"
+                status = "success"
                 error = None
             except Exception as exc:
                 aspects = []
@@ -49,7 +61,7 @@ class BatchProcessor:
                 error = str(exc)
 
             results.append({
-                "review_id": idx + 1,
+                "review_id": current_id,
                 "review_text": review_text,
                 "aspects": aspects,
                 "status": status,
