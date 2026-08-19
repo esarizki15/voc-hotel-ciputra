@@ -1,3 +1,5 @@
+import glob
+from pathlib import Path
 import streamlit as st
 
 from config.settings import (
@@ -31,8 +33,8 @@ st.set_page_config(
 # LOAD ENGINE WITH CACHING
 # ============================================================
 @st.cache_resource
-def load_aggregator():
-    return ReviewAggregator(str(PROCESSED_DATA_PATH))
+def load_aggregator(data_path: str):
+    return ReviewAggregator(data_path)
 
 
 @st.cache_resource
@@ -40,13 +42,13 @@ def load_ollama_client():
     return OllamaABSAClient()
 
 
-aggregator = load_aggregator()
 ollama_client = load_ollama_client()
 
 
 @st.cache_data(ttl=600)
-def get_filtered_aggregator(hotel_name: str, _aggregator: ReviewAggregator):
-    return _aggregator.filter_by_hotel(hotel_name)
+def get_filtered_aggregator(hotel_name: str, data_path: str):
+    agg = load_aggregator(data_path)
+    return agg.filter_by_hotel(hotel_name)
 
 
 # ============================================================
@@ -64,17 +66,53 @@ with st.sidebar:
     st.divider()
 
     st.markdown("### 📂 Sumber Data")
-    st.info("PoC saat ini menggunakan dataset IndoNLU TERMA.")
 
-    available_hotels = aggregator.get_available_hotels()
+    # Scan seluruh file JSON hasil analisis di folder data/
+    json_files = sorted(glob.glob("data/*.json"))
+
+    if json_files:
+        dataset_options = {}
+        for filepath in json_files:
+            # Format label tampilan agar rapi
+            label = (
+                Path(filepath)
+                .stem.replace("processed_", "")
+                .replace("_", " ")
+                .replace("-", " ")
+                .title()
+            )
+            dataset_options[label] = filepath
+
+        # Ambil dataset aktif dari session_state atau file default
+        active_path = st.session_state.get("active_dataset", str(PROCESSED_DATA_PATH))
+        
+        default_idx = 0
+        if active_path in dataset_options.values():
+            default_idx = list(dataset_options.values()).index(active_path)
+
+        selected_label = st.selectbox(
+            "Pilih Dataset Hasil Analisis:",
+            options=list(dataset_options.keys()),
+            index=default_idx,
+        )
+
+        selected_data_path = dataset_options[selected_label]
+        st.session_state["active_dataset"] = selected_data_path
+    else:
+        selected_data_path = str(PROCESSED_DATA_PATH)
+        st.caption("Belum ada dataset JSON ditemukan di `data/`.")
+
+    # Load Aggregator sesuai dataset yang dipilih
+    base_aggregator = load_aggregator(selected_data_path)
+    available_hotels = base_aggregator.get_available_hotels()
 
     if available_hotels:
         hotel_options = ["Semua Hotel"] + available_hotels
         selected_hotel = st.selectbox("Pilih Hotel / Sumber", hotel_options)
-        active_aggregator = get_filtered_aggregator(selected_hotel, aggregator)
+        active_aggregator = get_filtered_aggregator(selected_hotel, selected_data_path)
     else:
-        active_aggregator = aggregator
-        st.caption("Dataset belum memiliki metadata hotel.")
+        active_aggregator = base_aggregator
+        st.caption("Dataset belum memiliki metadata hotel spesifik.")
 
     st.divider()
 
@@ -82,7 +120,6 @@ with st.sidebar:
     st.write("**Model:** Qwen3:8B")
     st.write("**Inference:** Ollama Local")
     st.write("**Metode:** Aspect-Based Sentiment Analysis")
-    st.write("**Dataset:** IndoNLU TERMA")
 
     st.divider()
     st.caption("Proof of Concept — Ciputra Group")

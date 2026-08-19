@@ -1,7 +1,8 @@
+from pathlib import Path
+import re
 import pandas as pd
 import streamlit as st
 
-from config.settings import PROCESSED_DATA_PATH
 from engine.batch_processor import BatchProcessor
 from engine.ollama_client import OllamaABSAClient
 
@@ -47,10 +48,9 @@ def process_uploaded_file(uploaded_file):
     review_column = possible_columns[0]
     st.info(f"Kolom review yang terdeteksi: **{review_column}**")
 
-    # Bersihkan data NaN
+    # Clean missing values
     df[review_column] = df[review_column].fillna("").astype(str)
 
-    # SATU-SATUNYA TOMBOL EKSKUSI
     if st.button("🚀 Mulai Analisis Dataset", type="primary", key="btn_start_batch_analysis"):
         client = OllamaABSAClient()
 
@@ -75,10 +75,17 @@ def process_uploaded_file(uploaded_file):
                     progress_callback=update_progress,
                 )
 
-                processor.save_results(results, PROCESSED_DATA_PATH)
+                # Buat nama file JSON unik berdasarkan nama file asli
+                clean_stem = re.sub(r"[^\w\-]", "_", Path(uploaded_file.name).stem.lower())
+                output_file_path = Path("data") / f"processed_{clean_stem}.json"
+
+                processor.save_results(results, output_file_path)
+
+                # Set dataset baru sebagai dataset aktif
+                st.session_state["active_dataset"] = str(output_file_path)
 
             st.success(f"🎉 Analisis selesai! {len(results):,} review berhasil diproses.")
-            st.info("💡 Dataset hasil analisis telah disimpan. Silakan buka **Dashboard** untuk melihat visualisasi.")
+            st.info(f"💡 Dataset disimpan ke `{output_file_path.name}`. Silakan buka **Dashboard** untuk melihat visualisasi.")
             st.json(results[:3])
 
         except Exception as err:

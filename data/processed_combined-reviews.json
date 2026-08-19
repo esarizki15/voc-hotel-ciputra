@@ -1,0 +1,3705 @@
+[
+  {
+    "review_id": 1,
+    "review_text": "I have often stayed at Ciputra Hotel due to its strategic location, nearby mall, good service, delicious food, sufficient facilities, and the ability to get a room with a beautiful view of the city of Jakarta at night.",
+    "aspects": [
+      {
+        "category": "Lokasi",
+        "target": "lokasi",
+        "opinion": "strategis",
+        "sentiment": "positif"
+      },
+      {
+        "category": "Fasilitas Hotel",
+        "target": "fasilitas",
+        "opinion": "sufficient",
+        "sentiment": "positif"
+      },
+      {
+        "category": "Restoran",
+        "target": "makanan",
+        "opinion": "delicious",
+        "sentiment": "positif"
+      },
+      {
+        "category": "Kamar",
+        "target": "view",
+        "opinion": "beautiful",
+        "sentiment": "positif"
+      }
+    ],
+    "status": "success",
+    "error": null
+  },
+  {
+    "review_id": 2,
+    "review_text": "comfortable hotel, friendly staff, okay facilities, good food, if you want to go to the mall just step out of the lobby you can enjoy coffee leisurely",
+    "aspects": [
+      {
+        "category": "Pelayanan Staf",
+        "target": "staff",
+        "opinion": "friendly",
+        "sentiment": "positif"
+      },
+      {
+        "category": "Fasilitas Hotel",
+        "target": "facilities",
+        "opinion": "okay",
+        "sentiment": "netral"
+      },
+      {
+        "category": "Restoran",
+        "target": "food",
+        "opinion": "good",
+        "sentiment": "positif"
+      },
+      {
+        "category": "Lokasi",
+        "target": "lokasi hotel",
+        "opinion": "dekat mall",
+        "sentiment": "positif"
+      }
+    ],
+    "status": "success",
+    "error": null
+  },
+  {
+    "review_id": 3,
+    "review_text": "The quality of service, facilities, and other aspects are good, although it is old, it is still well-maintained. The location is very strategic.",
+    "aspects": [
+      {
+        "category": "Lokasi",
+        "target": "lokasi",
+        "opinion": "very strategic",
+        "sentiment": "positif"
+      },
+      {
+        "category": "Fasilitas Hotel",
+        "target": "fasilitas",
+        "opinion": "good",
+        "sentiment": "positif"
+      },
+      {
+        "category": "Fasilitas Hotel",
+        "target": "quality of service",
+        "opinion": "good",
+        "sentiment": "positif"
+      }
+    ],
+    "status": "success",
+    "error": null
+  },
+  {
+    "review_id": 4,
+    "review_text": "Overall, I had a good stay at Hotel Ciputra. Customer service sent me a note of welcome  by whatsapp,  and asked if everything was in order or if I needed anything. That's really good as not many hotels do that. Although the room furnishings are a bit worn, the bed was very comfortable, and the place was clean. Being connected to the mall was also a big plus! It is also close to Central Park Mall 1 and 2, and Taman Anggrek, so you will not be spoilt for choice. when it comes to shopping. Another plus is it's much closer to the airport, so you can avoid the traffic jams in town. Would consider staying there again.",
+    "aspects": [
+      {
+        "category": "Pelayanan Staf",
+        "target": "Customer service",
+        "opinion": "mengirimkan pesan selamat datang melalui whatsapp dan memastikan kebutuhan pelanggan",
+        "sentiment": "positif"
+      },
+      {
+        "category": "Fasilitas Kamar",
+        "target": "room furnishings",
+        "opinion": "sedikit usang",
+        "sentiment": "negatif"
+      },
+      {
+        "category": "Kebersihan Kamar",
+        "target": "kamar",
+        "opinion": "bersih",
+        "sentiment": "positif"
+      },
+      {
+        "category": "Lokasi",
+        "target": "lokasi hotel",
+        "opinion": "dekat dengan mall dan taman anggrek",
+        "sentiment": "positif"
+      },
+      {
+        "category": "Lokasi",
+        "target": "lokasi hotel",
+        "opinion": "dekat dengan bandara",
+        "sentiment": "positif"
+      },
+      {
+        "category": "Fasilitas Hotel",
+        "target": "konektivitas ke mall",
+        "opinion": "besar plus",
+        "sentiment": "positif"
+      }
+    ],
+    "status": "success",
+    "error": null
+  },
+  {
+    "review_id": 5,
+    "review_text": "It's my return stay with this hotel. And still not make me regrets at all. Best value access and experience ",
+    "aspects": [
+      {
+        "category": "Harga",
+        "target": "harga",
+        "opinion": "best value",
+        "sentiment": "positif"
+      }
+    ],
+    "status": "success",
+    "error": null
+  },
+  {
+    "review_id": 6,
+    "review_text": "Many times, we have booked and stayed at this hotel when we are back in Jakarta. Best location, and below the hotel is Mall Ciputra.",
+    "aspects": [
+      {
+        "category": "Lokasi",
+        "target": "lokasi hotel",
+        "opinion": "terbaik",
+        "sentiment": "positif"
+      }
+    ],
+    "status": "success",
+    "error": null
+  },
+  {
+    "review_id": 7,
+    "review_text": "Staff were polite and attentive. Location is good as adjoining mall just through the door at the lobby  ",
+    "aspects": [
+      {
+        "category": "Pelayanan Staf",
+        "target": "Staff",
+        "opinion": "polite and attentive",
+        "sentiment": "positif"
+      },
+      {
+        "category": "Lokasi",
+        "target": "Location",
+        "opinion": "good",
+        "sentiment": "positif"
+      }
+    ],
+    "status": "success",
+    "error": null
+  },
+  {
+    "review_id": 8,
+    "review_text": "The hotel is quite comfortable, connected to a mall, with clean rooms and quite complete facilities. However, the staff is lacking. When we were going to the mall and leaving our luggage in the storage area, because we were also checking out, there was often no staff waiting, and those who came would throw things at each other. It was very unprofessional and unfriendly.",
+    "aspects": [
+      {
+        "category": "Fasilitas Hotel",
+        "target": "fasilitas",
+        "opinion": "cukup lengkap",
+        "sentiment": "positif"
+      },
+      {
+        "category": "Pelayanan Staf",
+        "target": "staf",
+        "opinion": "kurang",
+        "sentiment": "negatif"
+      },
+      {
+        "category": "Kebersihan Kamar",
+        "target": "kamar",
+        "opinion": "bersih",
+        "sentiment": "positif"
+      },
+      {
+        "category": "Lokasi",
+        "target": "lokasi hotel",
+        "opinion": "dekat dengan mall",
+        "sentiment": "positif"
+      }
+    ],
+    "status": "success",
+    "error": null
+  },
+  {
+    "review_id": 9,
+    "review_text": "I would go for the location and helpful staff only. Otherwise the hotel is old. Our phone did not work, the plumbing in the bathroom is very old and doesn’t work. The hotel needs a big upgrade in terms on infrastructure. It is located right next to the mall with a separate entrance for it - that is the most positive thing about the hotel. Definitely give the spa a pass. No hot water in the spa, the massage itself was strictly ok, not great. I was made to wait ima. Room with zero response from staff regarding when I could expect the masseuse. Better facilities available in the mall at lesser prices. ",
+    "aspects": [],
+    "status": "success",
+    "error": null
+  },
+  {
+    "review_id": 10,
+    "review_text": "If you get room 1515, then the room is musty",
+    "aspects": [
+      {
+        "category": "Kebersihan Kamar",
+        "target": "kamar",
+        "opinion": "musty",
+        "sentiment": "negatif"
+      }
+    ],
+    "status": "success",
+    "error": null
+  },
+  {
+    "review_id": 11,
+    "review_text": "Super good location.Beside hotel is mall very convient . Receiptionist girl is good.And infront lobby staff also very helpful.Will back again while come jakarta.",
+    "aspects": [
+      {
+        "category": "Lokasi",
+        "target": "lokasi hotel",
+        "opinion": "super good",
+        "sentiment": "positif"
+      },
+      {
+        "category": "Pelayanan Staf",
+        "target": "Receptionist girl",
+        "opinion": "good",
+        "sentiment": "positif"
+      },
+      {
+        "category": "Pelayanan Staf",
+        "target": "lobby staff",
+        "opinion": "very helpful",
+        "sentiment": "positif"
+      }
+    ],
+    "status": "success",
+    "error": null
+  },
+  {
+    "review_id": 12,
+    "review_text": "Recommended hotel in west jkt area. It' really close to Mall with all things you can get there. ",
+    "aspects": [
+      {
+        "category": "Lokasi",
+        "target": "lokasi hotel",
+        "opinion": "recommended",
+        "sentiment": "positif"
+      },
+      {
+        "category": "Lokasi",
+        "target": "lokasi hotel",
+        "opinion": "close to Mall",
+        "sentiment": "positif"
+      }
+    ],
+    "status": "success",
+    "error": null
+  },
+  {
+    "review_id": 13,
+    "review_text": "Recommend hotel for short escape with family.  It has good location next to Mall Ciputra which has complete facilities.",
+    "aspects": [
+      {
+        "category": "Lokasi",
+        "target": "Lokasi hotel",
+        "opinion": "dekat dengan Mall Ciputra",
+        "sentiment": "positif"
+      }
+    ],
+    "status": "success",
+    "error": null
+  },
+  {
+    "review_id": 14,
+    "review_text": "Much improvement needed for toilet's hygiene. Towel was too worn out need to replace it. And the anti-slip rubber mat for bathtub was too old, crumpled with stains, definitely need replacement. Lastly, the toilet has foul smell.",
+    "aspects": [
+      {
+        "category": "Kamar Mandi",
+        "target": "kebersihan kamar mandi",
+        "opinion": "membutuhkan peningkatan",
+        "sentiment": "negatif"
+      },
+      {
+        "category": "Kamar Mandi",
+        "target": "towel",
+        "opinion": "terlalu usang",
+        "sentiment": "negatif"
+      },
+      {
+        "category": "Kamar Mandi",
+        "target": "anti-slip rubber mat",
+        "opinion": "terlalu tua, berkerut, berlumur noda",
+        "sentiment": "negatif"
+      },
+      {
+        "category": "Kamar Mandi",
+        "target": "bau tidak sedap",
+        "opinion": "bau tidak sedap",
+        "sentiment": "negatif"
+      }
+    ],
+    "status": "success",
+    "error": null
+  },
+  {
+    "review_id": 15,
+    "review_text": "Phone not functioning. Had to go down and tell the reception i need iron, waited for 20 minute, still didnt get it. Had to call them again using my cellphone since the room phone not functioning. Apart from that, overall stay was on",
+    "aspects": [
+      {
+        "category": "Fasilitas Kamar",
+        "target": "telepon kamar",
+        "opinion": "tidak berfungsi",
+        "sentiment": "negatif"
+      },
+      {
+        "category": "Fasilitas Kamar",
+        "target": "setrika",
+        "opinion": "tidak tersedia",
+        "sentiment": "negatif"
+      }
+    ],
+    "status": "success",
+    "error": null
+  },
+  {
+    "review_id": 16,
+    "review_text": "This hotel has been around for ages. Great location next to the mall. Unfortunately the building itself never renovated and falling apart. When we first open the room, there was a weird smell that not going away even after the AC was on. Then we found dead roaches in the bathroom. Small bugs on the bed. The staff tried to make it up with a plate of fruit and apologies, but we won't recommend this hotel to anyone. ",
+    "aspects": [],
+    "status": "success",
+    "error": null
+  },
+  {
+    "review_id": 17,
+    "review_text": "Cocok untuk merayakan ulang tahun kamar nya bagus bersih ",
+    "aspects": [
+      {
+        "category": "Fasilitas Kamar",
+        "target": "kamar",
+        "opinion": "bagus",
+        "sentiment": "positif"
+      },
+      {
+        "category": "Kebersihan Kamar",
+        "target": "kamar",
+        "opinion": "bersih",
+        "sentiment": "positif"
+      }
+    ],
+    "status": "success",
+    "error": null
+  },
+  {
+    "review_id": 18,
+    "review_text": "The best. Fav hotel",
+    "aspects": [],
+    "status": "success",
+    "error": null
+  },
+  {
+    "review_id": 19,
+    "review_text": "Good location, room facilities not clean enough",
+    "aspects": [
+      {
+        "category": "Lokasi",
+        "target": "lokasi",
+        "opinion": "good",
+        "sentiment": "positif"
+      },
+      {
+        "category": "Kebersihan Kamar",
+        "target": "room facilities",
+        "opinion": "not clean enough",
+        "sentiment": "negatif"
+      }
+    ],
+    "status": "success",
+    "error": null
+  },
+  {
+    "review_id": 20,
+    "review_text": "Not dirty but not that clean, Some dust on room facilities. ",
+    "aspects": [
+      {
+        "category": "Kebersihan Kamar",
+        "target": "kamar",
+        "opinion": "tidak begitu bersih",
+        "sentiment": "negatif"
+      },
+      {
+        "category": "Fasilitas Kamar",
+        "target": "fasilitas kamar",
+        "opinion": "ada debu",
+        "sentiment": "negatif"
+      }
+    ],
+    "status": "success",
+    "error": null
+  },
+  {
+    "review_id": 21,
+    "review_text": "I enjoyed being there coz I got the nice views",
+    "aspects": [
+      {
+        "category": "Lokasi",
+        "target": "pemandangan",
+        "opinion": "nice",
+        "sentiment": "positif"
+      }
+    ],
+    "status": "success",
+    "error": null
+  },
+  {
+    "review_id": 22,
+    "review_text": "Good, clean and comfortable ",
+    "aspects": [
+      {
+        "category": "Fasilitas Kamar",
+        "target": "kamar",
+        "opinion": "clean and comfortable",
+        "sentiment": "positif"
+      }
+    ],
+    "status": "success",
+    "error": null
+  },
+  {
+    "review_id": 23,
+    "review_text": "Nice hotel with comfortable bed and great shopping malls within 15 mins drive.",
+    "aspects": [
+      {
+        "category": "Lokasi",
+        "target": "shopping malls",
+        "opinion": "great",
+        "sentiment": "positif"
+      },
+      {
+        "category": "Fasilitas Kamar",
+        "target": "bed",
+        "opinion": "comfortable",
+        "sentiment": "positif"
+      }
+    ],
+    "status": "success",
+    "error": null
+  },
+  {
+    "review_id": 24,
+    "review_text": "Tutto benissimo",
+    "aspects": [],
+    "status": "success",
+    "error": null
+  },
+  {
+    "review_id": 25,
+    "review_text": "Heel mooi verblijf gehad keuze in ontbijt goed ",
+    "aspects": [
+      {
+        "category": "Sarapan",
+        "target": "ontbijt",
+        "opinion": "baik",
+        "sentiment": "positif"
+      }
+    ],
+    "status": "success",
+    "error": null
+  },
+  {
+    "review_id": 26,
+    "review_text": "Secara keseluruhan pelayanan & fasilitas hotel sudah baik",
+    "aspects": [
+      {
+        "category": "Fasilitas Hotel",
+        "target": "fasilitas hotel",
+        "opinion": "sudah baik",
+        "sentiment": "positif"
+      }
+    ],
+    "status": "success",
+    "error": null
+  },
+  {
+    "review_id": 27,
+    "review_text": "Handuk tdk bersih. Bau asin. Bau kaos kaki. ",
+    "aspects": [
+      {
+        "category": "Kebersihan Kamar",
+        "target": "Handuk",
+        "opinion": "tdk bersih",
+        "sentiment": "negatif"
+      },
+      {
+        "category": "Kebersihan Kamar",
+        "target": "Bau asin",
+        "opinion": "bau asin",
+        "sentiment": "negatif"
+      },
+      {
+        "category": "Kebersihan Kamar",
+        "target": "Bau kaos kaki",
+        "opinion": "bau kaos kaki",
+        "sentiment": "negatif"
+      }
+    ],
+    "status": "success",
+    "error": null
+  },
+  {
+    "review_id": 28,
+    "review_text": "pak Hafis & bu Nasya , terima kasih banyak keramahan dan bantuan nya . ",
+    "aspects": [
+      {
+        "category": "Pelayanan Staf",
+        "target": "keramahan dan bantuan",
+        "opinion": "terima kasih banyak",
+        "sentiment": "positif"
+      }
+    ],
+    "status": "success",
+    "error": null
+  },
+  {
+    "review_id": 29,
+    "review_text": "Hotel cukup menyenangkan. Dekat dengan Mall. Lain kali akan nginep lagi disana. ",
+    "aspects": [
+      {
+        "category": "Lokasi",
+        "target": "Mall",
+        "opinion": "dekat",
+        "sentiment": "positif"
+      }
+    ],
+    "status": "success",
+    "error": null
+  },
+  {
+    "review_id": 30,
+    "review_text": "Bagus",
+    "aspects": [],
+    "status": "success",
+    "error": null
+  },
+  {
+    "review_id": 31,
+    "review_text": "Ok",
+    "aspects": [],
+    "status": "success",
+    "error": null
+  },
+  {
+    "review_id": 32,
+    "review_text": "Good",
+    "aspects": [],
+    "status": "success",
+    "error": null
+  },
+  {
+    "review_id": 33,
+    "review_text": "Recommended hotelnya",
+    "aspects": [],
+    "status": "success",
+    "error": null
+  },
+  {
+    "review_id": 34,
+    "review_text": "موقع الفندق جيد قريب من اغلب الخدمات و الاماكن السياحية انصح به يوجد لديهم بوفيه افطار متنوع وجيد  وايضا يوجد بوفيه للعشاء ايام الويكند وبه خيارات متنوعه",
+    "aspects": [
+      {
+        "category": "Lokasi",
+        "target": "lokasi hotel",
+        "opinion": "baik",
+        "sentiment": "positif"
+      },
+      {
+        "category": "Sarapan",
+        "target": "bوفيه افطار",
+        "opinion": "متنوع وجيد",
+        "sentiment": "positif"
+      },
+      {
+        "category": "Restoran",
+        "target": "بوفيه العشاء",
+        "opinion": "متنوعه",
+        "sentiment": "positif"
+      }
+    ],
+    "status": "success",
+    "error": null
+  },
+  {
+    "review_id": 35,
+    "review_text": "فندق ممتاز للسكن مع وجود مؤظفين للمساعده في اي شي ",
+    "aspects": [
+      {
+        "category": "Pelayanan Staf",
+        "target": "staf",
+        "opinion": "memiliki staf yang membantu dalam segala hal",
+        "sentiment": "positif"
+      }
+    ],
+    "status": "success",
+    "error": null
+  },
+  {
+    "review_id": 36,
+    "review_text": "اشكر الطاقم على حسن التعامل و سرعة الدخول ",
+    "aspects": [
+      {
+        "category": "Pelayanan Staf",
+        "target": "Tim layanan",
+        "opinion": "baik",
+        "sentiment": "positif"
+      }
+    ],
+    "status": "success",
+    "error": null
+  },
+  {
+    "review_id": 37,
+    "review_text": "Staying 3 nights. Everything was smooth. I like the hotel very much because they have connecting door to the mall. The hotel itself is clean, helpfull employee and have good breakfast choices",
+    "aspects": [
+      {
+        "category": "Sarapan",
+        "target": "sarapan",
+        "opinion": "good",
+        "sentiment": "positif"
+      },
+      {
+        "category": "Fasilitas Hotel",
+        "target": "connecting door to the mall",
+        "opinion": "like",
+        "sentiment": "positif"
+      },
+      {
+        "category": "Kebersihan Hotel",
+        "target": "clean",
+        "opinion": "clean",
+        "sentiment": "positif"
+      },
+      {
+        "category": "Pelayanan Staf",
+        "target": "helpfull employee",
+        "opinion": "helpfull",
+        "sentiment": "positif"
+      }
+    ],
+    "status": "success",
+    "error": null
+  },
+  {
+    "review_id": 38,
+    "review_text": "Sangat rekomend buat family",
+    "aspects": [],
+    "status": "success",
+    "error": null
+  },
+  {
+    "review_id": 39,
+    "review_text": "keseluruhan ok banget.kita akan menginap disini lagi nanti. pelayanan ok.ramah2.makanan banyak menu.pelayannya ramah2.okelah   .",
+    "aspects": [
+      {
+        "category": "Pelayanan Staf",
+        "target": "pelayanan",
+        "opinion": "ok",
+        "sentiment": "netral"
+      },
+      {
+        "category": "Restoran",
+        "target": "makanan",
+        "opinion": "banyak menu",
+        "sentiment": "positif"
+      },
+      {
+        "category": "Pelayanan Staf",
+        "target": "pelayannya",
+        "opinion": "ramah2",
+        "sentiment": "positif"
+      }
+    ],
+    "status": "success",
+    "error": null
+  },
+  {
+    "review_id": 40,
+    "review_text": "Sangat menyenangkan menginap dihotel ini. Tidak jauh dari bandara dan letak hotel dalam mall. Dan dekat juga dengan Central Park & Neo Soho. Karyawannya ramah, dan dapat free upgrade kamar ",
+    "aspects": [
+      {
+        "category": "Lokasi",
+        "target": "lokasi hotel",
+        "opinion": "tidak jauh dari bandara dan letak hotel dalam mall",
+        "sentiment": "positif"
+      },
+      {
+        "category": "Pelayanan Staf",
+        "target": "karyawannya",
+        "opinion": "ramah",
+        "sentiment": "positif"
+      },
+      {
+        "category": "Fasilitas Hotel",
+        "target": "free upgrade kamar",
+        "opinion": "dapat",
+        "sentiment": "positif"
+      }
+    ],
+    "status": "success",
+    "error": null
+  },
+  {
+    "review_id": 41,
+    "review_text": "Kamar lembab/membuat bersin, seperti tidak pernah terpakai... View kamar jelek menghadap atap plafon... Padahal promo dari harga 1,2jt.",
+    "aspects": [
+      {
+        "category": "Fasilitas Kamar",
+        "target": "Kamar",
+        "opinion": "lembab/membuat bersin",
+        "sentiment": "negatif"
+      },
+      {
+        "category": "Fasilitas Kamar",
+        "target": "View kamar",
+        "opinion": "jelek menghadap atap plafon",
+        "sentiment": "negatif"
+      },
+      {
+        "category": "Harga",
+        "target": "Harga kamar",
+        "opinion": "tidak sesuai promo",
+        "sentiment": "negatif"
+      }
+    ],
+    "status": "success",
+    "error": null
+  },
+  {
+    "review_id": 42,
+    "review_text": "Oke banget.  Cuma depositnya aja yang luar biasa. Harga kamar yang gw pesen sama deposit, gedean deposit dong. Hahaha",
+    "aspects": [
+      {
+        "category": "Harga",
+        "target": "Harga kamar",
+        "opinion": "gedean",
+        "sentiment": "negatif"
+      },
+      {
+        "category": "Harga",
+        "target": "Deposit",
+        "opinion": "luar biasa",
+        "sentiment": "positif"
+      }
+    ],
+    "status": "success",
+    "error": null
+  },
+  {
+    "review_id": 43,
+    "review_text": "Handuk tdk bersih. Bau asin. Bau kaos kaki. ",
+    "aspects": [
+      {
+        "category": "Kebersihan Kamar",
+        "target": "Handuk",
+        "opinion": "tdk bersih",
+        "sentiment": "negatif"
+      },
+      {
+        "category": "Kebersihan Kamar",
+        "target": "Bau asin",
+        "opinion": "bau asin",
+        "sentiment": "negatif"
+      },
+      {
+        "category": "Kebersihan Kamar",
+        "target": "Bau kaos kaki",
+        "opinion": "bau kaos kaki",
+        "sentiment": "negatif"
+      }
+    ],
+    "status": "success",
+    "error": null
+  },
+  {
+    "review_id": 44,
+    "review_text": "pak Hafis & bu Nasya , terima kasih banyak keramahan dan bantuan nya . ",
+    "aspects": [
+      {
+        "category": "Pelayanan Staf",
+        "target": "keramahan dan bantuan",
+        "opinion": "terima kasih banyak",
+        "sentiment": "positif"
+      }
+    ],
+    "status": "success",
+    "error": null
+  },
+  {
+    "review_id": 45,
+    "review_text": "Hotel cukup menyenangkan. Dekat dengan Mall. Lain kali akan nginep lagi disana. ",
+    "aspects": [
+      {
+        "category": "Lokasi",
+        "target": "Mall",
+        "opinion": "dekat",
+        "sentiment": "positif"
+      }
+    ],
+    "status": "success",
+    "error": null
+  },
+  {
+    "review_id": 46,
+    "review_text": "Bagus",
+    "aspects": [],
+    "status": "success",
+    "error": null
+  },
+  {
+    "review_id": 47,
+    "review_text": "Ok",
+    "aspects": [],
+    "status": "success",
+    "error": null
+  },
+  {
+    "review_id": 48,
+    "review_text": "Good",
+    "aspects": [],
+    "status": "success",
+    "error": null
+  },
+  {
+    "review_id": 49,
+    "review_text": "Recommended hotelnya",
+    "aspects": [],
+    "status": "success",
+    "error": null
+  },
+  {
+    "review_id": 50,
+    "review_text": "Tidak ada Handuk mandi, sikat gigi, tisue dan tisue toilet juga tidak ada. Sudah complain ke receptionis handuk, sikat gigi di kirimkan tetapi tisue tidak.. ya sudahlah malas ribut ",
+    "aspects": [
+      {
+        "category": "Fasilitas Kamar",
+        "target": "Handuk mandi",
+        "opinion": "tidak ada",
+        "sentiment": "negatif"
+      },
+      {
+        "category": "Fasilitas Kamar",
+        "target": "Sikat gigi",
+        "opinion": "tidak ada",
+        "sentiment": "negatif"
+      },
+      {
+        "category": "Fasilitas Kamar",
+        "target": "Tisue",
+        "opinion": "tidak ada",
+        "sentiment": "negatif"
+      },
+      {
+        "category": "Fasilitas Kamar",
+        "target": "Tisue toilet",
+        "opinion": "tidak ada",
+        "sentiment": "negatif"
+      }
+    ],
+    "status": "success",
+    "error": null
+  },
+  {
+    "review_id": 51,
+    "review_text": "aroma kamar saat pertama di kunjungi apek",
+    "aspects": [],
+    "status": "success",
+    "error": null
+  },
+  {
+    "review_id": 52,
+    "review_text": "Sudah menginap utk kedua kalinya dan ga pernah mengecewakan. Dapat upgrade kamar tanpa dikenai biaya. Fasilitas yg lengkap, staf yg ramah ramah dan makanan yg selalu enak. Terimakasih ciputra ",
+    "aspects": [
+      {
+        "category": "Fasilitas Hotel",
+        "target": "fasilitas",
+        "opinion": "lengkap",
+        "sentiment": "positif"
+      },
+      {
+        "category": "Pelayanan Staf",
+        "target": "staf",
+        "opinion": "ramah ramah",
+        "sentiment": "positif"
+      },
+      {
+        "category": "Sarapan",
+        "target": "makanan",
+        "opinion": "selalu enak",
+        "sentiment": "positif"
+      }
+    ],
+    "status": "success",
+    "error": null
+  },
+  {
+    "review_id": 53,
+    "review_text": "oke",
+    "aspects": [],
+    "status": "success",
+    "error": null
+  },
+  {
+    "review_id": 54,
+    "review_text": "Yah lumayanlah kalo promo buat iseng2 saja tapi jgn harapin yg berlebih.",
+    "aspects": [],
+    "status": "success",
+    "error": null
+  },
+  {
+    "review_id": 55,
+    "review_text": "Menyenagkan",
+    "aspects": [],
+    "status": "success",
+    "error": null
+  },
+  {
+    "review_id": 56,
+    "review_text": "tolong keramahan staf dan kebersihan karpet kamar lebih diperhatikan lagi",
+    "aspects": [
+      {
+        "category": "Pelayanan Staf",
+        "target": "keramahan staf",
+        "opinion": "tolong lebih diperhatikan lagi",
+        "sentiment": "negatif"
+      },
+      {
+        "category": "Kebersihan Kamar",
+        "target": "kebersihan karpet kamar",
+        "opinion": "tolong lebih diperhatikan lagi",
+        "sentiment": "negatif"
+      }
+    ],
+    "status": "success",
+    "error": null
+  },
+  {
+    "review_id": 57,
+    "review_text": "Sebelum masuk kamar saya sudah bertanya apakah sahur ada tambahan biaya?  kl ada saya mau bayar,,  Dan resepsionis blng bs di tukar dgn sarapan. Begitu saya turun utk sahur saya tdk terdaftar Ternyata ada free parkir tp kami tdk diinformasikan,, padahal sebelumnya fesepsionis bertanya bawa kendaraan atau pesan taksi, saya tdk diberi free parkir oleh resepsionis,,  Saran saya utk resepsionis banyak2 memberi informasi terhadap konsumen,, krn tdk smua konsumen mengerti dan sering menginap dihotel tersebut.   ",
+    "aspects": [
+      {
+        "category": "Pelayanan Staf",
+        "target": "resepsionis",
+        "opinion": "tidak memberi informasi yang cukup",
+        "sentiment": "negatif"
+      },
+      {
+        "category": "Parkir",
+        "target": "free parkir",
+        "opinion": "tidak diinformasikan",
+        "sentiment": "negatif"
+      },
+      {
+        "category": "Sarapan",
+        "target": "sarapan",
+        "opinion": "dapat ditukar dengan sarapan",
+        "sentiment": "netral"
+      }
+    ],
+    "status": "success",
+    "error": null
+  },
+  {
+    "review_id": 58,
+    "review_text": "Terjebak kondisi dilarang mudik kita sekeluarga obati dengan wisata di jakarta aquarium dan menginap di ciputra hotel. Tak disangka penilaian di beberapa aplikasi kurang tepat, karena setelah merasakan sendiri pengalaman menginap disini, sungguh memuaskan ( 4 thumbs up incl my feet). Dengan biaya yg tergolong murah sekelas hotel budget, kualitas kamar dan hospitality sekelas bintang 5. I give points 10 out of 10. ",
+    "aspects": [
+      {
+        "category": "Harga",
+        "target": "harga",
+        "opinion": "tergolong murah",
+        "sentiment": "positif"
+      },
+      {
+        "category": "Kamar",
+        "target": "kualitas kamar",
+        "opinion": "sekelas bintang 5",
+        "sentiment": "positif"
+      },
+      {
+        "category": "Kamar",
+        "target": "hospitality",
+        "opinion": "sekelas bintang 5",
+        "sentiment": "positif"
+      },
+      {
+        "category": "Harga",
+        "target": "harga",
+        "opinion": "memuaskan",
+        "sentiment": "positif"
+      },
+      {
+        "category": "Harga",
+        "target": "harga",
+        "opinion": "memuaskan",
+        "sentiment": "positif"
+      }
+    ],
+    "status": "success",
+    "error": null
+  },
+  {
+    "review_id": 59,
+    "review_text": "Deposit kamar dikenakan biaya 500rb! Itu sangat amat ga make sense! Pembayaran dengan kartu kredit katanya di open aja gatau nya di charge dan akan dikembalikan 2 minggu kemudian.... depositnya aja lbh mahal drpd harga kamarnya.. kata staff nya karena harga kamarnya diskon lah ga diskon aja depositnya uda setengah harga kamar.. kan tetep ga make sense! Ditambah lagi di kamar ga ada apapun contohnya kulkas kosong.. nah trus kita deposit buat apa? Kalo saya nginep nya seminggu nah mgkn boleh dimintain deposit segitu banyak.. ini saya nginep cuma semalam loh.. tlg lah management nya review ulang lagi soal deposit 500rb! Even hotel yg levelnya diatas kalian aja deposit paling maksimal cuma 100rb aja atau bahkan ada yg ga pake deposit2an",
+    "aspects": [
+      {
+        "category": "Harga",
+        "target": "Deposit kamar",
+        "opinion": "sangat tidak masuk akal",
+        "sentiment": "negatif"
+      },
+      {
+        "category": "Fasilitas Kamar",
+        "target": "Kulkas",
+        "opinion": "kosong",
+        "sentiment": "negatif"
+      },
+      {
+        "category": "Harga",
+        "target": "Deposit kamar",
+        "opinion": "lebih mahal daripada harga kamarnya",
+        "sentiment": "negatif"
+      }
+    ],
+    "status": "success",
+    "error": null
+  },
+  {
+    "review_id": 60,
+    "review_text": "makanan hotel yg plg cocok di mulut saya dan suami, lidah medan soalnya hehehhe... ",
+    "aspects": [
+      {
+        "category": "Restoran",
+        "target": "makanan hotel",
+        "opinion": "cocok di mulut saya dan suami",
+        "sentiment": "positif"
+      }
+    ],
+    "status": "success",
+    "error": null
+  },
+  {
+    "review_id": 61,
+    "review_text": "Sangat nyaman, pemandangan ibu kota jakarta sangat terlihat di lantai atas 👍✨ Nyaman dan bersih . ❤️",
+    "aspects": [
+      {
+        "category": "Lokasi",
+        "target": "pemandangan ibu kota jakarta",
+        "opinion": "sangat terlihat",
+        "sentiment": "positif"
+      },
+      {
+        "category": "Kebersihan Kamar",
+        "target": "kamar",
+        "opinion": "bersih",
+        "sentiment": "positif"
+      }
+    ],
+    "status": "success",
+    "error": null
+  },
+  {
+    "review_id": 62,
+    "review_text": "Posisi Hotel strategis, dekat kemana saja, dan terhubung ke mall. fasilitas cukup lengkap, kamar bersih dan nyaman untuk istirahat dan bekerja.",
+    "aspects": [
+      {
+        "category": "Lokasi",
+        "target": "Posisi Hotel",
+        "opinion": "strategis",
+        "sentiment": "positif"
+      },
+      {
+        "category": "Fasilitas Hotel",
+        "target": "fasilitas",
+        "opinion": "cukup lengkap",
+        "sentiment": "positif"
+      },
+      {
+        "category": "Kebersihan Kamar",
+        "target": "kamar",
+        "opinion": "bersih",
+        "sentiment": "positif"
+      },
+      {
+        "category": "Fasilitas Kamar",
+        "target": "kamar",
+        "opinion": "nyaman untuk istirahat dan bekerja",
+        "sentiment": "positif"
+      }
+    ],
+    "status": "success",
+    "error": null
+  },
+  {
+    "review_id": 63,
+    "review_text": "Kamar luas, staffnya ramah2, makanan enak2, pemandangan view nya ok ga salah memilih ciputra sdh terpercaya bangunannya kokoh dan bagus. Hanya satu minusnya kamar agar lebih dibersihkan, krn sewaktu dtg ada sarang laba2 dkt lampu dan kamar mandi wc nya ada kotorannya. Yg pasti bakal balik  kesini lagi pokoknya 😊 ",
+    "aspects": [
+      {
+        "category": "Kamar",
+        "target": "kamar",
+        "opinion": "luas",
+        "sentiment": "positif"
+      },
+      {
+        "category": "Pelayanan Staf",
+        "target": "staff",
+        "opinion": "ramah2",
+        "sentiment": "positif"
+      },
+      {
+        "category": "Makanan",
+        "target": "makanan",
+        "opinion": "enak2",
+        "sentiment": "positif"
+      },
+      {
+        "category": "Pemandangan",
+        "target": "pemandangan view",
+        "opinion": "ok",
+        "sentiment": "netral"
+      },
+      {
+        "category": "Kebersihan Kamar",
+        "target": "kamar",
+        "opinion": "kurang bersih",
+        "sentiment": "negatif"
+      },
+      {
+        "category": "Kamar Mandi",
+        "target": "kamar mandi",
+        "opinion": "ada kotorannya",
+        "sentiment": "negatif"
+      }
+    ],
+    "status": "success",
+    "error": null
+  },
+  {
+    "review_id": 64,
+    "review_text": "Hotel gabung dg dengan mall ciputra,,laper disiang hari apa.malam hari tinggal cuzz ke mall. Fasilitas oke,,semua ada. Dapat air mineral,peralatan mandi. Cm hotelnya agak singup,,jd teekesan seram,,kmrn dapat lantai paling atas,pojok lagi,,dari lift jauh,dan sepi,,lampu remang2 menuju kamar.. makanan karena kondisi covid 19 makanan dibawa ke kamar. Tp over all ok",
+    "aspects": [],
+    "status": "success",
+    "error": null
+  },
+  {
+    "review_id": 65,
+    "review_text": "Tempat stategis ke pusat bisnis.di dpn hotel banyak yg jualana  makanan.cafe2 .cuma kekurangan nya kmar nya di secat dengan papan grc jd sebelah kmr kita ngomong kedengeran dari kmr kita jd ga nyaman. yg lain ok.kmr bersih.",
+    "aspects": [
+      {
+        "category": "Lokasi",
+        "target": "Lokasi hotel",
+        "opinion": "stategis ke pusat bisnis",
+        "sentiment": "positif"
+      },
+      {
+        "category": "Fasilitas Kamar",
+        "target": "Pembatas kamar",
+        "opinion": "secat dengan papan grc",
+        "sentiment": "netral"
+      },
+      {
+        "category": "Kebersihan Kamar",
+        "target": "Kamar",
+        "opinion": "bersih",
+        "sentiment": "positif"
+      }
+    ],
+    "status": "success",
+    "error": null
+  },
+  {
+    "review_id": 66,
+    "review_text": "موقع الفندق جيد قريب من اغلب الخدمات و الاماكن السياحية انصح به يوجد لديهم بوفيه افطار متنوع وجيد  وايضا يوجد بوفيه للعشاء ايام الويكند وبه خيارات متنوعه",
+    "aspects": [
+      {
+        "category": "Lokasi",
+        "target": "lokasi hotel",
+        "opinion": "baik",
+        "sentiment": "positif"
+      },
+      {
+        "category": "Sarapan",
+        "target": "boufi afطار",
+        "opinion": "متنوع وجيد",
+        "sentiment": "positif"
+      },
+      {
+        "category": "Restoran",
+        "target": "boufi عشاء",
+        "opinion": "متنوعه",
+        "sentiment": "positif"
+      }
+    ],
+    "status": "success",
+    "error": null
+  },
+  {
+    "review_id": 67,
+    "review_text": "اشكر الطاقم على حسن التعامل و سرعة الدخول ",
+    "aspects": [
+      {
+        "category": "Pelayanan Staf",
+        "target": "Tim layanan",
+        "opinion": "baik",
+        "sentiment": "positif"
+      }
+    ],
+    "status": "success",
+    "error": null
+  },
+  {
+    "review_id": 68,
+    "review_text": "Staying 3 nights. Everything was smooth. I like the hotel very much because they have connecting door to the mall. The hotel itself is clean, helpfull employee and have good breakfast choices",
+    "aspects": [
+      {
+        "category": "Sarapan",
+        "target": "sarapan",
+        "opinion": "good",
+        "sentiment": "positif"
+      },
+      {
+        "category": "Fasilitas Hotel",
+        "target": "connecting door to the mall",
+        "opinion": "like",
+        "sentiment": "positif"
+      },
+      {
+        "category": "Kebersihan Hotel",
+        "target": "clean",
+        "opinion": "clean",
+        "sentiment": "positif"
+      },
+      {
+        "category": "Pelayanan Staf",
+        "target": "helpfull employee",
+        "opinion": "helpfull",
+        "sentiment": "positif"
+      }
+    ],
+    "status": "success",
+    "error": null
+  },
+  {
+    "review_id": 69,
+    "review_text": "Breakfast nya biasa aja",
+    "aspects": [
+      {
+        "category": "Sarapan",
+        "target": "Breakfast",
+        "opinion": "biasa aja",
+        "sentiment": "netral"
+      }
+    ],
+    "status": "success",
+    "error": null
+  },
+  {
+    "review_id": 70,
+    "review_text": "Oke, kamar luas, lokasi bagus. Ke mall tinggal jalan kaki. Cuma flush toiletnya payah bgt, ga kenceng. Kran wastafel airnya panas aja ga mau dingin",
+    "aspects": [
+      {
+        "category": "Fasilitas Kamar",
+        "target": "kamar",
+        "opinion": "luas",
+        "sentiment": "positif"
+      },
+      {
+        "category": "Lokasi",
+        "target": "lokasi",
+        "opinion": "bagus",
+        "sentiment": "positif"
+      },
+      {
+        "category": "Kamar Mandi",
+        "target": "flush toilet",
+        "opinion": "payah bgt, ga kenceng",
+        "sentiment": "negatif"
+      },
+      {
+        "category": "Fasilitas Kamar",
+        "target": "kran wastafel",
+        "opinion": "airnya panas aja ga mau dingin",
+        "sentiment": "negatif"
+      }
+    ],
+    "status": "success",
+    "error": null
+  },
+  {
+    "review_id": 71,
+    "review_text": "AC panas...air kamar mandi bau,tolong ditingkatkan lg ya",
+    "aspects": [
+      {
+        "category": "AC",
+        "target": "AC",
+        "opinion": "panas",
+        "sentiment": "negatif"
+      },
+      {
+        "category": "Kamar Mandi",
+        "target": "air kamar mandi",
+        "opinion": "bau",
+        "sentiment": "negatif"
+      }
+    ],
+    "status": "success",
+    "error": null
+  },
+  {
+    "review_id": 72,
+    "review_text": "Lokasi strategis, dekat mall dan restoran",
+    "aspects": [
+      {
+        "category": "Lokasi",
+        "target": "Lokasi",
+        "opinion": "strategis",
+        "sentiment": "positif"
+      }
+    ],
+    "status": "success",
+    "error": null
+  },
+  {
+    "review_id": 73,
+    "review_text": "酒店乾淨整潔，服務人員熱情，酒店設施比較老，但是維護較好，影響不大。空調很冷，建議帶外套。旅遊過來住可以的，樓下商場，打車出行方便，價格也合理，每晚280元人民幣~",
+    "aspects": [
+      {
+        "category": "Kebersihan Hotel",
+        "target": "kebersihan hotel",
+        "opinion": "乾淨整潔",
+        "sentiment": "positif"
+      },
+      {
+        "category": "Pelayanan Staf",
+        "target": "pelayanan staf",
+        "opinion": "熱情",
+        "sentiment": "positif"
+      },
+      {
+        "category": "Fasilitas Hotel",
+        "target": "fasilitas hotel",
+        "opinion": "維護較好",
+        "sentiment": "positif"
+      },
+      {
+        "category": "AC",
+        "target": "AC kamar",
+        "opinion": "很冷",
+        "sentiment": "negatif"
+      },
+      {
+        "category": "Lokasi",
+        "target": "lokasi hotel",
+        "opinion": "樓下商場",
+        "sentiment": "positif"
+      },
+      {
+        "category": "Harga",
+        "target": "harga kamar",
+        "opinion": "價格也合理",
+        "sentiment": "positif"
+      }
+    ],
+    "status": "success",
+    "error": null
+  },
+  {
+    "review_id": 74,
+    "review_text": "非常滿意，服務，設施都是一流的，適合中國人居住",
+    "aspects": [
+      {
+        "category": "Fasilitas Hotel",
+        "target": "fasilitas",
+        "opinion": "satu-satunya",
+        "sentiment": "positif"
+      }
+    ],
+    "status": "success",
+    "error": null
+  },
+  {
+    "review_id": 75,
+    "review_text": "Отвратительный вонючий номер.  Старая сантехника с постоянно заедающим сливом. Вид на город из окна на втором фото шедевральный - полное разочарование    Завтраки состоят в основном из булок, овощей и тофу. Кофе надо выпросить и подождать.  Спасибо, что дали поздний чек-аут до 14:00 за 250 тыс.местных денег. Это единственный плюс для нас.",
+    "aspects": [
+      {
+        "category": "Fasilitas Kamar",
+        "target": "Sanitair",
+        "opinion": "старая сантехника с постоянно заедающим сливом",
+        "sentiment": "negatif"
+      },
+      {
+        "category": "Sarapan",
+        "target": "Sarapan",
+        "opinion": "состоят в основном из булок, овощей и тофу",
+        "sentiment": "negatif"
+      },
+      {
+        "category": "Sarapan",
+        "target": "Kopi",
+        "opinion": "кофе надо выпросить и подождать",
+        "sentiment": "negatif"
+      },
+      {
+        "category": "Kamar",
+        "target": "Pemandangan",
+        "opinion": "вид на город из окна на втором фото шедевральный",
+        "sentiment": "negatif"
+      },
+      {
+        "category": "Harga",
+        "target": "Check-out",
+        "opinion": "поздний чек-аут до 14:00 за 250 тыс.местных денег",
+        "sentiment": "positif"
+      }
+    ],
+    "status": "success",
+    "error": null
+  },
+  {
+    "review_id": 76,
+    "review_text": "很舒服，樓下就是商場，很方便 每天都有打掃房間，乾淨 非常推薦！",
+    "aspects": [
+      {
+        "category": "Kebersihan Kamar",
+        "target": "kamar",
+        "opinion": "bersih",
+        "sentiment": "positif"
+      },
+      {
+        "category": "Lokasi",
+        "target": "lokasi hotel",
+        "opinion": "dekat dengan mall",
+        "sentiment": "positif"
+      },
+      {
+        "category": "Fasilitas Kamar",
+        "target": "fasilitas kamar",
+        "opinion": "dibersihkan setiap hari",
+        "sentiment": "positif"
+      }
+    ],
+    "status": "success",
+    "error": null
+  },
+  {
+    "review_id": 77,
+    "review_text": "Located in Grogol west Jakarta. Easy to travel and 45 minutes to Jakarta Airport.",
+    "aspects": [
+      {
+        "category": "Lokasi",
+        "target": "Lokasi hotel",
+        "opinion": "mudah untuk bepergian",
+        "sentiment": "positif"
+      },
+      {
+        "category": "Lokasi",
+        "target": "Lokasi hotel",
+        "opinion": "45 menit ke Bandara Jakarta",
+        "sentiment": "positif"
+      }
+    ],
+    "status": "success",
+    "error": null
+  },
+  {
+    "review_id": 78,
+    "review_text": "Happy to stay here, just 1 step to shopping mall. And room clean.",
+    "aspects": [
+      {
+        "category": "Lokasi",
+        "target": "lokasi hotel",
+        "opinion": "dekat dengan pusat perbelanjaan",
+        "sentiment": "positif"
+      },
+      {
+        "category": "Kebersihan Kamar",
+        "target": "kamar",
+        "opinion": "bersih",
+        "sentiment": "positif"
+      }
+    ],
+    "status": "success",
+    "error": null
+  },
+  {
+    "review_id": 79,
+    "review_text": "happy dan nyaman bangettt, thankyou so much for the beautiful memories 🩵🌸",
+    "aspects": [
+      {
+        "category": "Fasilitas Kamar",
+        "target": "fasilitas kamar",
+        "opinion": "nyaman",
+        "sentiment": "positif"
+      }
+    ],
+    "status": "success",
+    "error": null
+  },
+  {
+    "review_id": 80,
+    "review_text": "The direct access to the mall was very convenient, and the room was spacious. Appreciated the personal touch by being given a liaison officer to contact with should there be issues and the responses were very prompt.",
+    "aspects": [
+      {
+        "category": "Lokasi",
+        "target": "akses langsung ke mall",
+        "opinion": "sangat nyaman",
+        "sentiment": "positif"
+      },
+      {
+        "category": "Fasilitas Kamar",
+        "target": "kamar",
+        "opinion": "luas",
+        "sentiment": "positif"
+      },
+      {
+        "category": "Pelayanan Staf",
+        "target": "liaison officer",
+        "opinion": "personal touch",
+        "sentiment": "positif"
+      },
+      {
+        "category": "Pelayanan Staf",
+        "target": "liaison officer",
+        "opinion": "respons cepat",
+        "sentiment": "positif"
+      }
+    ],
+    "status": "success",
+    "error": null
+  },
+  {
+    "review_id": 81,
+    "review_text": "The service was incredibly warm and professional from the moment I arrived. A huge thank you to Mba Mitha and the team for the unexpected complimentary birthday and anniversary cake, room decoration for our special day, it was such a thoughtful touch that made my celebration feel truly special. Highly recommend this hotel for their outstanding hospitality ✨️",
+    "aspects": [
+      {
+        "category": "Pelayanan Staf",
+        "target": "Mba Mitha dan tim",
+        "opinion": "sangat profesional dan hangat",
+        "sentiment": "positif"
+      },
+      {
+        "category": "Fasilitas Hotel",
+        "target": "kue ulang tahun dan tahun pernikahan",
+        "opinion": "tidak terduga dan penuh perhatian",
+        "sentiment": "positif"
+      },
+      {
+        "category": "Fasilitas Hotel",
+        "target": "dekorasi kamar",
+        "opinion": "penuh perhatian dan membuat hari spesial terasa istimewa",
+        "sentiment": "positif"
+      },
+      {
+        "category": "Fasilitas Hotel",
+        "target": "hotel secara keseluruhan",
+        "opinion": "sangat direkomendasikan karena layanan luar biasa",
+        "sentiment": "positif"
+      }
+    ],
+    "status": "success",
+    "error": null
+  },
+  {
+    "review_id": 82,
+    "review_text": "Location is fine. Basic amenities are at place. Service is fine.",
+    "aspects": [
+      {
+        "category": "Lokasi",
+        "target": "Lokasi",
+        "opinion": "fine",
+        "sentiment": "netral"
+      },
+      {
+        "category": "Pelayanan Staf",
+        "target": "Service",
+        "opinion": "fine",
+        "sentiment": "netral"
+      },
+      {
+        "category": "Fasilitas Kamar",
+        "target": "Basic amenities",
+        "opinion": "at place",
+        "sentiment": "netral"
+      }
+    ],
+    "status": "success",
+    "error": null
+  },
+  {
+    "review_id": 83,
+    "review_text": "Stayed at Hotel Ciputra Jakarta multiple times, and it’s always my go-to when I’m in Jakarta. The location is super convenient, directly connected to the mall — great for food and quick errands. Rooms are comfortable and clean, though slightly dated. Service is consistently good, with friendly and efficient staff. Overall, a reliable and value-for-money hotel that I’ll keep coming back to.",
+    "aspects": [
+      {
+        "category": "Lokasi",
+        "target": "lokasi hotel",
+        "opinion": "super convenient",
+        "sentiment": "positif"
+      },
+      {
+        "category": "Fasilitas Kamar",
+        "target": "kamar",
+        "opinion": "comfortable and clean",
+        "sentiment": "positif"
+      },
+      {
+        "category": "Pelayanan Staf",
+        "target": "staf",
+        "opinion": "friendly and efficient",
+        "sentiment": "positif"
+      },
+      {
+        "category": "Fasilitas Hotel",
+        "target": "fasilitas hotel",
+        "opinion": "value-for-money",
+        "sentiment": "positif"
+      }
+    ],
+    "status": "success",
+    "error": null
+  },
+  {
+    "review_id": 84,
+    "review_text": "It was my first staycation ever, and staying at Ciputra was a pleasant.  Check in & check out was smooth.  All staff were nice, even the housekeeper greeted me on the hall way.  Old building yes, but well-maintained. Room was clean, as well as the swimming pool.  For breakfast, there were plenty of options. But taste wise, honestly not the best. Just okay.  Overall, i’ll give 9/10 Definitely will come back!!",
+    "aspects": [
+      {
+        "category": "Pelayanan Staf",
+        "target": "semua staf",
+        "opinion": "nice",
+        "sentiment": "positif"
+      },
+      {
+        "category": "Proses Check-in",
+        "target": "check in & check out",
+        "opinion": "smooth",
+        "sentiment": "positif"
+      },
+      {
+        "category": "Kebersihan Kamar",
+        "target": "kamar",
+        "opinion": "clean",
+        "sentiment": "positif"
+      },
+      {
+        "category": "Kolam Renang",
+        "target": "swimming pool",
+        "opinion": "clean",
+        "sentiment": "positif"
+      },
+      {
+        "category": "Sarapan",
+        "target": "breakfast",
+        "opinion": "plenty of options",
+        "sentiment": "positif"
+      },
+      {
+        "category": "Sarapan",
+        "target": "breakfast",
+        "opinion": "taste wise, honestly not the best",
+        "sentiment": "negatif"
+      },
+      {
+        "category": "Fasilitas Hotel",
+        "target": "old building",
+        "opinion": "well-maintained",
+        "sentiment": "positif"
+      },
+      {
+        "category": "Fasilit,",
+        "target": "",
+        "opinion": "",
+        "sentiment": "netral"
+      }
+    ],
+    "status": "success",
+    "error": null
+  },
+  {
+    "review_id": 85,
+    "review_text": "Stayed here 4 nights and paid about 767 AED total, which is actually very good value for Jakarta. The main reason I chose this hotel was its direct connection to Mal Ciputra Jakarta, which turned out to be extremely convenient.  👍 What Was Good Staff effort The staff were genuinely helpful and polite. When problems happened with the room, they assisted with luggage and helped move me twice without much resistance. They also later tried to make up for the experience by offering an executive dinner at the lounge on the 17th floor, which I appreciated.  Gym Surprisingly good for a hotel gym. It’s well equipped and spacious, easily one of the better hotel gyms I’ve seen.  Breakfast buffet Breakfast was solid with good variety. No complaints there.  Location & mall access This is honestly 75% of the reason to book this hotel. Being directly connected to the mall is extremely convenient for food, shopping and avoiding Jakarta traffic.  ⚠️ Where Things Went Wrong Room issues and multiple changes I had to change rooms twice. •\tFirst time was around 2 AM after arrival because the shower wasn’t working and the bathroom felt quite dilapidated. •\tThe next morning I had to move again because the AC wouldn’t go below 23°C, which made the room uncomfortable.  The third room they gave me was more modern and functional, although slightly smaller. At least the bathroom and AC worked properly.  Food quality: This was probably the biggest disappointment.  One evening in the lobby I ordered chicken spring rolls and whiskey, and unfortunately bit into a bone inside the spring roll, which was not a pleasant experience at all. The staff removed the dish from the bill and offered a fruit plate, but it still left a bad impression.  The à la carte food was also underwhelming. I ordered a pepperoni pizza and fries for around 354,530 IDR, and the pizza honestly tasted like a frozen pizza that had been microwaved rather than freshly cooked.  Room service was similarly average.  🚧 Facilities The swimming pool was under construction, so I didn’t get to try it.  Final Thoughts Overall I’d say 3 to 3.5 stars.  The location, gym, and staff effort were good, but the room issues and disappointing food quality brought the experience down.  Would I stay again? Possibly for the location and mall access, but I would definitely skip ordering food at the hotel next time.",
+    "aspects": [],
+    "status": "success",
+    "error": null
+  },
+  {
+    "review_id": 86,
+    "review_text": "The hotel is clean but ageing a little. The room was comfortable and I enjoyed the non-smoking floor. The swimming pool is a plus. Convenient access to the shopping mall next door. We will return.",
+    "aspects": [
+      {
+        "category": "Kebersihan Hotel",
+        "target": "hotel",
+        "opinion": "clean",
+        "sentiment": "positif"
+      },
+      {
+        "category": "Fasilitas Kamar",
+        "target": "room",
+        "opinion": "comfortable",
+        "sentiment": "positif"
+      },
+      {
+        "category": "Kolam Renang",
+        "target": "swimming pool",
+        "opinion": "a plus",
+        "sentiment": "positif"
+      },
+      {
+        "category": "Lokasi",
+        "target": "access to the shopping mall next door",
+        "opinion": "convenient",
+        "sentiment": "positif"
+      }
+    ],
+    "status": "success",
+    "error": null
+  },
+  {
+    "review_id": 87,
+    "review_text": "I am a satisfied returning customer. I really like this hotel. It has a great breakfast. It's attached to a mall with lots of eating options.  The AC works well. My room had a smart TV.  It's conveniently located to where I need to be. And the customer service is very good. I have no reason to look for another hotel.",
+    "aspects": [
+      {
+        "category": "Sarapan",
+        "target": "sarapan",
+        "opinion": "great",
+        "sentiment": "positif"
+      },
+      {
+        "category": "Lokasi",
+        "target": "lokasi",
+        "opinion": "conveniently located",
+        "sentiment": "positif"
+      },
+      {
+        "category": "AC",
+        "target": "AC",
+        "opinion": "works well",
+        "sentiment": "positif"
+      },
+      {
+        "category": "Fasilitas Kamar",
+        "target": "smart TV",
+        "opinion": "memiliki smart TV",
+        "sentiment": "positif"
+      },
+      {
+        "category": "Pelayanan Staf",
+        "target": "customer service",
+        "opinion": "very good",
+        "sentiment": "positif"
+      }
+    ],
+    "status": "success",
+    "error": null
+  },
+  {
+    "review_id": 88,
+    "review_text": "Big size beds, clean and  great city view. One of the best breakfasts I ever had.",
+    "aspects": [
+      {
+        "category": "Fasilitas Kamar",
+        "target": "Big size beds",
+        "opinion": "clean",
+        "sentiment": "positif"
+      },
+      {
+        "category": "Fasilitas Kamar",
+        "target": "Big size beds",
+        "opinion": "great city view",
+        "sentiment": "positif"
+      },
+      {
+        "category": "Sarapan",
+        "target": "breakfast",
+        "opinion": "one of the best",
+        "sentiment": "positif"
+      }
+    ],
+    "status": "success",
+    "error": null
+  },
+  {
+    "review_id": 89,
+    "review_text": "Went out of their to assist me. Spoke English every chance they had. Rang my room to make sure everything was ok",
+    "aspects": [
+      {
+        "category": "Pelayanan Staf",
+        "target": "Staf hotel",
+        "opinion": "membantu",
+        "sentiment": "positif"
+      },
+      {
+        "category": "Fasilitas Kamar",
+        "target": "Kamar",
+        "opinion": "diperiksa",
+        "sentiment": "positif"
+      }
+    ],
+    "status": "success",
+    "error": null
+  },
+  {
+    "review_id": 90,
+    "review_text": "房間老舊，有味道，浴巾很舊，非常不建議居住",
+    "aspects": [
+      {
+        "category": "Fasilitas Kamar",
+        "target": "Kamar",
+        "opinion": "lambat",
+        "sentiment": "negatif"
+      },
+      {
+        "category": "Fasilitas Kamar",
+        "target": "Kamar",
+        "opinion": "berbau",
+        "sentiment": "negatif"
+      },
+      {
+        "category": "Fasilitas Kamar",
+        "target": "Kamar",
+        "opinion": "lambat",
+        "sentiment": "negatif"
+      },
+      {
+        "category": "Fasilitas Kamar",
+        "target": "Kamar",
+        "opinion": "berbau",
+        "sentiment": "negatif"
+      }
+    ],
+    "status": "success",
+    "error": null
+  },
+  {
+    "review_id": 91,
+    "review_text": "really enjoy the stay very convenience shopping mall next door easy access to various food outlet, supermarket, saloon all have. Hotel breakfast superb spread , staff very friendly with smiling face courthouse n helpful. Room very clean daily change all towels, bedsheet etc. Nice cosy swimming pool, gym n massage outlet. Has been a royalty  guest for many years. Highly recommend this hotel .",
+    "aspects": [
+      {
+        "category": "Lokasi",
+        "target": "shopping mall next door",
+        "opinion": "very convenience",
+        "sentiment": "positif"
+      },
+      {
+        "category": "Sarapan",
+        "target": "breakfast",
+        "opinion": "superb spread",
+        "sentiment": "positif"
+      },
+      {
+        "category": "Pelayanan Staf",
+        "target": "staff",
+        "opinion": "very friendly with smiling face",
+        "sentiment": "positif"
+      },
+      {
+        "category": "Kebersihan Kamar",
+        "target": "room",
+        "opinion": "very clean",
+        "sentiment": "positif"
+      },
+      {
+        "category": "Fasilitas Hotel",
+        "target": "swimming pool, gym n massage outlet",
+        "opinion": "nice cosy",
+        "sentiment": "positif"
+      },
+      {
+        "category": "Fasilit,",
+        "target": "",
+        "opinion": "",
+        "sentiment": "netral"
+      }
+    ],
+    "status": "success",
+    "error": null
+  },
+  {
+    "review_id": 92,
+    "review_text": "قريب من المطار الفندقيه فيه مول ومطاعم كل شي تحتاجه بعض حمامات الغرف أكرمكم الله مافيه شطاف  أنا اخذت غرفة البريميوم فيلها شطاف",
+    "aspects": [
+      {
+        "category": "Lokasi",
+        "target": "dekat dengan bandara",
+        "opinion": "قريب من المطار",
+        "sentiment": "positif"
+      },
+      {
+        "category": "Fasilitas Kamar",
+        "target": "fasilitas kamar",
+        "opinion": "memiliki semua yang dibutuhkan",
+        "sentiment": "positif"
+      },
+      {
+        "category": "Kamar Mandi",
+        "target": "kamar mandi",
+        "opinion": "tidak ada shower",
+        "sentiment": "negatif"
+      },
+      {
+        "category": "Fasilitas Kamar",
+        "target": "kamar premium",
+        "opinion": "memiliki shower",
+        "sentiment": "positif"
+      }
+    ],
+    "status": "success",
+    "error": null
+  },
+  {
+    "review_id": 93,
+    "review_text": "Best hotel around west jakarta, next to the mall, easy parking area, clean and superb",
+    "aspects": [
+      {
+        "category": "Lokasi",
+        "target": "lokasi hotel",
+        "opinion": "best hotel around west jakarta",
+        "sentiment": "positif"
+      },
+      {
+        "category": "Parkir",
+        "target": "parking area",
+        "opinion": "easy parking area",
+        "sentiment": "positif"
+      },
+      {
+        "category": "Kebersihan Hotel",
+        "target": "kebersihan hotel",
+        "opinion": "clean",
+        "sentiment": "positif"
+      },
+      {
+        "category": "Fasilitas Hotel",
+        "target": "fasilitas hotel",
+        "opinion": "superb",
+        "sentiment": "positif"
+      }
+    ],
+    "status": "success",
+    "error": null
+  },
+  {
+    "review_id": 94,
+    "review_text": "Located in a strategic place in Jakarta, the hotel facilities are really good, from dining, swimming pool etc, one thing the most important is the hotel is just next too the ciputra mall so its very convenient to shop or just to find something to eat there. The staffs are really helpful and polite, no problem at all with the check-in/out process. Only there's some minor things need to improve, in the morning we went to the swimming pool area 7am with my kids and there's already some people there smoking and vapes in the Bar area, don't know if that place is smoking area, i think the hotel need to setup a proper smoking/vapes area not in the swimming pool area because it is outdoor.",
+    "aspects": [
+      {
+        "category": "Lokasi",
+        "target": "lokasi hotel",
+        "opinion": "strategis",
+        "sentiment": "positif"
+      },
+      {
+        "category": "Fasilitas Hotel",
+        "target": "fasilitas hotel",
+        "opinion": "baik",
+        "sentiment": "positif"
+      },
+      {
+        "category": "Fasilitas Hotel",
+        "target": "kolam renang",
+        "opinion": "ada orang yang merokok dan mengisap vape",
+        "sentiment": "negatif"
+      },
+      {
+        "category": "Pelayanan Staf",
+        "target": "staf",
+        "opinion": "membantu dan sopan",
+        "sentiment": "positif"
+      },
+      {
+        "category": "Proses Check-in",
+        "target": "proses check-in/out",
+        "opinion": "tidak ada masalah",
+        "sentiment": "positif"
+      }
+    ],
+    "status": "success",
+    "error": null
+  },
+  {
+    "review_id": 95,
+    "review_text": "設施比較老舊了，確實就是老的酒店。酒店的床單、被子都很薄。毛巾也發黃發黑了。",
+    "aspects": [
+      {
+        "category": "Fasilitas Kamar",
+        "target": "Fasilitas kamar",
+        "opinion": "membandel",
+        "sentiment": "negatif"
+      },
+      {
+        "category": "Fasilitas Kamar",
+        "target": "Fasilitas kamar",
+        "opinion": "membandel",
+        "sentiment": "negatif"
+      }
+    ],
+    "status": "success",
+    "error": null
+  },
+  {
+    "review_id": 96,
+    "review_text": "Hotel jadul yg nempel dengan mall citraland, msh terjaga dg baik. Harga msh bertahan di tinggi😁",
+    "aspects": [
+      {
+        "category": "Lokasi",
+        "target": "Hotel jadul yg nempel dengan mall citraland",
+        "opinion": "msh terjaga dg baik",
+        "sentiment": "positif"
+      },
+      {
+        "category": "Harga",
+        "target": "Harga",
+        "opinion": "masih bertahan di tinggi",
+        "sentiment": "positif"
+      }
+    ],
+    "status": "success",
+    "error": null
+  },
+  {
+    "review_id": 97,
+    "review_text": "L’accueil, la gentillesse du personnel. La proximité de l’hôtel avec un centre commercial",
+    "aspects": [
+      {
+        "category": "Lokasi",
+        "target": "proksimitas dengan pusat perbelanjaan",
+        "opinion": "dekat",
+        "sentiment": "positif"
+      },
+      {
+        "category": "Pelayanan Staf",
+        "target": "keramahan staf",
+        "opinion": "gentillesse",
+        "sentiment": "positif"
+      }
+    ],
+    "status": "success",
+    "error": null
+  },
+  {
+    "review_id": 98,
+    "review_text": "Business · Solo Rooms: 5/5  Service: 5/5 |  Location: 4/5 Everything about my stay here was good  From the moment I arrived, I was accommodated on a non-smoking floor. They upgraded my room  My room was wonderful, quiet, clean, and packed with great amenities. The bed was incredibly comfortable, the bathroom was very nice, and the fantastic view. It truly felt like a luxury retreat. The location is incredibly convenient, especially for  travelers.   The hotel is directly connected to a mall, making shopping and dining effortless. Supermarkets, malls, and plenty of food and drink options are just a few meters away.    It’s incredibly walkable with easy access to the train and bus stations.    I felt completely secure throughout my stay thanks to their 24-hour security service. If you are looking for comfort, luxury, and ultimate convenience, this is the place to stay. I will definitely be back  Need a bathtub tho and the breakfast they have fruits salads, veggie salad drinks tea coffee bakery great main meals are more like Indonesian style so needs improvement make it western style also",
+    "aspects": [],
+    "status": "success",
+    "error": null
+  },
+  {
+    "review_id": 99,
+    "review_text": "Clean and convenient",
+    "aspects": [
+      {
+        "category": "Kebersihan Hotel",
+        "target": "Kebersihan",
+        "opinion": "clean",
+        "sentiment": "positif"
+      },
+      {
+        "category": "Fasilitas Kamar",
+        "target": "Fasilitas",
+        "opinion": "convenient",
+        "sentiment": "positif"
+      }
+    ],
+    "status": "success",
+    "error": null
+  },
+  {
+    "review_id": 100,
+    "review_text": "這個酒店各方面還可以，但是前台服務很差，我們房間訂重了 需要退訂多餘的，也沒有住，解釋半天怎麼都不給退。害的多花好多錢。差評！",
+    "aspects": [
+      {
+        "category": "Pelayanan Staf",
+        "target": "Front Desk",
+        "opinion": "sangat buruk",
+        "sentiment": "negatif"
+      },
+      {
+        "category": "Fasilitas Kamar",
+        "target": "Kamar",
+        "opinion": "dipesan ulang",
+        "sentiment": "negatif"
+      },
+      {
+        "category": "Proses Check-in",
+        "target": "Proses Check-in",
+        "opinion": "tidak efisien",
+        "sentiment": "negatif"
+      }
+    ],
+    "status": "success",
+    "error": null
+  },
+  {
+    "review_id": 101,
+    "review_text": "The hotel location good easy access to all place of interest in Jakarta . The hotel services great & warm but the hotel facilities need to improve especially tighten the room being use smoking by previous guess . Other than that it’s highligh recommend for great stay either family or business trip.",
+    "aspects": [
+      {
+        "category": "Lokasi",
+        "target": "lokasi hotel",
+        "opinion": "good",
+        "sentiment": "positif"
+      },
+      {
+        "category": "Fasilitas Kamar",
+        "target": "fasilitas kamar",
+        "opinion": "need to improve",
+        "sentiment": "negatif"
+      },
+      {
+        "category": "Fasilitas Kamar",
+        "target": "kamar",
+        "opinion": "tighten the room being use smoking by previous guess",
+        "sentiment": "negatif"
+      }
+    ],
+    "status": "success",
+    "error": null
+  },
+  {
+    "review_id": 102,
+    "review_text": "They are very polite and give me a sense of security. Good location next door is big shopping mall.",
+    "aspects": [
+      {
+        "category": "Pelayanan Staf",
+        "target": "staf",
+        "opinion": "very polite",
+        "sentiment": "positif"
+      },
+      {
+        "category": "Lokasi",
+        "target": "lokasi",
+        "opinion": "good location",
+        "sentiment": "positif"
+      },
+      {
+        "category": "Keamanan",
+        "target": "sense of security",
+        "opinion": "give me a sense of security",
+        "sentiment": "positif"
+      }
+    ],
+    "status": "success",
+    "error": null
+  },
+  {
+    "review_id": 103,
+    "review_text": "Imbron the Senior Manager was very helpful and exceptional. Thank you Imbron for your excellent customer service and also hospitality. Imbron is a STAR",
+    "aspects": [
+      {
+        "category": "Pelayanan Staf",
+        "target": "Imbron the Senior Manager",
+        "opinion": "very helpful and exceptional",
+        "sentiment": "positif"
+      },
+      {
+        "category": "Fasilitas Hotel",
+        "target": "customer service and hospitality",
+        "opinion": "excellent",
+        "sentiment": "positif"
+      }
+    ],
+    "status": "success",
+    "error": null
+  },
+  {
+    "review_id": 104,
+    "review_text": "A shopping mall just next to the hotel, very good, polite staffs. For traveller, here’s not a good location because is jam around if you want to go to the attractions, the distance also very far. But overall is good if you come for a business trip and the location is base on your preference",
+    "aspects": [
+      {
+        "category": "Lokasi",
+        "target": "lokasi hotel",
+        "opinion": "tidak baik untuk wisatawan karena macet dan jauh dari atraksi",
+        "sentiment": "negatif"
+      },
+      {
+        "category": "Lokasi",
+        "target": "lokasi hotel",
+        "opinion": "cocok untuk bisnis",
+        "sentiment": "positif"
+      }
+    ],
+    "status": "success",
+    "error": null
+  },
+  {
+    "review_id": 105,
+    "review_text": "洗澡水會忽冷忽熱，供水不穩定，酒店設施比較舊，電梯需要插卡才能到達樓層，插卡才能進房間，房務員收拾房間都很仔細",
+    "aspects": [
+      {
+        "category": "Fasilitas Kamar",
+        "target": "Kamar Mandi",
+        "opinion": "mengalami masalah",
+        "sentiment": "negatif"
+      },
+      {
+        "category": "Fasilitas Hotel",
+        "target": "Sistem Pemanggilan Elevator",
+        "opinion": "perlu kartu",
+        "sentiment": "negatif"
+      },
+      {
+        "category": "Fasilitas Kamar",
+        "target": "Kamar",
+        "opinion": "memiliki fasilitas lama",
+        "sentiment": "negatif"
+      }
+    ],
+    "status": "success",
+    "error": null
+  },
+  {
+    "review_id": 106,
+    "review_text": "I have stayed many times when I travel to Jakarta for my business trip, not much comment for this hotel.",
+    "aspects": [],
+    "status": "success",
+    "error": null
+  },
+  {
+    "review_id": 107,
+    "review_text": "Otel temiz ve güzel kahvaltı güzel çalışanlar güler yüzlü ve iyi",
+    "aspects": [
+      {
+        "category": "Kebersihan Hotel",
+        "target": "Otel",
+        "opinion": "temiz",
+        "sentiment": "positif"
+      },
+      {
+        "category": "Sarapan",
+        "target": "kahvaltı",
+        "opinion": "geliğ",
+        "sentiment": "positif"
+      },
+      {
+        "category": "Pelayanan Staf",
+        "target": "çalışanlar",
+        "opinion": "güler yüzlü ve iyi",
+        "sentiment": "positif"
+      }
+    ],
+    "status": "success",
+    "error": null
+  },
+  {
+    "review_id": 108,
+    "review_text": "ONE of My frequent hotels during my work in West Jakarta. My family love the facility, location as its connected to a mall.",
+    "aspects": [
+      {
+        "category": "Lokasi",
+        "target": "lokasi",
+        "opinion": "connected to a mall",
+        "sentiment": "positif"
+      }
+    ],
+    "status": "success",
+    "error": null
+  },
+  {
+    "review_id": 109,
+    "review_text": "Bagus pelayanannya",
+    "aspects": [
+      {
+        "category": "Pelayanan Staf",
+        "target": "pelayan",
+        "opinion": "bagus",
+        "sentiment": "positif"
+      }
+    ],
+    "status": "success",
+    "error": null
+  },
+  {
+    "review_id": 110,
+    "review_text": "Nice stay. The location is very good as it can direct access to the shopping mall.",
+    "aspects": [
+      {
+        "category": "Lokasi",
+        "target": "lokasi",
+        "opinion": "very good",
+        "sentiment": "positif"
+      }
+    ],
+    "status": "success",
+    "error": null
+  },
+  {
+    "review_id": 111,
+    "review_text": "Sangat menyenangkan menginap disini, selain fasilitas yang masih terawat, akses juga mudah, sebelah mall, mantap",
+    "aspects": [
+      {
+        "category": "Lokasi",
+        "target": "lokasi hotel",
+        "opinion": "sebelah mall",
+        "sentiment": "positif"
+      },
+      {
+        "category": "Fasilitas Hotel",
+        "target": "fasilitas",
+        "opinion": "masih terawat",
+        "sentiment": "positif"
+      },
+      {
+        "category": "Lokasi",
+        "target": "akses",
+        "opinion": "mudah",
+        "sentiment": "positif"
+      }
+    ],
+    "status": "success",
+    "error": null
+  },
+  {
+    "review_id": 112,
+    "review_text": "Located strategically next to a nice mall Bathroom amenities could be upgraded Breakfast was queue-free Assigned to a room next to a family groups, very very noisy at times Could use some room revamp",
+    "aspects": [
+      {
+        "category": "Lokasi",
+        "target": "lokasi",
+        "opinion": "strategis",
+        "sentiment": "positif"
+      },
+      {
+        "category": "Fasilitas Kamar",
+        "target": "bathroom amenities",
+        "opinion": "could be upgraded",
+        "sentiment": "negatif"
+      },
+      {
+        "category": "Sarapan",
+        "target": "sarapan",
+        "opinion": "queue-free",
+        "sentiment": "positif"
+      },
+      {
+        "category": "Kamar",
+        "target": "kamar",
+        "opinion": "noisy",
+        "sentiment": "negatif"
+      },
+      {
+        "category": "Fasilitas Kamar",
+        "target": "kamar",
+        "opinion": "could use some room revamp",
+        "sentiment": "negatif"
+      }
+    ],
+    "status": "success",
+    "error": null
+  },
+  {
+    "review_id": 113,
+    "review_text": "Very nice hotel, friendly staff and perfect location. 45 minuten from the airport an connected to shopping mall. Rooms are complete, everything present what you need. If you need some, ask, and you will get it. Breakfast is very good, much choise and nice food. I will recommen this hotel.",
+    "aspects": [
+      {
+        "category": "Pelayanan Staf",
+        "target": "staff",
+        "opinion": "friendly",
+        "sentiment": "positif"
+      },
+      {
+        "category": "Lokasi",
+        "target": "lokasi",
+        "opinion": "perfect",
+        "sentiment": "positif"
+      },
+      {
+        "category": "Fasilitas Kamar",
+        "target": "Rooms",
+        "opinion": "complete",
+        "sentiment": "positif"
+      },
+      {
+        "category": "Sarapan",
+        "target": "Breakfast",
+        "opinion": "very good",
+        "sentiment": "positif"
+      },
+      {
+        "category": "Fasilitas Hotel",
+        "target": "connected to shopping mall",
+        "opinion": "connected",
+        "sentiment": "positif"
+      }
+    ],
+    "status": "success",
+    "error": null
+  },
+  {
+    "review_id": 114,
+    "review_text": "Regular stay at this hotel whenever I travelled to Jakarta. Conveniently located next Ciputra Mall.  Thats only place patronise during free time.  Nice cosy room but light too dim for liking. Can improve of the room cleanliness",
+    "aspects": [
+      {
+        "category": "Lokasi",
+        "target": "lokasi hotel",
+        "opinion": "conveniently located next to Ciputra Mall",
+        "sentiment": "positif"
+      },
+      {
+        "category": "Kebersihan Kamar",
+        "target": "kamar",
+        "opinion": "can improve of the room cleanliness",
+        "sentiment": "negatif"
+      },
+      {
+        "category": "Fasilitas Kamar",
+        "target": "kamar",
+        "opinion": "nice cosy room",
+        "sentiment": "positif"
+      },
+      {
+        "category": "Fasilitas Kamar",
+        "target": "kamar",
+        "opinion": "light too dim for liking",
+        "sentiment": "negatif"
+      }
+    ],
+    "status": "success",
+    "error": null
+  },
+  {
+    "review_id": 115,
+    "review_text": "太舒服了還有健身房下次還定",
+    "aspects": [
+      {
+        "category": "Fasilitas Hotel",
+        "target": "Fasilitas Hotel",
+        "opinion": "memuaskan",
+        "sentiment": "positif"
+      }
+    ],
+    "status": "success",
+    "error": null
+  },
+  {
+    "review_id": 116,
+    "review_text": "ENJOY BGT",
+    "aspects": [],
+    "status": "success",
+    "error": null
+  },
+  {
+    "review_id": 117,
+    "review_text": "Bersih dan pelayanannya sangat menusskan. Terima kasih akan book lagi dilain kesempatam",
+    "aspects": [
+      {
+        "category": "Kebersihan Kamar",
+        "target": "kamar",
+        "opinion": "bersih",
+        "sentiment": "positif"
+      },
+      {
+        "category": "Pelayanan Staf",
+        "target": "pelayanannya",
+        "opinion": "sangat menusskan",
+        "sentiment": "positif"
+      }
+    ],
+    "status": "success",
+    "error": null
+  },
+  {
+    "review_id": 118,
+    "review_text": "Quality of shower/face towers to be improved and breakfast to have more international favours or western varieties.",
+    "aspects": [
+      {
+        "category": "Sarapan",
+        "target": "breakfast",
+        "opinion": "to have more international favours or western varieties",
+        "sentiment": "negatif"
+      },
+      {
+        "category": "Fasilitas Kamar",
+        "target": "shower/face towers",
+        "opinion": "to be improved",
+        "sentiment": "negatif"
+      }
+    ],
+    "status": "success",
+    "error": null
+  },
+  {
+    "review_id": 119,
+    "review_text": "So far i stayed here, the service was good, the room was cleaned. Near with the shopping mall and easy to get food. Highly recommended 👍🏻",
+    "aspects": [
+      {
+        "category": "Pelayanan Staf",
+        "target": "service",
+        "opinion": "good",
+        "sentiment": "positif"
+      },
+      {
+        "category": "Kebersihan Kamar",
+        "target": "room",
+        "opinion": "cleaned",
+        "sentiment": "positif"
+      },
+      {
+        "category": "Lokasi",
+        "target": "near with the shopping mall",
+        "opinion": "easy to get food",
+        "sentiment": "positif"
+      }
+    ],
+    "status": "success",
+    "error": null
+  },
+  {
+    "review_id": 120,
+    "review_text": "Room are clean, great location, helpful staffs and nearby to the mall & airport",
+    "aspects": [
+      {
+        "category": "Kebersihan Kamar",
+        "target": "Room",
+        "opinion": "clean",
+        "sentiment": "positif"
+      },
+      {
+        "category": "Lokasi",
+        "target": "location",
+        "opinion": "great",
+        "sentiment": "positif"
+      },
+      {
+        "category": "Pelayanan Staf",
+        "target": "staffs",
+        "opinion": "helpful",
+        "sentiment": "positif"
+      },
+      {
+        "category": "Fasilitas Hotel",
+        "target": "mall & airport",
+        "opinion": "nearby",
+        "sentiment": "positif"
+      }
+    ],
+    "status": "success",
+    "error": null
+  },
+  {
+    "review_id": 121,
+    "review_text": "Well located and with mall. Room with carpets. TV programm with interruptions.",
+    "aspects": [
+      {
+        "category": "Lokasi",
+        "target": "lokasi",
+        "opinion": "well located",
+        "sentiment": "positif"
+      },
+      {
+        "category": "Fasilitas Kamar",
+        "target": "mall",
+        "opinion": "dengan mall",
+        "sentiment": "positif"
+      },
+      {
+        "category": "Fasilitas Kamar",
+        "target": "TV programm",
+        "opinion": "interruptions",
+        "sentiment": "negatif"
+      }
+    ],
+    "status": "success",
+    "error": null
+  },
+  {
+    "review_id": 122,
+    "review_text": "Good hotel in jakarta 👍 connected to a shoppong mall ciputra.. nice breakfast",
+    "aspects": [
+      {
+        "category": "Lokasi",
+        "target": "lokasi hotel",
+        "opinion": "good",
+        "sentiment": "positif"
+      },
+      {
+        "category": "Sarapan",
+        "target": "sarapan",
+        "opinion": "nice",
+        "sentiment": "positif"
+      }
+    ],
+    "status": "success",
+    "error": null
+  },
+  {
+    "review_id": 123,
+    "review_text": "The bath room watafel dirt....",
+    "aspects": [
+      {
+        "category": "Kamar Mandi",
+        "target": "watafel",
+        "opinion": "dirt",
+        "sentiment": "negatif"
+      }
+    ],
+    "status": "success",
+    "error": null
+  },
+  {
+    "review_id": 124,
+    "review_text": "Always loved to stay here because the attachment to the mall..easy to find food, pharmacy and etc..",
+    "aspects": [
+      {
+        "category": "Lokasi",
+        "target": "lokasi hotel",
+        "opinion": "mudah ditemukan",
+        "sentiment": "positif"
+      }
+    ],
+    "status": "success",
+    "error": null
+  },
+  {
+    "review_id": 125,
+    "review_text": "Amazing stay.  The service was 10/10. All the staff were very friendly, patient and could speak English fluently. The gym was very well equipped, at least 15-20 machines in working condition, targeting various muscles. Was shocked when I saw how big the space was. They also have various types of exercise classes for those who are interested to book.",
+    "aspects": [
+      {
+        "category": "Pelayanan Staf",
+        "target": "staff",
+        "opinion": "very friendly, patient and could speak English fluently",
+        "sentiment": "positif"
+      },
+      {
+        "category": "Fasilitas Hotel",
+        "target": "gym",
+        "opinion": "very well equipped",
+        "sentiment": "positif"
+      },
+      {
+        "category": "Fasilitas Hotel",
+        "target": "gym",
+        "opinion": "at least 15-20 machines in working condition",
+        "sentiment": "positif"
+      },
+      {
+        "category": "Fasilit,as Hotel",
+        "target": "gym",
+        "opinion": "was shocked when I saw how big the space was",
+        "sentiment": "positif"
+      },
+      {
+        "category": "Fasilitas Hotel",
+        "target": "exercise classes",
+        "opinion": "various types of exercise classes for those who are interested to book",
+        "sentiment": "positif"
+      }
+    ],
+    "status": "success",
+    "error": null
+  },
+  {
+    "review_id": 126,
+    "review_text": "Location is good and I have extended my stay with this hotel.",
+    "aspects": [
+      {
+        "category": "Lokasi",
+        "target": "Lokasi",
+        "opinion": "good",
+        "sentiment": "positif"
+      }
+    ],
+    "status": "success",
+    "error": null
+  },
+  {
+    "review_id": 127,
+    "review_text": "Excellent customer service and newly renovated rooms",
+    "aspects": [
+      {
+        "category": "Pelayanan Staf",
+        "target": "customer service",
+        "opinion": "excellent",
+        "sentiment": "positif"
+      },
+      {
+        "category": "Fasilitas Kamar",
+        "target": "rooms",
+        "opinion": "newly renovated",
+        "sentiment": "positif"
+      }
+    ],
+    "status": "success",
+    "error": null
+  },
+  {
+    "review_id": 128,
+    "review_text": "The hotel is nice..cozy..convenient..staff all so polite & very professional when explaining information & very details..",
+    "aspects": [
+      {
+        "category": "Pelayanan Staf",
+        "target": "staff",
+        "opinion": "polite & very professional",
+        "sentiment": "positif"
+      }
+    ],
+    "status": "success",
+    "error": null
+  },
+  {
+    "review_id": 129,
+    "review_text": "Nice hotel, clean and helpful staff.. great location.. thank you",
+    "aspects": [
+      {
+        "category": "Pelayanan Staf",
+        "target": "staf",
+        "opinion": "helpful",
+        "sentiment": "positif"
+      },
+      {
+        "category": "Kebersihan Hotel",
+        "target": "hotel",
+        "opinion": "clean",
+        "sentiment": "positif"
+      },
+      {
+        "category": "Lokasi",
+        "target": "lokasi",
+        "opinion": "great",
+        "sentiment": "positif"
+      }
+    ],
+    "status": "success",
+    "error": null
+  },
+  {
+    "review_id": 130,
+    "review_text": "Hotel tua yang menjadi kesatuan dengan mall Pelayanan ok",
+    "aspects": [
+      {
+        "category": "Pelayanan Staf",
+        "target": "Pelayanan",
+        "opinion": "ok",
+        "sentiment": "netral"
+      },
+      {
+        "category": "Fasilitas Hotel",
+        "target": "Hotel tua",
+        "opinion": "menjadi kesatuan dengan mall",
+        "sentiment": "netral"
+      }
+    ],
+    "status": "success",
+    "error": null
+  },
+  {
+    "review_id": 131,
+    "review_text": "Sercice was excellent especially the staffs sercing breakfast. Room was outdated. Bathtub needs to be change to a dated one.",
+    "aspects": [
+      {
+        "category": "Pelayanan Staf",
+        "target": "staffs sercing breakfast",
+        "opinion": "excellent",
+        "sentiment": "positif"
+      },
+      {
+        "category": "Fasilitas Kamar",
+        "target": "Room",
+        "opinion": "outdated",
+        "sentiment": "negatif"
+      },
+      {
+        "category": "Kamar Mandi",
+        "target": "Bathtub",
+        "opinion": "needs to be change to a dated one",
+        "sentiment": "negatif"
+      }
+    ],
+    "status": "success",
+    "error": null
+  },
+  {
+    "review_id": 132,
+    "review_text": "Booked for only 2 nights as a stop over in Jakarta before flying on. Room was decent, only downside being there were only amenities for 1 person despite booking for 2 people. Executive lounge has some great food and drink in the evening and meant we could try a few dishes, although it wasn't clear from our booking that food was included in the price, so nice bonus",
+    "aspects": [
+      {
+        "category": "Fasilitas Kamar",
+        "target": "fasilitas kamar",
+        "opinion": "hanya untuk 1 orang",
+        "sentiment": "negatif"
+      },
+      {
+        "category": "Restoran",
+        "target": "Executive lounge",
+        "opinion": "mempunyai makanan dan minuman yang bagus",
+        "sentiment": "positif"
+      },
+      {
+        "category": "Fasilitas Kamar",
+        "target": "fasilitas kamar",
+        "opinion": "tidak jelas bahwa makanan termasuk dalam harga",
+        "sentiment": "netral"
+      }
+    ],
+    "status": "success",
+    "error": null
+  },
+  {
+    "review_id": 133,
+    "review_text": "Lokasi terbaik dengan pelayanan yang luar biasa. Sangat nyaman dan menyenangka",
+    "aspects": [
+      {
+        "category": "Lokasi",
+        "target": "Lokasi",
+        "opinion": "terbaik",
+        "sentiment": "positif"
+      },
+      {
+        "category": "Pelayanan Staf",
+        "target": "pelayanan",
+        "opinion": "luar biasa",
+        "sentiment": "positif"
+      },
+      {
+        "category": "Fasilitas Kamar",
+        "target": "kamar",
+        "opinion": "nyaman",
+        "sentiment": "positif"
+      },
+      {
+        "category": "Fasilitas Kamar",
+        "target": "kamar",
+        "opinion": "menyenangkan",
+        "sentiment": "positif"
+      }
+    ],
+    "status": "success",
+    "error": null
+  },
+  {
+    "review_id": 134,
+    "review_text": "Direct access to popular mall in west Jakarta. Happy to stay here.",
+    "aspects": [
+      {
+        "category": "Lokasi",
+        "target": "akses langsung ke mall populer di Jakarta Barat",
+        "opinion": "mudah",
+        "sentiment": "positif"
+      }
+    ],
+    "status": "success",
+    "error": null
+  },
+  {
+    "review_id": 135,
+    "review_text": "very convenient and walk into the mall access for drink and foods.",
+    "aspects": [
+      {
+        "category": "Lokasi",
+        "target": "akses ke mall",
+        "opinion": "very convenient",
+        "sentiment": "positif"
+      }
+    ],
+    "status": "success",
+    "error": null
+  },
+  {
+    "review_id": 136,
+    "review_text": "Hotel is a bit old but fairly well maintained. Breakfast is good. It is connected to a mall and very convenient for shopping. Enjoyed the stay",
+    "aspects": [
+      {
+        "category": "Fasilitas Kamar",
+        "target": "fasilitas kamar",
+        "opinion": "fairly well maintained",
+        "sentiment": "positif"
+      },
+      {
+        "category": "Sarapan",
+        "target": "sarapan",
+        "opinion": "good",
+        "sentiment": "positif"
+      },
+      {
+        "category": "Lokasi",
+        "target": "lokasi",
+        "opinion": "connected to a mall and very convenient for shopping",
+        "sentiment": "positif"
+      }
+    ],
+    "status": "success",
+    "error": null
+  },
+  {
+    "review_id": 137,
+    "review_text": "Nice hotel, nice location, quality/price is good",
+    "aspects": [
+      {
+        "category": "Lokasi",
+        "target": "lokasi",
+        "opinion": "nice",
+        "sentiment": "positif"
+      },
+      {
+        "category": "Harga",
+        "target": "quality/price",
+        "opinion": "good",
+        "sentiment": "positif"
+      }
+    ],
+    "status": "success",
+    "error": null
+  },
+  {
+    "review_id": 138,
+    "review_text": "一般般，感覺不值這個價",
+    "aspects": [
+      {
+        "category": "Harga",
+        "target": "harga",
+        "opinion": "tidak sebanding dengan kualitas",
+        "sentiment": "negatif"
+      }
+    ],
+    "status": "success",
+    "error": null
+  },
+  {
+    "review_id": 139,
+    "review_text": "One of the best choices. Respective staff, great value, clean rooms and perfect breakfast. The best thing is the location and having Ciputra mall which is great mall full of shops and cheap prices. Highly recommended.",
+    "aspects": [
+      {
+        "category": "Pelayanan Staf",
+        "target": "staff",
+        "opinion": "great value",
+        "sentiment": "positif"
+      },
+      {
+        "category": "Kebersihan Kamar",
+        "target": "rooms",
+        "opinion": "clean",
+        "sentiment": "positif"
+      },
+      {
+        "category": "Sarapan",
+        "target": "breakfast",
+        "opinion": "perfect",
+        "sentiment": "positif"
+      },
+      {
+        "category": "Lokasi",
+        "target": "location",
+        "opinion": "best",
+        "sentiment": "positif"
+      },
+      {
+        "category": "Harga",
+        "target": "harga",
+        "opinion": "cheap prices",
+        "sentiment": "positif"
+      }
+    ],
+    "status": "success",
+    "error": null
+  },
+  {
+    "review_id": 140,
+    "review_text": "A very comfortable place to relax with your couple, also it's a good stop for your business trip, very recommend.",
+    "aspects": [
+      {
+        "category": "Fasilitas Hotel",
+        "target": "fasilitas",
+        "opinion": "very recommend",
+        "sentiment": "positif"
+      }
+    ],
+    "status": "success",
+    "error": null
+  },
+  {
+    "review_id": 141,
+    "review_text": "The building is old, smells and ￼water mods on the room ceiling!;(￼. Would not recommend my family and friends!",
+    "aspects": [
+      {
+        "category": "Fasilitas Kamar",
+        "target": "ceiling",
+        "opinion": "water mods",
+        "sentiment": "negatif"
+      },
+      {
+        "category": "Kebersihan Kamar",
+        "target": "kamar",
+        "opinion": "smells",
+        "sentiment": "negatif"
+      },
+      {
+        "category": "Fasilitas Kamar",
+        "target": "bangunan",
+        "opinion": "old",
+        "sentiment": "negatif"
+      }
+    ],
+    "status": "success",
+    "error": null
+  },
+  {
+    "review_id": 142,
+    "review_text": "I have stayed a lot of times at this hotel with my family. As it is directly connected to a shopping mall it is easy for my family members to look for food and shop lightly. The room is quite spacious and clean, it does seem to be newly renovated so it is brightly lit and quite cosy. The view is nice overlooking Jakarta’s busy traffic.  Breakfast option is very limited and food often ran out when I was there but it is expected as there is always a crowd. Airport transfer is available at the concierge and able to book before hand to ensure smooth journey.  During my last stay, however the one experience that put us off was the waiting for room during check in was not communicated properly causing us to wait until 4pm at the hotel lobby for the room. We were told the room would be ready in 30 mins but it turned out the aircon was not working and required repair, but staff did not inform us causing us to wait for a long time. We were tired from the long journey and would appreciate the heads up. However when we checked with staff a few times, we were only to be told the room was being prepared. This was one experience though, the rest of the stay was good.",
+    "aspects": [],
+    "status": "success",
+    "error": null
+  },
+  {
+    "review_id": 143,
+    "review_text": "When ever l  am Jakarta I  will stay here because l feel that this place takes care of me very well.",
+    "aspects": [
+      {
+        "category": "Lokasi",
+        "target": "Jakarta",
+        "opinion": "nyaman",
+        "sentiment": "positif"
+      }
+    ],
+    "status": "success",
+    "error": null
+  },
+  {
+    "review_id": 144,
+    "review_text": "Ciputra Hotal location is great. The bed is clean but the bathroom looked tired, need improving. The service is excellent.",
+    "aspects": [
+      {
+        "category": "Lokasi",
+        "target": "Lokasi",
+        "opinion": "great",
+        "sentiment": "positif"
+      },
+      {
+        "category": "Kebersihan Kamar",
+        "target": "bed",
+        "opinion": "clean",
+        "sentiment": "positif"
+      },
+      {
+        "category": "Kamar Mandi",
+        "target": "bathroom",
+        "opinion": "looked tired",
+        "sentiment": "negatif"
+      },
+      {
+        "category": "Pelayanan Staf",
+        "target": "service",
+        "opinion": "excellent",
+        "sentiment": "positif"
+      }
+    ],
+    "status": "success",
+    "error": null
+  },
+  {
+    "review_id": 145,
+    "review_text": "房間大，空氣質量好，睡眠質量優",
+    "aspects": [
+      {
+        "category": "Fasilitas Kamar",
+        "target": "Kamar",
+        "opinion": "besar",
+        "sentiment": "positif"
+      },
+      {
+        "category": "Fasilitas Kamar",
+        "target": "Kamar",
+        "opinion": "udara bersih",
+        "sentiment": "positif"
+      },
+      {
+        "category": "Fasilit,",
+        "target": "",
+        "opinion": "",
+        "sentiment": "netral"
+      }
+    ],
+    "status": "success",
+    "error": null
+  },
+  {
+    "review_id": 146,
+    "review_text": "Everything is good.  But need to improve on the breakfast menu. All vegetable item and only 1 item of meat (either fish or chicken).",
+    "aspects": [
+      {
+        "category": "Sarapan",
+        "target": "menu sarapan",
+        "opinion": "perlu diperbaiki",
+        "sentiment": "negatif"
+      }
+    ],
+    "status": "success",
+    "error": null
+  },
+  {
+    "review_id": 147,
+    "review_text": "One of our favourite places to stay in Jakarta, friendly staff,nice rooms,great location with mall attached.",
+    "aspects": [
+      {
+        "category": "Pelayanan Staf",
+        "target": "staff",
+        "opinion": "friendly",
+        "sentiment": "positif"
+      },
+      {
+        "category": "Fasilitas Kamar",
+        "target": "rooms",
+        "opinion": "nice",
+        "sentiment": "positif"
+      },
+      {
+        "category": "Lokasi",
+        "target": "lokasi",
+        "opinion": "great",
+        "sentiment": "positif"
+      }
+    ],
+    "status": "success",
+    "error": null
+  },
+  {
+    "review_id": 148,
+    "review_text": "Stayed for 10 days here. Unlike my previous experience last year with this hotel, this time the experience had been nothing but amazing. I like the fact that it’s located beside the mall and close to the bigger malls like Central Park. Staff has been always wonderful here. The room was also clean and great, but I think my room was upgraded to executive queen room. Appreciate the management who’ve been continuously improving the hotel experience. Definitely going to visit again on my stay at Jakarta.",
+    "aspects": [
+      {
+        "category": "Lokasi",
+        "target": "lokasi dekat mall dan mall besar seperti Central Park",
+        "opinion": "suka",
+        "sentiment": "positif"
+      },
+      {
+        "category": "Pelayanan Staf",
+        "target": "staf",
+        "opinion": "selalu baik",
+        "sentiment": "positif"
+      },
+      {
+        "category": "Fasilitas Kamar",
+        "target": "kamar",
+        "opinion": "bersih dan bagus",
+        "sentiment": "positif"
+      },
+      {
+        "category": "Fasilitas Kamar",
+        "target": "kamar",
+        "opinion": "ditingkatkan ke kamar eksekutif queen",
+        "sentiment": "positif"
+      },
+      {
+        "category": "Fasilitas Hotel",
+        "target": "pengelolaan hotel",
+        "opinion": "berhasil meningkatkan pengalaman hotel",
+        "sentiment": "positif"
+      }
+    ],
+    "status": "success",
+    "error": null
+  },
+  {
+    "review_id": 149,
+    "review_text": "I stayed at this hotel more than 30 years ago, they have refreshed the rooms except the toilet. The breakfast was also very good with many food choices in the morning. It is a convenient hotel to stay as there is a shopping mall connected to it and there are many shops and activities and restaurant food choices. We had some trouble with one of the room and we made a complain and Ms. Erika (Duty Manager) response was swift, efficient and she sort it out quickly for us. Special shout out for the service rendered.  Overall it was an enjoyable  stay and will come back again the next time in Jakarta",
+    "aspects": [
+      {
+        "category": "Sarapan",
+        "target": "sarapan",
+        "opinion": "very good",
+        "sentiment": "positif"
+      },
+      {
+        "category": "Fasilitas Kamar",
+        "target": "kamar",
+        "opinion": "refreshed",
+        "sentiment": "positif"
+      },
+      {
+        "category": "Lokasi",
+        "target": "lokasi",
+        "opinion": "convenient",
+        "sentiment": "positif"
+      },
+      {
+        "category": "Pelayanan Staf",
+        "target": "Ms. Erika (Duty Manager)",
+        "opinion": "swift, efficient",
+        "sentiment": "positif"
+      },
+      {
+        "category": "Fasilitas Hotel",
+        "target": "shopping mall connected",
+        "opinion": "convenient",
+        "sentiment": "positif"
+      },
+      {
+        "category": "Fas. Hotel",
+        "target": "many shops and activities and restaurant food choices",
+        "opinion": "many",
+        "sentiment": "positif"
+      }
+    ],
+    "status": "success",
+    "error": null
+  },
+  {
+    "review_id": 150,
+    "review_text": "I've stayed at a couple of hotels in my multiple visits to Jakarta, but it was my first time staying at Ciputra hotel. While the location is nice, as it is centrally located and has a small shopping malls nearby, the hotel itself is not that great. The hotel is quite old and due for a renovation. The bed is fine, but the carpet, shower curtains, room wardrobe and bathroom are really old and water flow and showerhead itself is not working that well. Hope there will be a major renovation soon.",
+    "aspects": [
+      {
+        "category": "Lokasi",
+        "target": "lokasi",
+        "opinion": "nice",
+        "sentiment": "positif"
+      },
+      {
+        "category": "Fasilitas Kamar",
+        "target": "karpet",
+        "opinion": "really old",
+        "sentiment": "negatif"
+      },
+      {
+        "category": "Fasilitas Kamar",
+        "target": "shower curtains",
+        "opinion": "really old",
+        "sentiment": "negatif"
+      },
+      {
+        "category": "Fasilit,",
+        "target": "",
+        "opinion": "",
+        "sentiment": "netral"
+      }
+    ],
+    "status": "success",
+    "error": null
+  },
+  {
+    "review_id": 151,
+    "review_text": "The hotel is very old, some rooms have poor air conditioning. Service is not that good to be fair .",
+    "aspects": [
+      {
+        "category": "AC",
+        "target": "AC kamar",
+        "opinion": "buruk",
+        "sentiment": "negatif"
+      },
+      {
+        "category": "Pelayanan Staf",
+        "target": "pelayanan",
+        "opinion": "tidak baik",
+        "sentiment": "negatif"
+      }
+    ],
+    "status": "success",
+    "error": null
+  },
+  {
+    "review_id": 152,
+    "review_text": "Everything is good and clean with great service",
+    "aspects": [
+      {
+        "category": "Pelayanan Staf",
+        "target": "service",
+        "opinion": "great",
+        "sentiment": "positif"
+      },
+      {
+        "category": "Kebersihan Hotel",
+        "target": "clean",
+        "opinion": "good",
+        "sentiment": "positif"
+      },
+      {
+        "category": "Fasilitas Hotel",
+        "target": "Everything",
+        "opinion": "good",
+        "sentiment": "positif"
+      }
+    ],
+    "status": "success",
+    "error": null
+  },
+  {
+    "review_id": 153,
+    "review_text": "Good Hotel",
+    "aspects": [],
+    "status": "success",
+    "error": null
+  },
+  {
+    "review_id": 154,
+    "review_text": "設施老舊，其他的滿分",
+    "aspects": [
+      {
+        "category": "Fasilitas Kamar",
+        "target": "Fasilitas",
+        "opinion": "lambat",
+        "sentiment": "negatif"
+      }
+    ],
+    "status": "success",
+    "error": null
+  },
+  {
+    "review_id": 155,
+    "review_text": "地理位置優越，交通方便",
+    "aspects": [
+      {
+        "category": "Lokasi",
+        "target": "Lokasi",
+        "opinion": "优越",
+        "sentiment": "positif"
+      }
+    ],
+    "status": "success",
+    "error": null
+  },
+  {
+    "review_id": 156,
+    "review_text": "So nice, lokasinya so strategic, near transjakarta bus stop, next to ciputra mall. Can walk around 20 minutes to central park and neo sono, or can take bus just 1 stop. Affordable price with a great facilities. Hotel design is so nice too",
+    "aspects": [
+      {
+        "category": "Lokasi",
+        "target": "lokasi",
+        "opinion": "so strategic",
+        "sentiment": "positif"
+      },
+      {
+        "category": "Harga",
+        "target": "harga",
+        "opinion": "affordable",
+        "sentiment": "positif"
+      },
+      {
+        "category": "Fasilitas Hotel",
+        "target": "fasilitas",
+        "opinion": "great facilities",
+        "sentiment": "positif"
+      },
+      {
+        "category": "Fasilitas Hotel",
+        "target": "desain hotel",
+        "opinion": "so nice",
+        "sentiment": "positif"
+      }
+    ],
+    "status": "success",
+    "error": null
+  },
+  {
+    "review_id": 157,
+    "review_text": "Nice stay overall. Location is strategic. The bathroom in the normal deluxe room was a bit old (bathtub only shower), so we requested for an upgrade to grand premium room which had a proper shower room. But, it was pleasant. The reception desks were all very attentive and responsible.",
+    "aspects": [
+      {
+        "category": "Lokasi",
+        "target": "Lokasi",
+        "opinion": "strategic",
+        "sentiment": "positif"
+      },
+      {
+        "category": "Fasilitas Kamar",
+        "target": "bathroom",
+        "opinion": "a bit old",
+        "sentiment": "negatif"
+      },
+      {
+        "category": "Fasilitas Kamar",
+        "target": "shower room",
+        "opinion": "proper",
+        "sentiment": "positif"
+      },
+      {
+        "category": "Pelayanan Staf",
+        "target": "reception desks",
+        "opinion": "very attentive and responsible",
+        "sentiment": "positif"
+      }
+    ],
+    "status": "success",
+    "error": null
+  },
+  {
+    "review_id": 158,
+    "review_text": "Good if you are looking for an affordable solution that is near to Central Park Mall",
+    "aspects": [
+      {
+        "category": "Lokasi",
+        "target": "lokasi",
+        "opinion": "dekat dengan Central Park Mall",
+        "sentiment": "positif"
+      },
+      {
+        "category": "Harga",
+        "target": "harga",
+        "opinion": "affordable",
+        "sentiment": "positif"
+      }
+    ],
+    "status": "success",
+    "error": null
+  },
+  {
+    "review_id": 159,
+    "review_text": "good place to stay. great amenities. location nearby attraction places. go to place to stay whenever in kl.",
+    "aspects": [
+      {
+        "category": "Lokasi",
+        "target": "lokasi",
+        "opinion": "nearby attraction places",
+        "sentiment": "positif"
+      },
+      {
+        "category": "Fasilitas Hotel",
+        "target": "amenities",
+        "opinion": "great",
+        "sentiment": "positif"
+      },
+      {
+        "category": "Fasilitas Hotel",
+        "target": "amenities",
+        "opinion": "good",
+        "sentiment": "positif"
+      }
+    ],
+    "status": "success",
+    "error": null
+  },
+  {
+    "review_id": 160,
+    "review_text": "ممتاز جدا تحته مول",
+    "aspects": [],
+    "status": "success",
+    "error": null
+  },
+  {
+    "review_id": 161,
+    "review_text": "性價比高，價格實惠。",
+    "aspects": [
+      {
+        "category": "Harga",
+        "target": "Harga",
+        "opinion": "memuaskan",
+        "sentiment": "positif"
+      }
+    ],
+    "status": "success",
+    "error": null
+  },
+  {
+    "review_id": 162,
+    "review_text": "The bathroom floor is always wet and quite dangerous. Breakfast is delicious, and the variety is generous. The room A/c borderline freezing. 7/10 plus another point for connecting directly to the mall",
+    "aspects": [
+      {
+        "category": "Kamar Mandi",
+        "target": "lantai kamar mandi",
+        "opinion": "selalu basah dan berbahaya",
+        "sentiment": "negatif"
+      },
+      {
+        "category": "Sarapan",
+        "target": "sarapan",
+        "opinion": "lezat dan beragam",
+        "sentiment": "positif"
+      },
+      {
+        "category": "AC",
+        "target": "AC kamar",
+        "opinion": "mendekati beku",
+        "sentiment": "negatif"
+      },
+      {
+        "category": "Lokasi",
+        "target": "konektivitas ke pusat perbelanjaan",
+        "opinion": "langsung terhubung ke mall",
+        "sentiment": "positif"
+      }
+    ],
+    "status": "success",
+    "error": null
+  },
+  {
+    "review_id": 163,
+    "review_text": "Nice Hotel in mall and easy to access to Mall. Nice swimmingpool",
+    "aspects": [
+      {
+        "category": "Lokasi",
+        "target": "lokasi hotel",
+        "opinion": "nice",
+        "sentiment": "positif"
+      },
+      {
+        "category": "Kolam Renang",
+        "target": "kolam renang",
+        "opinion": "nice",
+        "sentiment": "positif"
+      }
+    ],
+    "status": "success",
+    "error": null
+  },
+  {
+    "review_id": 164,
+    "review_text": "The hotel is quite run down. Management should take hygiene issues more seriously!! A ********** was found in the kettle.",
+    "aspects": [
+      {
+        "category": "Kebersihan Hotel",
+        "target": "kebersihan umum",
+        "opinion": "tidak memadai",
+        "sentiment": "negatif"
+      },
+      {
+        "category": "Kebersihan Hotel",
+        "target": "kettle",
+        "opinion": "terdapat serangga",
+        "sentiment": "negatif"
+      }
+    ],
+    "status": "success",
+    "error": null
+  },
+  {
+    "review_id": 165,
+    "review_text": "The font desk staff were pleasant, helpful and honest when they overcharged my booking and corrected accordingly. I particularly appreciate the fact that the Front Office Manager personally apologised for being unable to provide me a non-smoking room per my booking and compensated by upgrading my room to a suite.",
+    "aspects": [
+      {
+        "category": "Pelayanan Staf",
+        "target": "Staf Front Desk",
+        "opinion": "pleasant, helpful and honest",
+        "sentiment": "positif"
+      },
+      {
+        "category": "Pelayanan Staf",
+        "target": "Front Office Manager",
+        "opinion": "personally apologised",
+        "sentiment": "positif"
+      },
+      {
+        "category": "Fasilitas Kamar",
+        "target": "kamar non-smoking",
+        "opinion": "unable to provide",
+        "sentiment": "negatif"
+      },
+      {
+        "category": "Fasilitas Kamar",
+        "target": "upgrading to suite",
+        "opinion": "compensated by upgrading",
+        "sentiment": "positif"
+      }
+    ],
+    "status": "success",
+    "error": null
+  },
+  {
+    "review_id": 166,
+    "review_text": "I stayed here for many many times since year 2018 until now. For me, the hotel is good but just feel abit old.",
+    "aspects": [
+      {
+        "category": "Fasilitas Kamar",
+        "target": "kamar",
+        "opinion": "baik",
+        "sentiment": "positif"
+      },
+      {
+        "category": "Fasilitas Kamar",
+        "target": "fasilitas kamar",
+        "opinion": "sedikit tua",
+        "sentiment": "netral"
+      }
+    ],
+    "status": "success",
+    "error": null
+  },
+  {
+    "review_id": 167,
+    "review_text": "Old hotel but well maintain, all good!",
+    "aspects": [
+      {
+        "category": "Fasilitas Kamar",
+        "target": "fasilitas kamar",
+        "opinion": "well maintain",
+        "sentiment": "positif"
+      }
+    ],
+    "status": "success",
+    "error": null
+  },
+  {
+    "review_id": 168,
+    "review_text": "Good service! Food is relatively expensive",
+    "aspects": [
+      {
+        "category": "Harga",
+        "target": "Harga makanan",
+        "opinion": "relatively expensive",
+        "sentiment": "negatif"
+      }
+    ],
+    "status": "success",
+    "error": null
+  },
+  {
+    "review_id": 169,
+    "review_text": "Pleasant hotel with convenience of shopping mall next door.",
+    "aspects": [
+      {
+        "category": "Lokasi",
+        "target": "shopping mall next door",
+        "opinion": "convenience",
+        "sentiment": "positif"
+      }
+    ],
+    "status": "success",
+    "error": null
+  },
+  {
+    "review_id": 170,
+    "review_text": "位置方便，吃的也好",
+    "aspects": [
+      {
+        "category": "Lokasi",
+        "target": "lokasi",
+        "opinion": "mudah dijangkau",
+        "sentiment": "positif"
+      }
+    ],
+    "status": "success",
+    "error": null
+  },
+  {
+    "review_id": 171,
+    "review_text": "What we like 1. Hotel connected to mall. Convenience to food snacks toiletries and groceries  2. Room is clean and spacious   What we don’t like 1. Shower water at 8th floor was not hot just lukewarm. But after we were move to 16th floor, all is good 2. We were asked to moved to 16th floor due to lighting maintenance/fixtures. The reception called us many times asking us if we want to move rooms  without telling the reason. Only when I ask “why do u keep asking us to move?”, then only they tell the real reason. I would appreciate to have 1 call with proper explanation, and their proposal.   Photo attached is just my girl sowing her homework in the room 😀",
+    "aspects": [
+      {
+        "category": "Lokasi",
+        "target": "konektivitas ke mall",
+        "opinion": "nyaman",
+        "sentiment": "positif"
+      },
+      {
+        "category": "Fasilitas Kamar",
+        "target": "kamar",
+        "opinion": "bersih dan luas",
+        "sentiment": "positif"
+      },
+      {
+        "category": "Kamar Mandi",
+        "target": "shower di lantai 8",
+        "opinion": "suhu air tidak panas",
+        "sentiment": "negatif"
+      },
+      {
+        "category": "Fasilitas Kamar",
+        "target": "kamar",
+        "opinion": "dipindahkan karena maintenance",
+        "sentiment": "negatif"
+      },
+      {
+        "category": "Pelayanan Staf",
+        "target": "reception",
+        "opinion": "tidak memberi penjelasan sebelum memindahkan",
+        "sentiment": "negatif"
+      }
+    ],
+    "status": "success",
+    "error": null
+  },
+  {
+    "review_id": 172,
+    "review_text": "I like the location was amazing close the the mall the have nice breakfast also",
+    "aspects": [
+      {
+        "category": "Lokasi",
+        "target": "lokasi",
+        "opinion": "amazing close the the mall",
+        "sentiment": "positif"
+      },
+      {
+        "category": "Sarapan",
+        "target": "breakfast",
+        "opinion": "nice",
+        "sentiment": "positif"
+      }
+    ],
+    "status": "success",
+    "error": null
+  }
+]
