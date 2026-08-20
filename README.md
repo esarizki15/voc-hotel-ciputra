@@ -141,19 +141,47 @@ Ketika data review hotel Ciputra sudah tersedia, dataset dapat diganti tanpa per
 ```text
 voc-hotel-ciputra/
 │
-├── data/
+├── components/           # Komponen UI Streamlit
+│   ├── charts.py         # Visualisasi chart Plotly
+│   ├── dashboard.py      # Rendering tab dashboard utama
+│   ├── evidence.py       # Rendering evidence ulasan pelanggan
+│   ├── header.py         # Rendering header aplikasi
+│   ├── kpi.py            # Rendering metric cards KPI
+│   ├── live_analyzer.py  # Rendering tab analisis ulasan langsung
+│   ├── priority.py       # Rendering daftar prioritas perbaikan
+│   └── upload.py         # Rendering tab unggah dataset
+│
+├── config/               # File konfigurasi sistem
+│   └── settings.py       # Pengaturan base dir, data path, model, dll.
+│
+├── data/                 # Penyimpanan dataset dan data terproses
 │   ├── train_preprocess.txt
-│   └── processed_reviews.json
+│   ├── processed_reviews.json
+│   ├── processed_combined-reviews.json
+│   └── gold_reviews      # Dataset evaluasi emas (eksperimental)
 │
-├── engine/
+├── engine/               # Core engine pemrosesan ABSA
 │   ├── __init__.py
-│   ├── ollama_client.py
-│   ├── batch_processor.py
-│   └── aggregator.py
+│   ├── ollama_client.py  # Client API Ollama untuk Qwen3:8B
+│   ├── batch_processor.py# Pemroses ulasan skala besar (batch)
+│   └── aggregator.py     # Aggregator statistik, sentimen, & priority score
 │
-├── app.py
-├── requirements.txt
-└── README.md
+├── evaluation/           # Pengujian & metrik evaluasi model (eksperimental)
+│   └── evaluation_metrics.py
+│
+├── scripts/              # Helper scripts
+│   └── create_gold_template.py # Script pembuat template evaluasi
+│
+├── services/             # Logic service untuk upload & pemrosesan file
+│   ├── analysis_service.py
+│   └── upload_service.py
+│
+├── utils/                # Helper / utility format data
+│   └── formatting.py
+│
+├── app.py                # Main entrypoint Streamlit dashboard
+├── requirements.txt      # Dependensi proyek
+└── README.md             # Dokumentasi proyek
 ```
 
 ## ⚙️ Requirements
@@ -171,6 +199,8 @@ streamlit
 pandas
 plotly
 requests
+scikit-learn
+openpyxl
 ```
 
 ## 🚀 Installation
@@ -318,6 +348,10 @@ Kamarnya sangat bersih dan staf resepsionis ramah,
 tetapi Wi-Fi di lantai 3 sangat lambat dan AC agak berisik.
 ```
 
+### 3. Upload & Analisis Dataset
+
+Memungkinkan pengguna mengunggah file ulasan baru (format CSV/Excel) dan memprosesnya secara langsung (batch processing) menggunakan model Qwen3:8B. Hasil analisis akan disimpan otomatis sebagai dataset aktif baru yang bisa langsung divisualisasikan pada dashboard.
+
 ## 📈 Priority Score
 
 Priority Score saat ini menggunakan formula sederhana:
@@ -449,14 +483,7 @@ Qwen3:8B digunakan melalui prompting dan belum melalui fine-tuning khusus domain
 
 ### Evaluation
 
-PoC belum memiliki evaluasi benchmark khusus untuk:
-- Aspect Extraction Accuracy
-- Sentiment Accuracy
-- Precision
-- Recall
-- F1-Score
-
-Evaluasi dapat menjadi tahap berikutnya setelah tersedia dataset berlabel yang representatif.
+Modul pengujian metrik evaluasi (`evaluation/evaluation_metrics.py`) saat ini masih dalam tahap **eksperimental dan pengembangan awal** (belum sepenuhnya diuji/dijalankan secara otomatis). Pengujian akurasi ABSA secara menyeluruh akan dilakukan setelah tersedia dataset berlabel emas (gold dataset) yang representatif.
 
 ### Priority Score
 
