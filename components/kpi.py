@@ -108,7 +108,7 @@ def render_kpis(kpis, active_aggregator=None):
                 reviews_data.append(
                     {
                         "Review ID": r_id,
-                        "Nama Hotel": r_hotel,
+                        # "Nama Hotel": r_hotel,
                         "Teks Review Pelanggan": r_text,
                         "Aspek Terdeteksi": (
                             len(aspects) if isinstance(aspects, list) else 0

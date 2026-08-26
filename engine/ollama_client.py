@@ -3,6 +3,7 @@ import re
 from typing import Any, Dict, List, Optional
 
 import requests
+from config.settings import OLLAMA_BASE_URL, OLLAMA_MODEL
 
 
 class OllamaABSAClient:
@@ -13,8 +14,8 @@ class OllamaABSAClient:
 
     def __init__(
         self,
-        base_url: str = "http://localhost:11434",
-        model: str = "qwen3:8b",
+        base_url: str = OLLAMA_BASE_URL,
+        model: str = OLLAMA_MODEL,
         timeout: int = 300,
     ):
         self.base_url = base_url.rstrip("/")
@@ -61,13 +62,13 @@ class OllamaABSAClient:
         return self.model_exists()
 
     # ========================================================
-    # PROMPT DESIGN (OPTIMIZED FOR FAST INFERENCE)
+    # PROMPT DESIGN
     # ========================================================
 
     def _build_prompt(self, review: str) -> str:
         return f"""Anda adalah AI untuk Voice of Customer Intelligence pada industri perhotelan.
 
-Tugas Anda adalah melakukan Aspect-Based Sentiment Analysis (ABSA) terhadap ulasan pelanggan berikut.
+Tugas Anda adalah melakukan Aspect-Based Sentiment Analysis (ABSA) terhadap ulasan pelanggan berikut (dapat berbahasa Indonesia maupun Inggris).
 
 ULASAN:
 "{review}"
@@ -99,10 +100,11 @@ ATURAN:
 1. Setiap aspek harus memiliki:
    - "category": Salah satu dari KATEGORI UMUM di atas.
    - "target": Objek/fasilitas spesifik yang dibicarakan.
-   - "opinion": Kata/frasa opini penjelas dari pelanggan.
+   - "opinion": Kata/frasa opini penjelas dari pelanggan (ringkas, 1-4 kata).
    - "sentiment": Harus salah satu dari "positif", "negatif", atau "netral".
 2. Jangan membuat aspek yang tidak disebutkan dalam ulasan.
-3. Output HARUS berupa JSON valid dengan key utama "aspects".
+3. Terjemahkan nilai "sentiment" ke bahasa Indonesia ("positif", "negatif", "netral"), meskipun ulasan berbahasa Inggris.
+4. Output HARUS berupa JSON valid dengan key utama "aspects".
 
 Format output:
 {{
@@ -188,17 +190,30 @@ Jika tidak ada aspek yang relevan, kembalikan:
         if not isinstance(results, list):
             return normalized
 
+        # Mapping fallback jika LLM mengembalikan sentimen bahasa Inggris
+        sentiment_map = {
+            "positive": "positif",
+            "positif": "positif",
+            "negative": "negatif",
+            "negatif": "negatif",
+            "neutral": "netral",
+            "netral": "netral",
+        }
+
         for item in results:
             if not isinstance(item, dict):
                 continue
 
-            category = str(item.get("category", "")).strip()
+            raw_category = str(item.get("category", "")).strip()
+            
+            # Sanitasi typo tanda baca ekstra pada kategori (misal: "Fas,ilitas Hotel" -> "Fasilitas Hotel")
+            category = re.sub(r"[^\w\s-]", "", raw_category).strip()
+
             target = str(item.get("target", "")).strip()
             opinion = str(item.get("opinion", "")).strip()
-            sentiment = str(item.get("sentiment", "netral")).strip().lower()
+            raw_sentiment = str(item.get("sentiment", "netral")).strip().lower()
 
-            if sentiment not in ["positif", "negatif", "netral"]:
-                sentiment = "netral"
+            sentiment = sentiment_map.get(raw_sentiment, "netral")
 
             if not category:
                 continue
@@ -225,7 +240,6 @@ Jika tidak ada aspek yang relevan, kembalikan:
 
         prompt = self._build_prompt(review)
 
-        # Payload diatur optimal dengan format JSON native + sampling ringan
         payload = {
             "model": self.model,
             "prompt": prompt,
@@ -234,7 +248,7 @@ Jika tidak ada aspek yang relevan, kembalikan:
             "options": {
                 "temperature": 0.1,
                 "top_p": 0.9,
-                "num_predict": 256,
+                "num_predict": 768,  # Naik dari 256 ke 768 agar JSON panjang tidak terpotong
             },
         }
 
