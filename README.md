@@ -18,8 +18,8 @@ Contoh:
 
 | Aspek | Target | Opini | Sentimen |
 |---|---|---|---|
-| AC | AC kamar | tidak berfungsi optimal | 🔴 Negatif |
-| WiFi | wifi koneksi | kurang stabil | 🔴 Negatif |
+| Kamar | AC kamar | tidak berfungsi optimal | 🔴 Negatif |
+| Wi-Fi | wifi koneksi | kurang stabil | 🔴 Negatif |
 
 ## 🎯 Tujuan PoC
 
@@ -51,6 +51,26 @@ Business Aggregation
 Executive Insight
 ```
 
+## 🗂️ Kategori Aspek
+
+Kategori adalah **entitas** yang dibicarakan. Sisi kualitasnya (bersih, kotor, mahal, nyaman) ditangkap oleh `opinion` dan `sentiment`, sedangkan objek spesifiknya (misalnya "AC", "kasur") oleh `target`.
+
+| Kategori | Cakupan |
+|---|---|
+| Kamar | kamar tidur beserta isinya (tempat tidur, AC, TV, kebersihan kamar) |
+| Kamar Mandi | kamar mandi, toilet, shower, air panas, handuk |
+| Makanan & Minuman | sarapan, restoran, menu |
+| Staf & Pelayanan | keramahan staf, resepsionis, proses check-in/check-out |
+| Fasilitas Umum | kolam renang, gym, spa, lift, lobi, kebersihan area hotel |
+| Wi-Fi | koneksi internet |
+| Lokasi & Akses | letak hotel, akses transportasi, pemandangan |
+| Parkir | area dan layanan parkir |
+| Harga | harga, tarif, nilai uang |
+| Keamanan | keamanan dan keselamatan |
+| Lainnya | kesan umum atau hal yang tidak cocok kategori mana pun |
+
+Daftar ini didefinisikan di `engine/categories.py` dan dipakai bersama oleh prompt LLM serta normalisasi di aggregator. Kategori lama atau variasi tulisan dipetakan ke daftar ini dengan pencocokan kata utuh (`normalize_category`). Kategori "Lainnya" tidak ikut peringkat prioritas dan keunggulan.
+
 ## 🤖 Model
 
 PoC menggunakan **Qwen3:8B** yang dijalankan secara lokal menggunakan **Ollama**.
@@ -61,6 +81,8 @@ Keuntungan pendekatan ini:
 - Dapat dijalankan secara lokal.
 - Cocok untuk eksperimen dan pengembangan awal.
 - Model dapat diganti di kemudian hari tanpa mengubah keseluruhan arsitektur.
+
+> Mode berpikir (thinking) Qwen3 dimatikan lewat `think: false` pada request Ollama. Jika aktif, proses bernalar menghabiskan batas token sebelum JSON keluar dan hasil analisis kosong.
 
 ## 📚 Dataset
 
@@ -156,12 +178,15 @@ voc-hotel-ciputra/
 │
 ├── data/                 # Penyimpanan dataset dan data terproses
 │   ├── train_preprocess.txt
-│   ├── processed_reviews.json
-│   ├── processed_combined-reviews.json
-│   └── gold_reviews      # Dataset evaluasi emas (eksperimental)
+│   ├── processed_reviews.json            # Output CLI batch (dibuat saat dijalankan)
+│   ├── processed_combined-reviews.json   # Dataset aktif di dashboard
+│   └── gold/             # Gold set evaluasi (template & label)
+│       ├── gold_template.json
+│       └── gold_reviews_claude.json
 │
 ├── engine/               # Core engine pemrosesan ABSA
 │   ├── __init__.py
+│   ├── categories.py     # Daftar kategori entitas & normalisasi kategori
 │   ├── ollama_client.py  # Client API Ollama untuk Qwen3:8B
 │   ├── batch_processor.py# Pemroses ulasan skala besar (batch)
 │   └── aggregator.py     # Aggregator statistik, sentimen, & priority score
@@ -180,6 +205,9 @@ voc-hotel-ciputra/
 │   └── formatting.py
 │
 ├── app.py                # Main entrypoint Streamlit dashboard
+├── Dockerfile            # Konfigurasi containerization Docker
+├── docker-compose.yml    # Orchestration Docker Compose
+├── .dockerignore         # Filter file yang diabaikan Docker
 ├── requirements.txt      # Dependensi proyek
 └── README.md             # Dokumentasi proyek
 ```
@@ -235,6 +263,34 @@ venv\Scripts\activate
 pip install -r requirements.txt
 ```
 
+### 🐳 Menjalankan dengan Docker (Opsional)
+
+Jika Anda ingin menjalankan aplikasi di dalam container Docker:
+
+#### Cara A: Menggunakan Docker Compose (Direkomendasikan)
+
+```bash
+docker compose up --build
+```
+Aplikasi Streamlit akan langsung dapat diakses di `http://localhost:8501`.
+
+#### Cara B: Menggunakan Docker CLI
+
+1. Build Image Docker:
+```bash
+docker build -t voc-hotel-ciputra .
+```
+
+2. Jalankan Container:
+* **macOS / Windows:**
+```bash
+docker run -p 8501:8501 -e OLLAMA_BASE_URL=http://host.docker.internal:11434 voc-hotel-ciputra
+```
+* **Linux:**
+```bash
+docker run -p 8501:8501 --add-host=host.docker.internal:host-gateway -e OLLAMA_BASE_URL=http://host.docker.internal:11434 voc-hotel-ciputra
+```
+
 ## 🤖 Setup Ollama
 
 Download model:
@@ -263,6 +319,8 @@ Dataset TERMA berada di:
 data/train_preprocess.txt
 ```
 
+Opsi: `--limit` (default 15), `--input`, `--output`.
+
 15 review:
 
 ```bash
@@ -281,11 +339,21 @@ Seluruh dataset:
 python -m engine.batch_processor --limit 999999
 ```
 
-Hasil analisis:
+Hasil analisis (default):
 
 ```text
 data/processed_reviews.json
 ```
+
+> Dashboard hanya membaca file `data/*.json`. Pilih dataset aktif melalui sidebar.
+
+Status tiap ulasan:
+
+| Status | Arti |
+|---|---|
+| `success` | Analisis berhasil (daftar aspek boleh kosong jika ulasan tidak memuat aspek) |
+| `empty` | Teks ulasan kosong |
+| `error` | Ollama gagal atau output model tidak bisa dibaca. Isi pesan ada di field `error` |
 
 Contoh output:
 
@@ -295,16 +363,18 @@ Contoh output:
   "review_text": "kamar saya ada kendala di ac tidak berfungsi optimal . dan juga wifi koneksi kurang stabil .",
   "aspects": [
     {
-      "category": "AC",
+      "category": "Kamar",
       "target": "AC kamar",
       "opinion": "tidak berfungsi optimal",
-      "sentiment": "negatif"
+      "sentiment": "negatif",
+      "grounded": true
     },
     {
-      "category": "WiFi",
+      "category": "Wi-Fi",
       "target": "wifi koneksi",
       "opinion": "kurang stabil",
-      "sentiment": "negatif"
+      "sentiment": "negatif",
+      "grounded": true
     }
   ],
   "status": "success",
@@ -354,32 +424,52 @@ Memungkinkan pengguna mengunggah file ulasan baru (format CSV/Excel) dan mempros
 
 ## 📈 Priority Score
 
-Priority Score saat ini menggunakan formula sederhana:
+Priority Score menggabungkan **volume keluhan** dan **tingkat keparahan**:
 
 ```text
-Priority Score
-=
-Total Mentions × Negative Ratio × 10
+Priority Score = Jumlah Negatif × Batas Bawah Wilson (Rasio Negatif)
 ```
+
+- Penyebutan dihitung **per ulasan**: kategori + sentimen yang sama dalam satu ulasan dihitung sekali.
+- Batas bawah Wilson (interval kepercayaan 95%) membuat kategori dengan sampel kecil tidak mendapat skor berlebihan.
+- Keunggulan layanan diurutkan dengan batas bawah Wilson rasio positif, sehingga kategori dengan 2 penyebutan tidak mengalahkan kategori besar yang konsisten.
+- Kategori "Lainnya" (kesan umum) tidak masuk peringkat.
 
 Contoh:
 
 ```text
-WiFi
-
-Total Mentions = 20
-Negative       = 12
-
-Negative Ratio = 12 / 20
-               = 60%
-
-Priority Score = 20 × 0.60 × 10
-               = 120
+Kamar Mandi: 23 negatif dari 24 penyebutan
+Rasio negatif = 95.8%, batas bawah Wilson ≈ 0.80
+Priority Score = 23 × 0.80 ≈ 18.3
 ```
 
 Semakin tinggi skor, semakin layak aspek tersebut diprioritaskan untuk evaluasi.
 
 > Priority Score merupakan **relative prioritization score**, bukan ukuran absolut tingkat kepuasan pelanggan dan bukan bukti hubungan kausal bahwa memperbaiki aspek tertentu pasti meningkatkan kepuasan.
+
+## 🧪 Evaluasi
+
+Evaluator membandingkan prediksi model dengan gold set (kategori, sentimen, dan pasangan keduanya):
+
+```bash
+python -m scripts.create_gold_template          # membuat template 50 ulasan acak (seed 42)
+python -m evaluation.evaluation_metrics \
+  --gold data/gold/gold_reviews_claude.json \
+  --prediction data/processed_combined-reviews.json
+```
+
+Field `grounded` pada tiap aspek bernilai `false` jika `target` atau `opinion` tidak ditemukan di teks ulasan (indikasi terjemahan atau karangan model).
+
+Hasil awal pada 50 ulasan (gold dilabeli LLM, belum diverifikasi manusia):
+
+| Metrik | Nilai |
+|---|---|
+| Kategori F1 | 0,795 |
+| Sentimen akurasi | 0,928 |
+| Pasangan kategori + sentimen F1 | 0,732 |
+| Exact match per ulasan | 0,38 |
+
+> ⚠️ `gold_reviews_claude.json` dilabeli oleh LLM secara independen dari prediksi Qwen, **bukan** oleh manusia. Angka di atas adalah indikasi awal. Verifikasi manual diperlukan sebelum dipakai sebagai klaim akurasi.
 
 ## 🏨 Roadmap untuk Ciputra
 
@@ -483,11 +573,11 @@ Qwen3:8B digunakan melalui prompting dan belum melalui fine-tuning khusus domain
 
 ### Evaluation
 
-Modul pengujian metrik evaluasi (`evaluation/evaluation_metrics.py`) saat ini masih dalam tahap **eksperimental dan pengembangan awal** (belum sepenuhnya diuji/dijalankan secara otomatis). Pengujian akurasi ABSA secara menyeluruh akan dilakukan setelah tersedia dataset berlabel emas (gold dataset) yang representatif.
+Gold set saat ini (50 ulasan) dilabeli oleh LLM dan belum diverifikasi manusia. Pengujian akurasi ABSA yang dapat dipertanggungjawabkan memerlukan gold set yang dikoreksi manusia dan lebih besar. Ukuran dataset PoC juga terbatas, sehingga perbedaan kecil antar kategori belum bermakna.
 
 ### Priority Score
 
-Priority Score masih berupa formula heuristik sederhana dan perlu divalidasi bersama stakeholder bisnis sebelum digunakan sebagai KPI operasional.
+Priority Score (volume negatif × batas bawah Wilson rasio negatif) masih berupa formula heuristik dan perlu divalidasi bersama stakeholder bisnis sebelum digunakan sebagai KPI operasional.
 
 ## 🎯 Business Value
 

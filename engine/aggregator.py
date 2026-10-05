@@ -6,104 +6,32 @@ from typing import Any, Dict, List, Optional
 
 import pandas as pd
 
+from engine.categories import normalize_category
+
 
 # ========================================================
-# SMART CATEGORY CLEANING & PATTERN MATCHING
+# CATEGORY NORMALIZATION
 # ========================================================
 
 def clean_category_name(raw_category: Any) -> str:
+    """Petakan kategori mentah ke daftar entitas standar (lihat engine/categories.py)."""
+    return normalize_category(raw_category)
+
+
+def wilson_lower_bound(successes, total, z: float = 1.96):
     """
-    Membersihkan karakter aneh, koma/titik gantung, kata terpotong,
-    dan memetakan ke nama kategori standar industri perhotelan.
+    Batas bawah interval kepercayaan Wilson untuk proporsi (0-1).
+    Kategori dengan sampel kecil (mis. 2 dari 2 positif) mendapat nilai rendah,
+    sehingga tidak mengalahkan kategori besar yang konsisten.
     """
-    if not raw_category:
-        return ""
-
-    raw_str = str(raw_category).strip().lower()
-
-    # Hapus karakter selain huruf, angka, dan spasi (misal: "Fasilit," -> "fasilit")
-    cleaned = re.sub(r"[^\w\s]", "", raw_str)
-    cleaned = re.sub(r"\s+", " ", cleaned).strip()
-
-    if not cleaned:
-        return ""
-
-    # --- ATURAN PATTERN MATCHING ---
-
-    # 1. Fasilitas Hotel (menangani "fasilit,", "fasil", "fas.", "fasilitas", "facility", dll)
-    if (
-        cleaned.startswith("fas")
-        or "facility" in cleaned
-        or "facilities" in cleaned
-    ):
-        return "Fasilitas Hotel"
-
-    # 2. Kebersihan Hotel
-    if "bersih" in cleaned:
-        return "Kebersihan Hotel"
-
-    # 3. Pelayanan Staf
-    if (
-        "staf" in cleaned
-        or "staff" in cleaned
-        or "pelayanan" in cleaned
-        or "service" in cleaned
-        or "resepsionis" in cleaned
-        or "receptionist" in cleaned
-    ):
-        return "Pelayanan Staf"
-
-    # 4. Kamar Mandi vs Kamar
-    if "mandi" in cleaned or "toilet" in cleaned or "bathroom" in cleaned:
-        return "Kamar Mandi"
-    elif "kamar" in cleaned or "room" in cleaned:
-        return "Kamar"
-
-    # 5. Restoran & Makanan
-    if (
-        "makan" in cleaned
-        or "minum" in cleaned
-        or "resto" in cleaned
-        or "sarapan" in cleaned
-        or "breakfast" in cleaned
-        or "food" in cleaned
-    ):
-        return "Restoran"
-
-    # 6. AC
-    if cleaned in ["ac", "air conditioner", "pendingin"]:
-        return "AC"
-
-    # 7. Check-In
-    if "check" in cleaned or "masuk" in cleaned:
-        return "Proses Check-In"
-
-    # 8. Parkir
-    if "parkir" in cleaned or "parking" in cleaned:
-        return "Parkir"
-
-    # 9. Kolam Renang
-    if "renang" in cleaned or "pool" in cleaned:
-        return "Kolam Renang"
-
-    # 10. Keamanan
-    if "aman" in cleaned or "security" in cleaned:
-        return "Keamanan"
-
-    # 11. Harga
-    if "harga" in cleaned or "price" in cleaned or "tarif" in cleaned:
-        return "Harga"
-
-    # 12. Pemandangan
-    if "pandang" in cleaned or "view" in cleaned:
-        return "Pemandangan"
-
-    # 13. Lokasi
-    if "lokasi" in cleaned or "location" in cleaned:
-        return "Lokasi"
-
-    # Jika tidak cocok dengan rule di atas, bersihkan simbol dan buat Title Case
-    return str(raw_category).strip(" ,.-_").title()
+    successes = pd.Series(successes, dtype="float64")
+    total = pd.Series(total, dtype="float64")
+    safe_total = total.where(total > 0, 1.0)
+    p = successes / safe_total
+    denom = 1 + z**2 / safe_total
+    centre = p + z**2 / (2 * safe_total)
+    margin = z * ((p * (1 - p) + z**2 / (4 * safe_total)) / safe_total) ** 0.5
+    return ((centre - margin) / denom).where(total > 0, 0.0)
 
 
 class ReviewAggregator:
@@ -211,7 +139,7 @@ class ReviewAggregator:
     def _flatten_aspects(self):
         rows = []
 
-        for review in self.reviews:
+        for review_idx, review in enumerate(self.reviews):
             review_id = review.get("review_id", "-")
             review_text = review.get("review_text", "")
             aspects = review.get("aspects", []) or review.get("aspect_sentiments", [])
@@ -242,6 +170,7 @@ class ReviewAggregator:
 
                 rows.append(
                     {
+                        "review_idx": review_idx,
                         "review_id": review_id,
                         "review_text": review_text,
                         "category": category,
@@ -256,6 +185,11 @@ class ReviewAggregator:
     # ========================================================
     # ASPECT SUMMARY
     # ========================================================
+
+    @staticmethod
+    def _rankable(summary):
+        """Kategori "Lainnya" (kesan umum, bukan entitas) tidak masuk peringkat."""
+        return summary[summary["category"] != "Lainnya"]
 
     def get_aspect_summary(self):
         rows = self._flatten_aspects()
@@ -273,11 +207,17 @@ class ReviewAggregator:
                     "neutral_count",
                     "positive_ratio",
                     "negative_ratio",
+                    "negative_ratio_lower",
                     "priority_score",
+                    "strength_score",
                 ]
             )
 
-        df = pd.DataFrame(rows)
+        # Hitung per ulasan: beberapa penyebutan kategori+sentimen yang sama dalam
+        # satu ulasan dihitung sekali. Evidence tetap menampilkan semua aspek.
+        df = pd.DataFrame(rows).drop_duplicates(
+            subset=["review_idx", "category", "sentiment"]
+        )
 
         grouped = (
             df.groupby("category")["sentiment"]
@@ -311,10 +251,18 @@ class ReviewAggregator:
             grouped["negatif_count"] / grouped["total_mentions"] * 100
         ).round(1)
 
+        # Prioritas = volume keluhan x tingkat keparahan (batas bawah Wilson rasio negatif)
+        grouped["negative_ratio_lower"] = wilson_lower_bound(
+            grouped["negatif_count"], grouped["total_mentions"]
+        )
         grouped["priority_score"] = (
-            grouped["total_mentions"]
-            * (grouped["negatif_count"] / grouped["total_mentions"])
+            grouped["negatif_count"] * grouped["negative_ratio_lower"]
         ).round(1)
+
+        # Keunggulan = batas bawah Wilson rasio positif (tahan sampel kecil)
+        grouped["strength_score"] = wilson_lower_bound(
+            grouped["positif_count"], grouped["total_mentions"]
+        ).round(3)
 
         result = grouped.reset_index().sort_values(
             "total_mentions",
@@ -346,19 +294,17 @@ class ReviewAggregator:
             positive_aspects / total_aspects * 100 if total_aspects else 0
         )
 
-        priority_row = summary.sort_values(
+        ranked = self._rankable(summary)
+        if ranked.empty:
+            ranked = summary
+
+        priority_row = ranked.sort_values(
             "priority_score",
             ascending=False,
         ).iloc[0]
 
-        strength_df = summary.copy()
-        strength_df = strength_df[strength_df["total_mentions"] > 0]
-        strength_df["strength_score"] = (
-            strength_df["positive_count"] / strength_df["total_mentions"]
-        )
-
-        strength_df = strength_df.sort_values(
-            ["strength_score", "total_mentions"],
+        strength_df = ranked[ranked["positive_count"] > 0].sort_values(
+            ["strength_score", "positive_count"],
             ascending=False,
         )
 
@@ -388,7 +334,7 @@ class ReviewAggregator:
         if summary.empty:
             return []
 
-        result = summary.sort_values(
+        result = self._rankable(summary).sort_values(
             "priority_score",
             ascending=False,
         ).head(top_n)
@@ -423,15 +369,11 @@ class ReviewAggregator:
         if summary.empty:
             return []
 
-        summary = summary.copy()
-        summary["strength_score"] = (
-            summary["positive_count"] / summary["total_mentions"]
+        result = (
+            self._rankable(summary)[lambda d: d["positive_count"] > 0]
+            .sort_values(["strength_score", "positive_count"], ascending=False)
+            .head(top_n)
         )
-
-        result = summary.sort_values(
-            ["strength_score", "total_mentions"],
-            ascending=False,
-        ).head(top_n)
 
         items = []
         for _, row in result.iterrows():
@@ -516,13 +458,17 @@ class ReviewAggregator:
         if summary.empty:
             return "Belum terdapat cukup data untuk menghasilkan insight."
 
-        priority = summary.sort_values(
+        ranked = self._rankable(summary)
+        if ranked.empty:
+            ranked = summary
+
+        priority = ranked.sort_values(
             "priority_score",
             ascending=False,
         ).iloc[0]
 
-        strength = summary.sort_values(
-            "positive_ratio",
+        strength = ranked.sort_values(
+            ["strength_score", "positive_count"],
             ascending=False,
         ).iloc[0]
 
@@ -534,6 +480,7 @@ class ReviewAggregator:
             f"{int(priority['total_mentions'])} "
             f"penyebutan. Sementara itu, "
             f"{strength['category']} menunjukkan "
-            f"proporsi sentimen positif tertinggi "
-            f"sebesar {strength['positive_ratio']:.1f}%."
+            f"keunggulan paling konsisten "
+            f"({int(strength['positive_count'])} positif dari "
+            f"{int(strength['total_mentions'])} penyebutan)."
         )

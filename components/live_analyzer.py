@@ -38,10 +38,17 @@ def render_live_analyzer(ollama_client):
             st.error("❌ Ollama tidak dapat diakses. Pastikan Ollama sedang berjalan.")
             st.code("ollama serve", language="bash")
         else:
+            results = []
+            analysis_error = None
             with st.spinner("🤖 Qwen3:8B sedang menganalisis ulasan..."):
-                results = ollama_client.analyze_review(user_review)
+                try:
+                    results = ollama_client.analyze_review(user_review, raise_errors=True)
+                except Exception as exc:
+                    analysis_error = exc
 
-            if not results:
+            if analysis_error is not None:
+                st.error(f"❌ Analisis gagal: {analysis_error}")
+            elif not results:
                 st.warning("Tidak ada aspek yang berhasil diekstrak dari ulasan.")
                 st.caption(
                     "Pastikan model Qwen3:8B tersedia di Ollama dan teks mengandung aspek layanan atau fasilitas."

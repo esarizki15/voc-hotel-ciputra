@@ -4,6 +4,7 @@ from typing import Any, Dict, List, Optional
 
 import requests
 from config.settings import OLLAMA_BASE_URL, OLLAMA_MODEL
+from engine.categories import CATEGORY_DESCRIPTIONS, normalize_category
 
 
 class OllamaABSAClient:
@@ -66,6 +67,9 @@ class OllamaABSAClient:
     # ========================================================
 
     def _build_prompt(self, review: str) -> str:
+        category_list = "\n".join(
+            f"- {name}: {desc}" for name, desc in CATEGORY_DESCRIPTIONS.items()
+        )
         return f"""Anda adalah AI untuk Voice of Customer Intelligence pada industri perhotelan.
 
 Tugas Anda adalah melakukan Aspect-Based Sentiment Analysis (ABSA) terhadap ulasan pelanggan berikut (dapat berbahasa Indonesia maupun Inggris).
@@ -75,30 +79,12 @@ ULASAN:
 
 Identifikasi semua aspek layanan atau fasilitas yang dibicarakan pelanggan.
 
-KATEGORI UMUM (Pilih yang paling sesuai):
-- WiFi
-- Pelayanan Staf
-- Kebersihan Kamar
-- AC
-- Sarapan
-- Fasilitas Kamar
-- Proses Check-in
-- Kolam Renang
-- Lokasi
-- Harga
-- Restoran
-- Parkir
-- Keamanan
-- Kamar
-- Kamar Mandi
-- Tempat Tidur
-- Kebersihan Hotel
-- Fasilitas Hotel
-- Lainnya
+KATEGORI (entitas yang dibicarakan, pilih tepat satu per aspek):
+{category_list}
 
 ATURAN:
 1. Setiap aspek harus memiliki:
-   - "category": Salah satu dari KATEGORI UMUM di atas.
+   - "category": Salah satu nama KATEGORI di atas, tulis persis. Kategori adalah entitasnya; sisi kualitas (bersih, kotor, mahal, nyaman) cukup ditulis di "opinion".
    - "target": Objek/fasilitas spesifik yang dibicarakan.
    - "opinion": Kata/frasa opini penjelas dari pelanggan (ringkas, 1-4 kata).
    - "sentiment": Harus salah satu dari "positif", "negatif", atau "netral".
@@ -182,9 +168,23 @@ Jika tidak ada aspek yang relevan, kembalikan:
     # DATA NORMALIZATION
     # ========================================================
 
+    @staticmethod
+    def _is_grounded(phrase: str, review: str) -> bool:
+        """True jika semua kata bermakna dari phrase muncul di teks ulasan."""
+        def prep(value: str) -> str:
+            # "Wi-Fi" -> "wifi" agar sama dengan penulisan di ulasan
+            return re.sub(r"(?<=\w)-(?=\w)", "", value.lower())
+
+        words = [w for w in re.findall(r"[a-z0-9]+", prep(phrase)) if len(w) > 2]
+        if not words:
+            return False
+        text = prep(review)
+        # Awalan 4 huruf menoleransi imbuhan (parkir/parking, bersih/kebersihan)
+        return all(w in text or (len(w) >= 5 and w[:4] in text) for w in words)
+
     def _normalize_results(
-        self, results: List[Dict[str, Any]]
-    ) -> List[Dict[str, str]]:
+        self, results: List[Dict[str, Any]], review: str = ""
+    ) -> List[Dict[str, Any]]:
         normalized = []
 
         if not isinstance(results, list):
@@ -204,10 +204,7 @@ Jika tidak ada aspek yang relevan, kembalikan:
             if not isinstance(item, dict):
                 continue
 
-            raw_category = str(item.get("category", "")).strip()
-            
-            # Sanitasi typo tanda baca ekstra pada kategori (misal: "Fas,ilitas Hotel" -> "Fasilitas Hotel")
-            category = re.sub(r"[^\w\s-]", "", raw_category).strip()
+            category = normalize_category(item.get("category", ""))
 
             target = str(item.get("target", "")).strip()
             opinion = str(item.get("opinion", "")).strip()
@@ -224,6 +221,9 @@ Jika tidak ada aspek yang relevan, kembalikan:
                     "target": target,
                     "opinion": opinion,
                     "sentiment": sentiment,
+                    # False = target/opinion tidak ditemukan di teks (terjemahan atau karangan LLM)
+                    "grounded": self._is_grounded(target, review)
+                    and self._is_grounded(opinion, review),
                 }
             )
 
@@ -233,7 +233,14 @@ Jika tidak ada aspek yang relevan, kembalikan:
     # MAIN ANALYZE METHOD
     # ========================================================
 
-    def analyze_review(self, review: str) -> List[Dict[str, str]]:
+    def analyze_review(
+        self, review: str, raise_errors: bool = False
+    ) -> List[Dict[str, Any]]:
+        """
+        Analisis satu ulasan. Dengan raise_errors=True, kegagalan Ollama atau
+        output yang tidak bisa di-parse dilempar sebagai exception (dipakai batch
+        agar status "error" tercatat). Default False: error dicetak dan hasilnya [].
+        """
         review = str(review or "").strip()
         if not review:
             return []
@@ -245,6 +252,7 @@ Jika tidak ada aspek yang relevan, kembalikan:
             "prompt": prompt,
             "stream": False,
             "format": "json",
+            "think": False,  # Qwen3 default berpikir dulu dan menghabiskan num_predict sebelum JSON keluar
             "options": {
                 "temperature": 0.1,
                 "top_p": 0.9,
@@ -264,11 +272,15 @@ Jika tidak ada aspek yang relevan, kembalikan:
             raw_response = str(data.get("response", ""))
             results = self._extract_json(raw_response)
 
-            if not results:
-                return []
+            if results is None:
+                raise ValueError(
+                    f"Output model tidak bisa di-parse (done_reason={data.get('done_reason')})"
+                )
 
-            return self._normalize_results(results)
+            return self._normalize_results(results, review)
 
         except Exception as exc:
+            if raise_errors:
+                raise
             print(f"⚠️ Error analisis ulasan: {exc}")
             return []

@@ -51,8 +51,11 @@ class BatchProcessor:
                 continue
 
             try:
-                aspects = self.ollama_client.analyze_review(review_text)
-                # Analisis berhasil (walaupun aspeknya []), status tetap "success"
+                aspects = self.ollama_client.analyze_review(
+                    review_text, raise_errors=True
+                )
+                # Analisis berhasil (walaupun aspeknya []), status tetap "success".
+                # Kegagalan Ollama / output tak terbaca jatuh ke except dan tercatat "error".
                 status = "success"
                 error = None
             except Exception as exc:
@@ -122,12 +125,25 @@ def process_batch(
 
     df = pd.DataFrame({"review_text": reviews[:limit] if limit else reviews})
     processor = BatchProcessor()
-    
+
     print("🔄 Memproses batch...")
     results = processor.process_dataframe(df, review_column="review_text")
     processor.save_results(results, output_path)
+    failed = sum(1 for r in results if r["status"] == "error")
     print(f"✅ Selesai. Disimpan di {output_path}")
+    if failed:
+        print(f"⚠️ {failed} dari {len(results)} ulasan gagal diproses (status 'error'). Cek Ollama.")
+
+
+def main() -> None:
+    parser = argparse.ArgumentParser(description="Batch ABSA untuk dataset TERMA.")
+    parser.add_argument("--limit", type=int, default=15, help="Jumlah ulasan (default 15).")
+    parser.add_argument("--input", type=Path, default=DATA_PATH)
+    parser.add_argument("--output", type=Path, default=OUTPUT_PATH)
+    args = parser.parse_args()
+
+    process_batch(limit=args.limit, data_path=args.input, output_path=args.output)
 
 
 if __name__ == "__main__":
-    process_batch()
+    main()

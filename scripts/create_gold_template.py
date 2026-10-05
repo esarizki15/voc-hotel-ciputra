@@ -1,12 +1,16 @@
 import argparse
 import json
+import random
 from pathlib import Path
+
+from engine.categories import CATEGORY_DESCRIPTIONS
 
 
 def create_template(
     input_path: Path,
     output_path: Path,
     limit: int | None = 50,
+    seed: int | None = None,
 ):
     if not input_path.exists():
         raise FileNotFoundError(f"File tidak ditemukan: {input_path}")
@@ -18,7 +22,11 @@ def create_template(
         raise ValueError("processed_reviews.json harus berupa list.")
 
     if limit is not None:
-        data = data[:limit]
+        if seed is not None:
+            # Sampel acak (reproducible) agar tidak hanya ulasan awal file
+            data = random.Random(seed).sample(data, min(limit, len(data)))
+        else:
+            data = data[:limit]
 
     gold = []
 
@@ -42,16 +50,19 @@ def create_template(
     print(f"✅ Template gold label dibuat: {output_path}")
     print(f"📝 Total review untuk labeling: {len(gold)}")
     print()
-    print("Isi gold_aspects secara manual berdasarkan review_text.")
+    print("Isi gold_aspects secara manual berdasarkan review_text (tanpa melihat prediksi model).")
+    print("Kategori yang valid:")
+    for name, desc in CATEGORY_DESCRIPTIONS.items():
+        print(f"  - {name}: {desc}")
     print("Contoh:")
     print("""
 "gold_aspects": [
   {
-    "category": "AC",
+    "category": "Kamar",
     "sentiment": "negatif"
   },
   {
-    "category": "WiFi",
+    "category": "Wi-Fi",
     "sentiment": "negatif"
   }
 ]
@@ -66,13 +77,13 @@ def main():
     parser.add_argument(
         "--input",
         type=Path,
-        default=Path("data/processed_reviews.json"),
+        default=Path("data/processed_combined-reviews.json"),
     )
 
     parser.add_argument(
         "--output",
         type=Path,
-        default=Path("data/gold_reviews.json"),
+        default=Path("data/gold/gold_template.json"),  # di subfolder agar tidak muncul sebagai dataset dashboard
     )
 
     parser.add_argument(
@@ -82,12 +93,20 @@ def main():
         help="Jumlah review yang dibuatkan template. Default: 50.",
     )
 
+    parser.add_argument(
+        "--seed",
+        type=int,
+        default=42,
+        help="Seed sampel acak. Gunakan -1 untuk mengambil N review pertama.",
+    )
+
     args = parser.parse_args()
 
     create_template(
         input_path=args.input,
         output_path=args.output,
         limit=args.limit,
+        seed=None if args.seed < 0 else args.seed,
     )
 
 
