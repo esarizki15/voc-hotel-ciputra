@@ -88,7 +88,11 @@ def render_summary_table(df_summary):
     with st.expander("ℹ️ Cara membaca Skor Prioritas"):
         st.write(
             "Skor Prioritas merupakan skor perbandingan relatif antar-aspek. "
-            "Skor dihitung dari jumlah penyebutan dikalikan proporsi sentimen negatif. "
+            "Skor dihitung dari jumlah sentimen negatif dikalikan tingkat keparahan, yaitu "
+            "batas bawah statistik (interval kepercayaan Wilson 95%) dari proporsi sentimen negatif. "
+            "Dengan begitu aspek yang sering dikeluhkan dan hampir selalu negatif berada di atas, "
+            "sedangkan aspek dengan sedikit penyebutan tidak mendapat skor berlebihan. "
+            "Penyebutan dihitung per ulasan, dan kategori \"Lainnya\" (kesan umum) tidak diperingkat. "
             "Semakin tinggi skor, semakin layak aspek tersebut diprioritaskan untuk evaluasi."
         )
         st.caption(
