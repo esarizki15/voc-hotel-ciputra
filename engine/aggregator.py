@@ -383,6 +383,7 @@ class ReviewAggregator:
                     "total_mentions": int(row["total_mentions"]),
                     "positive_count": int(row["positive_count"]),
                     "positive_ratio": float(row["positive_ratio"]),
+                    "strength_score": float(row["strength_score"]),
                 }
             )
 

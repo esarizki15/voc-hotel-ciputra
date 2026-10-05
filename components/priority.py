@@ -123,7 +123,18 @@ def render_priorities(
                         f"sentimen positif"
                     )
 
-                    st.metric(
-                        "Proporsi Positif",
-                        f"{item['positive_ratio']:.1f}%",
-                    )
+                    c1, c2 = st.columns(2)
+
+                    with c1:
+
+                        st.metric(
+                            "Proporsi Positif",
+                            f"{item['positive_ratio']:.1f}%",
+                        )
+
+                    with c2:
+
+                        st.metric(
+                            "Skor Keunggulan",
+                            f"{item['strength_score'] * 100:.1f}",
+                        )

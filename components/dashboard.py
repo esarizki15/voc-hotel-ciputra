@@ -95,6 +95,11 @@ def render_summary_table(df_summary):
             "Penyebutan dihitung per ulasan, dan kategori \"Lainnya\" (kesan umum) tidak diperingkat. "
             "Semakin tinggi skor, semakin layak aspek tersebut diprioritaskan untuk evaluasi."
         )
+        st.write(
+            "Skor Keunggulan (0-100) memakai batas bawah Wilson dari proporsi sentimen positif. "
+            "Aspek dengan penyebutan sedikit mendapat skor lebih rendah dari proporsi mentahnya, "
+            "sehingga urutan keunggulan bisa berbeda dari urutan proporsi positif."
+        )
         st.caption(
             "Catatan: skor ini bukan ukuran kepuasan pelanggan absolut dan tidak menunjukkan hubungan sebab-akibat."
         )
