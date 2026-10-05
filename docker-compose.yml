@@ -1,0 +1,17 @@
+version: '3.8'
+
+services:
+  voc-dashboard:
+    build: .
+    container_name: voc_hotel_ciputra_app
+    ports:
+      - "8501:8501"
+    environment:
+      - OLLAMA_BASE_URL=http://host.docker.internal:11434
+      - OLLAMA_MODEL=qwen3:8b
+    volumes:
+      # Mount folder data agar data hasil batch processing tersimpan persisten di host
+      - ./data:/app/data
+    extra_hosts:
+      # Memungkinkan container mengakses service Ollama yang berjalan di host machine
+      - "host.docker.internal:host-gateway"

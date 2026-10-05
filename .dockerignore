@@ -1,0 +1,13 @@
+venv/
+.venv/
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+.git/
+.gitignore
+.ds_store
+.DS_Store
+.idea/
+.vscode/
+data/uploads/*
